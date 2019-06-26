@@ -24,7 +24,7 @@ class ListState extends State<List> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         new Text(
-                          '标题',
+                          '标题1',
                           style: new TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16.0,
