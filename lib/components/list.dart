@@ -66,4 +66,25 @@ class ListState extends State<List> {
       },
     );
   }
+  getData () async {
+    var url = 'https://jsonplaceholder.typicode.com/posts';
+    var httpClient = new HttpClient();
+    var result;
+    try {
+      var request = await httpClient.getUrl(Uri.parse(url));
+      var response = await request.close();
+      if (response.statusCode == HttpStatus.OK) {
+        var json = await response.transform(UTF8.decoder).join();
+        result = JSON.decode(json);
+      } else {
+        result = 'Error getting JSON data:\nHttp status ${response.statusCode}';
+      }
+    } catch (e) {
+      result = 'Failed getting JSON data';
+    }
+    if (!mounted) return;
+    setState(() {
+      data = result;
+    });
+  }
 }
