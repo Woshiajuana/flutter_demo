@@ -9,11 +9,12 @@ class List extends StatefulWidget {
 }
 
 class ListState extends State<List> {
-  var data = '';
+  var data;
   @override
   Widget build(BuildContext context){
+    getData();
     return new ListView.builder(
-      itemCount: 10,
+      itemCount: data == null ? 0 : data.length,
       itemBuilder: (BuildContext context, int index) {
         return new Card(
           child: new Container(
@@ -27,7 +28,7 @@ class ListState extends State<List> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         new Text(
-                          '标题1',
+                          data[index]['title'],
                           style: new TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16.0,
@@ -52,7 +53,7 @@ class ListState extends State<List> {
                       children: <Widget>[
                         new Container(
                           padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
-                          child: new Text('内容'),
+                          child: new Text('id' + data[index]['id'].toString()),
                         )
                       ],
                     )
@@ -77,8 +78,8 @@ class ListState extends State<List> {
       var request = await httpClient.getUrl(Uri.parse(url));
       var response = await request.close();
       if (response.statusCode == HttpStatus.OK) {
-        var json = await response.transform(utf8.decoder).join();
-        result = JSON.decode(json);
+        var responseBody = await response.transform(utf8.decoder).join();
+        result = json.decode(responseBody);
       } else {
         result = 'Error getting JSON data:\nHttp status ${response.statusCode}';
       }
