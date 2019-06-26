@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:convert';
 
 class List extends StatefulWidget {
   @override
@@ -7,6 +9,7 @@ class List extends StatefulWidget {
 }
 
 class ListState extends State<List> {
+  var data = '';
   @override
   Widget build(BuildContext context){
     return new ListView.builder(
@@ -74,7 +77,7 @@ class ListState extends State<List> {
       var request = await httpClient.getUrl(Uri.parse(url));
       var response = await request.close();
       if (response.statusCode == HttpStatus.OK) {
-        var json = await response.transform(UTF8.decoder).join();
+        var json = await response.transform(utf8.decoder).join();
         result = JSON.decode(json);
       } else {
         result = 'Error getting JSON data:\nHttp status ${response.statusCode}';
