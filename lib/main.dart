@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './views/firstPage.dart';
 import './views/secondPage.dart';
 import './views/thirdPage.dart';
+import './views/detail.dart';
 
 void main() => runApp(new MyApp());
 
@@ -9,7 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: new MyHomePage(),
+      routes: <String, WidgetBuilder> {
+        '/detail': (BuildContext context) => new Detail(''),
+      },
     );
   }
 }

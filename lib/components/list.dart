@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
+import '../views/detail.dart';
 
 class List extends StatefulWidget {
   @override
@@ -64,12 +65,25 @@ class ListState extends State<List> {
                 Icons.keyboard_arrow_right,
                 color: Colors.grey,
               ),
+              onTap: () => _onTap(data[index]['id'].toString()),
             ),
           ),
         );
       },
     );
   }
+
+  void _onTap(String id) {
+    Navigator.of(context).push(
+      new PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (BuildContext context, _, __) {
+          return new Detail(id);
+        },
+      ),
+    );
+  }
+
   getData () async {
     var url = 'https://jsonplaceholder.typicode.com/posts';
     var httpClient = new HttpClient();
