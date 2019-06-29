@@ -46,8 +46,13 @@ flutter:
   #  - images/a_dot_ham.jpeg
   assets:
     - assets/images/app-home-active-icon.png
-    - assets/images/app-home-active-icon1.png
     - assets/images/app-home-icon.png
+    - assets/images/app-find-active-icon.png
+    - assets/images/app-find-icon.png
+    - assets/images/app-cart-active-icon.png
+    - assets/images/app-cart-icon.png
+    - assets/images/app-mine-active-icon.png
+    - assets/images/app-mine-icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

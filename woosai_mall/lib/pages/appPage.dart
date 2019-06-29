@@ -86,19 +86,19 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
     tabImages = [
       [
         getTabImage('assets/images/app-home-icon.png'),
-        getTabImage('assets/images/app-home-icon.png'),
+        getTabImage('assets/images/app-home-active-icon.png'),
       ],
       [
-        getTabImage('assets/images/app-home-icon.png'),
-        getTabImage('assets/images/app-home-icon.png'),
+        getTabImage('assets/images/app-find-icon.png'),
+        getTabImage('assets/images/app-find-active-icon.png'),
       ],
       [
-        getTabImage('assets/images/app-home-icon.png'),
-        getTabImage('assets/images/app-home-icon.png'),
+        getTabImage('assets/images/app-cart-icon.png'),
+        getTabImage('assets/images/app-cart-active-icon.png'),
       ],
       [
-        getTabImage('assets/images/app-home-icon.png'),
-        getTabImage('assets/images/app-home-icon.png'),
+        getTabImage('assets/images/app-mine-icon.png'),
+        getTabImage('assets/images/app-mine-active-icon.png'),
       ],
     ];
   }
