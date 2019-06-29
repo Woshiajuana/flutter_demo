@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/homePage.dart';
 
 class AppPage extends StatefulWidget {
@@ -11,7 +13,6 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
 
   // Tab页的控制器，可以用来定义Tab标签和内容页的坐标
   TabController tabController;
-  var tabTitles = [ '首页', '发现', '购物车', '我的' ];
   var tabImages;
   int tabIndex = 0;
 
@@ -19,7 +20,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     tabController = new TabController(
-        length: tabTitles.length, // Tab页的个数
+        length: 4, // Tab页的个数
         vsync: this, // 动画效果的异步处理，默认格式
     );
   }
@@ -46,10 +47,42 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
           indicatorColor: Colors.white,
           controller: tabController,
           tabs: <Tab>[
-            new Tab(text: tabTitles[0], icon: getTabIcon(0)),
-            new Tab(text: tabTitles[1], icon: getTabIcon(1)),
-            new Tab(text: tabTitles[2], icon: getTabIcon(2)),
-            new Tab(text: tabTitles[3], icon: getTabIcon(3)),
+            new Tab(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  getTabIcon(0),
+                  new Text('首页', style: TextStyle(fontSize: 10)),
+                ],
+              ),
+            ),
+            new Tab(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  getTabIcon(1),
+                  new Text('发现', style: TextStyle(fontSize: 10)),
+                ],
+              ),
+            ),
+            new Tab(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  getTabIcon(2),
+                  new Text('购物车', style: TextStyle(fontSize: 10)),
+                ],
+              ),
+            ),
+            new Tab(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  getTabIcon(3),
+                  new Text('我的', style: TextStyle(fontSize: 10)),
+                ],
+              ),
+            ),
           ],
           labelColor: Color(0xff1296db),
           unselectedLabelColor: Color(0xff999999),
@@ -72,7 +105,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   }
 
   Image getTabImage(path) {
-    return new Image.asset(path, width: 30.0, height: 30.0,fit: BoxFit.fill,);
+    return new Image.asset(path, width: 20.0, height: 20.0,fit: BoxFit.fill,);
   }
 
   Image getTabIcon(int curIndex) {
@@ -102,4 +135,24 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
       ],
     ];
   }
+
+  // 监听安卓的返回键操作
+  Future<bool> _onWillPop() {
+    return showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('退出App?'),
+        content: new Text('Do you want to exit an App'),
+        actions: <Widget>[
+          new FlatButton(onPressed: () => Navigator.of(context).pop(false), child: new Text('不')),
+          new FlatButton(onPressed: () async { await pop(); }, child: new Text('不')),
+        ],
+      ),
+    ) ?? false;
+  }
+
+  static Future<void> pop() async {
+    await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  }
+
 }
