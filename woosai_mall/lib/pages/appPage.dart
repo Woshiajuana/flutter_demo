@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/homePage.dart';
+import 'package:woosai_mall/pages/findPage.dart';
+import 'package:woosai_mall/pages/cartPage.dart';
+import 'package:woosai_mall/pages/minePage.dart';
 
 class AppPage extends StatefulWidget {
   @override
@@ -30,14 +33,23 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     initData();
     return new Scaffold(
-      body: new TabBarView(
-        controller: tabController,
-        physics: new NeverScrollableScrollPhysics(),
+//      body: new TabBarView(
+//        controller: tabController,
+//        physics: new NeverScrollableScrollPhysics(),
+//        children: <Widget>[
+//          new HomePage(),
+//          new HomePage(),
+//          new HomePage(),
+//          new HomePage(),
+//        ],
+//      ),
+      body: IndexedStack(
+        index: tabIndex,
         children: <Widget>[
           new HomePage(),
-          new HomePage(),
-          new HomePage(),
-          new HomePage(),
+          new FindPage(),
+          new CartPage(),
+          new MinePage(),
         ],
       ),
       bottomNavigationBar: new Material(
