@@ -18,7 +18,10 @@ class SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return Container(
-        child: Image(image: AssetImage('assets/images/splash.png')),
+        child: Image(
+          image: AssetImage('assets/images/splash.png'),
+          fit: BoxFit.fill,
+        ),
       );
     });
   }
