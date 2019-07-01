@@ -87,10 +87,10 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    expandedHeight: (_sizeRed == null ? MediaQuery.of(context).size.height : _sizeRed.height) + 50.0,
+                    expandedHeight: (_sizeRed == null ? MediaQuery.of(context).size.height : _sizeRed.height) + 200.0,
                     bottom: PreferredSize(
-                      preferredSize: Size(double.infinity, 46),
-                      child: new Text('导航条1'),
+                      preferredSize: Size(double.infinity, 46.0),
+                      child: new Text('导航条2'),
                     ),
                   ),
                 ];
