@@ -13,11 +13,15 @@ class _HomePageState extends State<HomePage> {
 
   ScrollController _scrollViewController;
   GlobalKey _keyFilter = GlobalKey();
+  Size _sizeRed;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
   }
 
@@ -26,6 +30,24 @@ class _HomePageState extends State<HomePage> {
     _scrollViewController.dispose();
     // TODO: implement dispose
     super.dispose();
+  }
+
+  _afterLayout(_) {
+    _getPositions('_keyFilter', _keyFilter);
+    _getSizes('_keyFilter', _keyFilter);
+  }
+
+  _getPositions(log, GlobalKey globalKey) {
+    RenderBox renderBoxRed = globalKey.currentContext.findRenderObject();
+    var positionRed = renderBoxRed.localToGlobal(Offset.zero);
+    print("POSITION of $log: $positionRed ");
+  }
+
+  _getSizes(log, GlobalKey globalKey) {
+    RenderBox renderBoxRed = globalKey.currentContext.findRenderObject();
+    _sizeRed = renderBoxRed.size;
+    setState(() {});
+    print("SIZE of $log: $_sizeRed");
   }
 
   @override
@@ -55,17 +77,20 @@ class _HomePageState extends State<HomePage> {
                     flexibleSpace: FlexibleSpaceBar(
                       collapseMode: CollapseMode.pin,
                       background: Column(
-//                  key: _keyFilter,
+                        key: _keyFilter,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          new _CarouselView(),
+                          new _CarouselView(),
+                          new _CarouselView(),
                           new _CarouselView(),
                         ],
                       ),
                     ),
-//                    expandedHeight: (_sizeRed == null ? ScreenUtil.screenHeight : _sizeRed.height) + 50.0,
+                    expandedHeight: (_sizeRed == null ? MediaQuery.of(context).size.height : _sizeRed.height) + 50.0,
                     bottom: PreferredSize(
                       preferredSize: Size(double.infinity, 46),
-                      child: new Text('导航条'),
+                      child: new Text('导航条1'),
                     ),
                   ),
                 ];
@@ -90,6 +115,15 @@ class _HomePageState extends State<HomePage> {
                   new Text('内容'),
                   new Text('内容'),
                   new _CarouselView(),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
                 ],
               ),
             ),
