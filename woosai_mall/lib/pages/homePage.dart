@@ -11,7 +11,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  //状态栏一体化
+  ScrollController _scrollViewController;
+  GlobalKey _keyFilter = GlobalKey();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _scrollViewController = ScrollController(initialScrollOffset: 0.0);
+  }
+
+  @override
+  void dispose() {
+    _scrollViewController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +42,58 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: <Widget>[
           new HeadView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
-          new _CarouselView(),
+          Expanded(
+            child: new NestedScrollView(
+              controller: _scrollViewController,
+              headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
+                return <Widget> [
+                  SliverAppBar(
+                    pinned: true,
+                    floating: true,
+                    forceElevated: boxIsScrolled,
+                    backgroundColor: Color.fromRGBO(241, 242, 241, 1),
+                    flexibleSpace: FlexibleSpaceBar(
+                      collapseMode: CollapseMode.pin,
+                      background: Column(
+//                  key: _keyFilter,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          new _CarouselView(),
+                        ],
+                      ),
+                    ),
+//                    expandedHeight: (_sizeRed == null ? ScreenUtil.screenHeight : _sizeRed.height) + 50.0,
+                    bottom: PreferredSize(
+                      preferredSize: Size(double.infinity, 46),
+                      child: new Text('导航条'),
+                    ),
+                  ),
+                ];
+              },
+              body: Column(
+                children: <Widget>[
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new _CarouselView(),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new Text('内容'),
+                  new _CarouselView(),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
