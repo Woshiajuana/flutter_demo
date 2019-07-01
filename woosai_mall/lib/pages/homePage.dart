@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:woosai_mall/components/headView.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -9,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //状态栏一体化
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +22,22 @@ class _HomePageState extends State<HomePage> {
           brightness: Brightness.dark,
           elevation: 0,
         ),
-        preferredSize: Size.fromHeight(20.0),
+        preferredSize: Size.fromHeight(0),
       ),
-      body: new Container(
-        child: new _CarouselView(),
+      body: Column(
+        children: <Widget>[
+          new HeadView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+          new _CarouselView(),
+        ],
       ),
     );
   }
