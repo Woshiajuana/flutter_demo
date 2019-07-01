@@ -14,8 +14,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('首页'),
+      appBar: PreferredSize(
+        child: AppBar(
+          brightness: Brightness.dark,
+          elevation: 0,
+        ),
+        preferredSize: Size.fromHeight(20.0),
       ),
       body: new Container(
         child: new _CarouselView(),
