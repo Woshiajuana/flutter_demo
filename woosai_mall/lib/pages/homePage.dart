@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ];
               },
-              body: Column(
+              body: new ListView(
                 children: <Widget>[
                   new Text('内容'),
                   new Text('内容'),
