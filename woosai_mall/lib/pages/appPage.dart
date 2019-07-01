@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:woosai_mall/pages/homePage.dart';
+import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/findPage.dart';
 import 'package:woosai_mall/pages/cartPage.dart';
 import 'package:woosai_mall/pages/minePage.dart';
