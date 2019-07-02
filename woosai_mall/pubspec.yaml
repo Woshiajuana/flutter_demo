@@ -80,3 +80,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
+  fonts:
+    - family: taobaoIconFont
+      fonts:
+        - asset: assets/fonts/taobao/iconfont.ttf
+    - family: wxIconFont
+      fonts:
+        - asset: assets/fonts/weixin/iconfont.ttf
