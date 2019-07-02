@@ -15,7 +15,8 @@ class _HeadViewState extends State<HeadView> {
   Widget build(BuildContext context) {
     return new Container(
       color: Theme.of(context).primaryColor,
-      padding: new EdgeInsets.only(left: 5.0, right: 5.0),
+      height: 45.0,
+      padding: new EdgeInsets.only(left: 5.0, top: 0, bottom: 0,right: 5.0),
       child: new Row(
         children: <Widget>[
           new Image.asset(
@@ -42,7 +43,7 @@ class _HeadViewState extends State<HeadView> {
                     ),
                     new Expanded(
                       child: new Text(
-                        '亲~点击窝可以更快找到心仪商品哦~~~',
+                        '亲~点击窝可以更快找到心仪商品哦...',
                         style: new TextStyle(fontSize: 12.0, color: Colors.black26),
                       ),
                     ),
