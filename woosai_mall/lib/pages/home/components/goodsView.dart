@@ -15,7 +15,7 @@ class _GoodsViewState extends State<GoodsView> {
   Widget build(BuildContext context) {
     return new Container(
       margin: const EdgeInsets.only(top: 10.0),
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: new BoxDecoration(
         color: Colors.white,
         border: new Border.all(color: Color(0xffdddddd), width: 0.5)
@@ -37,9 +37,27 @@ class _GoodsViewState extends State<GoodsView> {
               ],
             ),
           ),
-//          new Container(
-//            child: ,
-//          )
+          new Container(
+            child: new Row(
+              children: <Widget>[
+                new Card(
+                  elevation: 0,
+                  child: new Container(
+                    width: 120.0,
+                    height: 120.0,
+                    color: Colors.red,
+                  ),
+                ),
+                new Card(
+                  child: new Container(
+                    width: 120.0,
+                    height: 120.0,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
