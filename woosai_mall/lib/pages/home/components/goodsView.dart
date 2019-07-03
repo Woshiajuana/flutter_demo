@@ -15,7 +15,7 @@ class _GoodsViewState extends State<GoodsView> {
   Widget build(BuildContext context) {
     return new Container(
       margin: const EdgeInsets.only(top: 10.0),
-      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
       decoration: new BoxDecoration(
         color: Colors.white,
         border: new Border.all(color: Color(0xffdddddd), width: 0.5)
@@ -23,40 +23,71 @@ class _GoodsViewState extends State<GoodsView> {
       child: new Column(
         children: <Widget>[
           new Container(
-            padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+            padding: const EdgeInsets.only(top: 16.0, bottom: 10.0),
             child: new Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 new Container(
                   width: 5,
                   height: 20,
-                  color: Color(0xffef2c2c),
+                  color: Color(0xff1296db),
                   margin: const EdgeInsets.only(right: 5.0),
                 ),
                 new Text('热门商品', style: TextStyle(fontSize: 16.0),),
               ],
             ),
           ),
-          new Container(
-            child: new Row(
-              children: <Widget>[
-                new Card(
-                  elevation: 0,
-                  child: new Container(
-                    width: 120.0,
-                    height: 120.0,
-                    color: Colors.red,
+          new Column(
+            children: <Widget>[
+              new Row(
+                children: <Widget>[
+                  new Expanded(
+                    flex: 1,
+                    child: new Card(
+                      color: Color(0xff1296db),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      child: new Container(
+                        height: 120.0,
+                      ),
+                    ),
                   ),
-                ),
-                new Card(
-                  child: new Container(
-                    width: 120.0,
-                    height: 120.0,
-                    color: Colors.red,
+                  new Expanded(
+                    flex: 1,
+                    child: new Card(
+                      color: Color(0xff1296db),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      child: new Container(
+                        height: 120.0,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+              new Row(
+                children: <Widget>[
+                  new Expanded(
+                    flex: 1,
+                    child: new Card(
+                      color: Color(0xff1296db),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      child: new Container(
+                        height: 120.0,
+                      ),
+                    ),
+                  ),
+                  new Expanded(
+                    flex: 1,
+                    child: new Card(
+                      color: Color(0xff1296db),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      child: new Container(
+                        height: 120.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           )
         ],
       ),
