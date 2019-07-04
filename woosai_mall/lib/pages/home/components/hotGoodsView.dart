@@ -42,20 +42,34 @@ class _HotGoodsViewState extends State<HotGoodsView> {
                   new Expanded(
                     flex: 1,
                     child: new Card(
-                      color: Color(0xff1296db),
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                       child: new Container(
                         height: 120.0,
+                        child: new ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: new Image.network(
+                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                   new Expanded(
                     flex: 1,
                     child: new Card(
-                      color: Color(0xff1296db),
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                       child: new Container(
                         height: 120.0,
+                        child: new ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: new Image.network(
+                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -66,20 +80,34 @@ class _HotGoodsViewState extends State<HotGoodsView> {
                   new Expanded(
                     flex: 1,
                     child: new Card(
-                      color: Color(0xff1296db),
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                       child: new Container(
                         height: 120.0,
+                        child: new ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: new Image.network(
+                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                   new Expanded(
                     flex: 1,
                     child: new Card(
-                      color: Color(0xff1296db),
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                       child: new Container(
                         height: 120.0,
+                        child: new ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: new Image.network(
+                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                     ),
                   ),

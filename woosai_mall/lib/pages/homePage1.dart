@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:woosai_mall/components/headView.dart';
+import 'package:woosai_mall/pages/home/components/headView.dart';
 
 class HomePage extends StatefulWidget {
 
