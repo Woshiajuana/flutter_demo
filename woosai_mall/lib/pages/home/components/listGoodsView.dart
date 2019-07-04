@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/pages/home/components/goodsItem.dart';
 
 class ListGoodsView extends StatefulWidget {
 
@@ -35,7 +36,6 @@ class _ListGoodsViewState extends State<ListGoodsView> {
               ],
             ),
           ),
-          
         ],
       ),
     );
