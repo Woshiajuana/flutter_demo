@@ -1,15 +1,13 @@
 
 import 'package:flutter/material.dart';
-//import 'package:vector_math/vector_math_64.dart';
 
-import 'package:vector_math/vector_math_64.dart' as Vector;
-class GoodsView extends StatefulWidget {
+class HotGoodsView extends StatefulWidget {
 
   @override
-  _GoodsViewState createState() => new _GoodsViewState();
+  _HotGoodsViewState createState() => new _HotGoodsViewState();
 }
 
-class _GoodsViewState extends State<GoodsView> {
+class _HotGoodsViewState extends State<HotGoodsView> {
 
   @override
   Widget build(BuildContext context) {

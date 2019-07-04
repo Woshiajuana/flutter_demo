@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/home/components/headView.dart';
 import 'package:woosai_mall/pages/home/components/carouselView.dart';
-import 'package:woosai_mall/pages/home/components/goodsView.dart';
+import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
+import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -32,7 +33,9 @@ class _HomePageState extends State<HomePage> {
               child: new ListView(
                 children: <Widget>[
                   new CarouselView(),
-                  new GoodsView(),
+                  new HotGoodsView(),
+                  new HotGoodsView(),
+                  new ListGoodsView(),
                 ],
               ),
             ),
