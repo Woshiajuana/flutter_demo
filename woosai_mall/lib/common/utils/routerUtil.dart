@@ -6,6 +6,7 @@ import 'package:woosai_mall/pages/list/listPage.dart';
 class RouterUtil {
 
   static pushList (BuildContext context) {
+//    Navigator.pushNamed(context, 'list');
     NavigatorRouter(context, new ListPage());
   }
 
