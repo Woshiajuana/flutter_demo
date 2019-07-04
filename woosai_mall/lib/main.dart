@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/appPage.dart';
-import 'package:woosai_mall/pages/list/listPage.dart';
+//import 'package:woosai_mall/pages/list/listPage.dart';
 import 'dart:io';
 
 void main() {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: new AppPage(),
       routes: <String, WidgetBuilder> {
         // 这里可以定义静态路由，不能传递参数
-        'list': (_) => new ListPage(),
+//        'list': (_) => new ListPage(),
       },
     );
   }

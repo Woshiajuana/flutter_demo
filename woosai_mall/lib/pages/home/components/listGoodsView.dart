@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
 import 'package:woosai_mall/pages/list/listPage.dart';
+import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class ListGoodsView extends StatefulWidget {
 
@@ -39,7 +40,7 @@ class _ListGoodsViewState extends State<ListGoodsView> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       new GestureDetector(
-                        onTap: _handleJump,
+                        onTap: () => RouterUtil.pushList(context),
                         child: new Text(
                           '更多>>',
                           style: TextStyle(
@@ -72,18 +73,6 @@ class _ListGoodsViewState extends State<ListGoodsView> {
       ).animate(animation),
       child: child,
     );
-  }
-  _handleJump () {
-    print('点击了我');
-//    Navigator.of(context).pushNamed('list');
-
-//    Navigator
-//        .of(context)
-//        .push(new MaterialPageRoute(builder: (_) {
-//      return new ListPage();
-//    }));
-
-    BRouter.pushRefreshDetail(context);
   }
 
   List<String> getDataList() {
