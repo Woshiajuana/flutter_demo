@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class ListPage extends StatefulWidget {
 

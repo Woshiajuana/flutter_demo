@@ -6,25 +6,12 @@ import 'package:woosai_mall/pages/details/detailsPage.dart';
 
 class RouterUtil {
 
-
-  static  Map<String, dynamic> toJson() => {
-    'type': 'type',
-  };
-
-  static Map<String, dynamic> routes = {
-    'list': ListPage,
-  };
-
-  static Widget xx () {
-    print('1');
-    print(routes['list']());
-    return new ListPage();
+  static pushList (BuildContext context) {
+    NavigatorRouter(context, new ListPage());
   }
 
-  static pushList (BuildContext context) {
-//    Navigator.pushNamed(context, 'list');
-    xx();
-//    NavigatorRouter(context, xx());
+  static pushDetails (BuildContext context) {
+    NavigatorRouter(context, new DetailsPage());
   }
 
   // 修改路由动画

@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/pages/details/components/carouselView.dart';
+import 'package:woosai_mall/pages/details/components/operationView.dart';
 
 class DetailsPage extends StatefulWidget {
 
@@ -15,7 +17,19 @@ class _DetailsPageState extends State<DetailsPage> {
       appBar: new AppBar(
         title: new Text('商品详情'),
       ),
-      body: new Text('商品详情页面'),
+      body: new Column(
+        children: <Widget>[
+          new Expanded(
+            child: new ListView(
+              children: <Widget>[
+                new CarouselView(),
+                new Text('小行星'),
+              ],
+            ),
+          ),
+          new OperationView(),
+        ],
+      ),
     );
   }
 }
