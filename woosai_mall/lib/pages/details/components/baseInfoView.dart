@@ -13,13 +13,14 @@ class _BaseInfoViewState extends State<BaseInfoView> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Container(
-      height: 235.0,
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 10.0),
+      padding: const EdgeInsets.only(top: 10.0),
       child: new Column(
         children: <Widget>[
           _amountSection(),
           _integralSection(),
           _infoTextSection(),
+          _cellTextSection(),
+          _cellTextSection(),
         ],
       ),
     );
@@ -28,6 +29,7 @@ class _BaseInfoViewState extends State<BaseInfoView> {
   Widget _amountSection () {
     return new Container(
       height: 33.0,
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: new Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -57,6 +59,7 @@ class _BaseInfoViewState extends State<BaseInfoView> {
   Widget _integralSection () {
     return new Container(
       height: 33.0,
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: new Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,6 +104,15 @@ class _BaseInfoViewState extends State<BaseInfoView> {
 
   Widget _infoTextSection () {
     return new Container(
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
+      decoration: new BoxDecoration(
+        border: new Border(
+          bottom: new BorderSide(
+            color: Color(0xffdddddd),
+            width: 0.5,
+          ),
+        ),
+      ),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -125,6 +137,44 @@ class _BaseInfoViewState extends State<BaseInfoView> {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _cellTextSection () {
+    return new Container(
+      height: 40.0,
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+      decoration: new BoxDecoration(
+        border: new Border(
+          bottom: new BorderSide(
+            color: Color(0xffdddddd),
+            width: 0.5,
+          ),
+        ),
+      ),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Text(
+            '抢购时间',
+            style: new TextStyle(
+              color: Color(0xff666666),
+              fontSize: 12.0,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          new Text(
+            '2019-06-26 12:12:12 — 2019-06-26 12:12:12',
+            style: new TextStyle(
+              color: Color(0xffef2c2c),
+              fontSize: 12.0,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

@@ -18,18 +18,21 @@ class _DetailsPageState extends State<DetailsPage> {
       appBar: new AppBar(
         title: new Text('商品详情'),
       ),
-      body: new Column(
-        children: <Widget>[
-          new Expanded(
-            child: new ListView(
-              children: <Widget>[
-                new CarouselView(),
-                new BaseInfoView(),
-              ],
+      body: new Container(
+        color: Color(0xfff2f2f2),
+        child: new Column(
+          children: <Widget>[
+            new Expanded(
+              child: new ListView(
+                children: <Widget>[
+                  new CarouselView(),
+                  new BaseInfoView(),
+                ],
+              ),
             ),
-          ),
-          new OperationView(),
-        ],
+            new OperationView(),
+          ],
+        ),
       ),
     );
   }
