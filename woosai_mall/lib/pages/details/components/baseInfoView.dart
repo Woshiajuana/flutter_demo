@@ -13,6 +13,7 @@ class _BaseInfoViewState extends State<BaseInfoView> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Container(
+      color: Color(0xffffffff),
       padding: const EdgeInsets.only(top: 10.0),
       child: new Column(
         children: <Widget>[
