@@ -19,10 +19,9 @@ class _AddressViewState extends State<AddressView> {
       child: new Row(
         children: <Widget>[
           new Image.asset(
-            WOWIcons.logo100,
-            width: 36.0,
-            height: 36.0,
-            fit: BoxFit.fill,
+            WOWIcons.address,
+            width: 18.0,
+            height: 22.0,
             color: Color(0xffef2c2c),
           ),
           new Expanded(
@@ -42,16 +41,22 @@ class _AddressViewState extends State<AddressView> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   new Text(
-                    '上海市 上海市 浦东新区 峨眉路余杭路荣德大夏',
+                    '上海市 上海市 浦东新区 峨峨眉路余杭路荣德大夏眉路余杭路荣德大夏',
                     style: new TextStyle(
                       color: Color(0xff999999),
                       fontSize: 14.0,
                     ),
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
+            ),
+          ),
+          new Container(
+            child: new Icon(
+              Icons.arrow_forward_ios,
+              color: Color(0xff999999),
             ),
           ),
         ],
