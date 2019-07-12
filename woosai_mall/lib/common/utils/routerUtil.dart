@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:woosai_mall/pages/list/listPage.dart';
 import 'package:woosai_mall/pages/details/detailsPage.dart';
+import 'package:woosai_mall/pages/confirm/confirmPage.dart';
 
 class RouterUtil {
+
+  static pushConfirm (BuildContext context) {
+    NavigatorRouter(context, new ConfirmPage());
+  }
 
   static pushList (BuildContext context) {
     NavigatorRouter(context, new ListPage());

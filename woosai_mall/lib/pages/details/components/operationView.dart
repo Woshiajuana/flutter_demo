@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class OperationView extends StatefulWidget {
 
@@ -33,20 +34,23 @@ class _OperationViewState extends State<OperationView> {
             ),
           ),
           new Expanded(
-            child: new Container(
-              height: 50.0,
-              color: Color(0xffef2c2c),
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new Text('立即抢购',
-                    style: new TextStyle(
-                      color: Color(0xffffffff),
-                      fontSize: 16.0,
+            child: new InkWell(
+              onTap: () => RouterUtil.pushConfirm(context),
+              child: new Container(
+                height: 50.0,
+                color: Color(0xffef2c2c),
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    new Text('立即抢购',
+                      style: new TextStyle(
+                        color: Color(0xffffffff),
+                        fontSize: 16.0,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

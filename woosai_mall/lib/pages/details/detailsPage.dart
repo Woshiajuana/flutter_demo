@@ -4,6 +4,7 @@ import 'package:woosai_mall/pages/details/components/carouselView.dart';
 import 'package:woosai_mall/pages/details/components/operationView.dart';
 import 'package:woosai_mall/pages/details/components/baseInfoView.dart';
 import 'package:woosai_mall/pages/details/components/specsGroupView.dart';
+import 'package:woosai_mall/pages/details/components/detailsGroupView.dart';
 
 class DetailsPage extends StatefulWidget {
 
@@ -29,6 +30,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   new CarouselView(),
                   new BaseInfoView(),
                   new SpecsGroupView(),
+                  new DetailsGroupView(),
                 ],
               ),
             ),

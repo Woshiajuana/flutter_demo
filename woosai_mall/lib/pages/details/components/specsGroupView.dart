@@ -15,8 +15,8 @@ class _SpecsGroupViewState extends State<SpecsGroupView> {
     return new Container(
       margin: const EdgeInsets.only(top: 12.0),
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-      color: Color(0xffffffff),
       decoration: new BoxDecoration(
+        color: Color(0xffffffff),
         border: new Border(
           bottom: new BorderSide(
             color: Color(0xffdddddd),
