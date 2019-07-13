@@ -28,8 +28,6 @@ class _MenuGroupState extends State<MenuGroup> {
           _menuItem(),
           _menuItem(),
           _menuItem(),
-          _menuItem(),
-          _menuItem(),
         ],
       ),
     );

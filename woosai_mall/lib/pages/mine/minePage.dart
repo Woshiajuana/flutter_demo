@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/mine/compoents/userGroup.dart';
 import 'package:woosai_mall/pages/mine/compoents/menuGroup.dart';
+import 'package:woosai_mall/pages/mine/compoents/exitGroup.dart';
 
 class MinePage extends StatefulWidget {
 
@@ -23,6 +24,7 @@ class _MinePageState extends State<MinePage> {
           children: <Widget>[
             new UserGroup(),
             new MenuGroup(),
+            new ExitGroup(),
           ],
         ),
       ),
