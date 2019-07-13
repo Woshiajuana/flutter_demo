@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/pages/mine/compoents/userGroup.dart';
+import 'package:woosai_mall/pages/mine/compoents/menuGroup.dart';
 
 class MinePage extends StatefulWidget {
 
@@ -16,7 +18,13 @@ class _MinePageState extends State<MinePage> {
         title: new Text('我的'),
       ),
       body: new Container(
-        child: new Text('这是我的页！'),
+        color: Color(0xfff2f2f2),
+        child: new Column(
+          children: <Widget>[
+            new UserGroup(),
+            new MenuGroup(),
+          ],
+        ),
       ),
     );
   }

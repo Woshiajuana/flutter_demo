@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/findPage.dart';
 import 'package:woosai_mall/pages/cartPage.dart';
-import 'package:woosai_mall/pages/minePage.dart';
+import 'package:woosai_mall/pages/mine/minePage.dart';
 
 class AppPage extends StatefulWidget {
   @override
