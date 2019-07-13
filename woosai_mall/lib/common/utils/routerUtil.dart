@@ -4,8 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:woosai_mall/pages/list/listPage.dart';
 import 'package:woosai_mall/pages/details/detailsPage.dart';
 import 'package:woosai_mall/pages/confirm/confirmPage.dart';
+import 'package:woosai_mall/pages/address/addressPage.dart';
 
 class RouterUtil {
+
+  static pushAddress (BuildContext context) {
+    NavigatorRouter(context, new AddressPage());
+  }
 
   static pushConfirm (BuildContext context) {
     NavigatorRouter(context, new ConfirmPage());
