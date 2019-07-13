@@ -24,6 +24,12 @@ class _MenuGroupState extends State<MenuGroup> {
         children: <Widget>[
           _menuItem(),
           _menuItem(),
+          _menuItem(),
+          _menuItem(),
+          _menuItem(),
+          _menuItem(),
+          _menuItem(),
+          _menuItem(),
         ],
       ),
     );
@@ -32,6 +38,7 @@ class _MenuGroupState extends State<MenuGroup> {
   Widget _menuItem () {
     return new Container(
       height: 45.0,
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       decoration: new BoxDecoration(
         color: Colors.white,
         border: new Border(
@@ -43,7 +50,27 @@ class _MenuGroupState extends State<MenuGroup> {
       ),
       child: new Row(
         children: <Widget>[
-          new Icon(Icons.add)
+          new Icon(
+            Icons.assignment,
+            color: Colors.blue,
+          ),
+          new Expanded(
+            flex: 1,
+            child: new Container(
+              margin: const EdgeInsets.only(left: 10.0),
+              child: new Text(
+                '菜单1',
+                style: new TextStyle(
+                  color: Color(0xff666666),
+                  fontSize: 13.0,
+                ),
+              ),
+            ),
+          ),
+          new Icon(
+            Icons.arrow_forward_ios,
+            color: Color(0xff999999),
+          ),
         ],
       ),
     );

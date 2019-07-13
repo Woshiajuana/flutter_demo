@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
-import 'package:woosai_mall/pages/findPage.dart';
+import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/cartPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
 
@@ -48,7 +48,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
         children: <Widget>[
           new HomePage(),
           new FindPage(),
-          new CartPage(),
+//          new CartPage(),
           new MinePage(),
         ],
       ),
@@ -77,15 +77,15 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
                 ],
               ),
             ),
-            new Tab(
-              child: new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  getTabIcon(2),
-                  new Text('购物车', style: TextStyle(fontSize: 10)),
-                ],
-              ),
-            ),
+//            new Tab(
+//              child: new Column(
+//                mainAxisAlignment: MainAxisAlignment.center,
+//                children: <Widget>[
+//                  getTabIcon(2),
+//                  new Text('购物车', style: TextStyle(fontSize: 10)),
+//                ],
+//              ),
+//            ),
             new Tab(
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
