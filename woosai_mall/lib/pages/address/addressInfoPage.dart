@@ -1,14 +1,13 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/pages/address/components/addressItem.dart';
 
-class AddressPage extends StatefulWidget {
+class AddressInfoPage extends StatefulWidget {
 
   @override
-  _AddressPageState createState() => new _AddressPageState();
+  _AddressInfoPageState createState() => new _AddressInfoPageState();
 }
 
-class _AddressPageState extends State<AddressPage> {
+class _AddressInfoPageState extends State<AddressInfoPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class _AddressPageState extends State<AddressPage> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(
-          '收货地址',
+          '收货地址详情',
         ),
         actions: <Widget>[
           new Row(
@@ -33,9 +32,7 @@ class _AddressPageState extends State<AddressPage> {
         color: Color(0xfff2f2f2),
         child: new ListView(
           children: <Widget>[
-            new AddressItem(),
-            new AddressItem(),
-            new AddressItem(),
+
           ],
         ),
       ),
