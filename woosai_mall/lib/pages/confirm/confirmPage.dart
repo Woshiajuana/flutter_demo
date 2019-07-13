@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/confirm/components/addressView.dart';
 import 'package:woosai_mall/pages/confirm/components/goodsView.dart';
+import 'package:woosai_mall/pages/confirm/components/previewGroupView.dart';
+import 'package:woosai_mall/pages/confirm/components/operationGroupView.dart';
 
 class ConfirmPage extends StatefulWidget {
 
@@ -25,6 +27,11 @@ class _ConfirmPageState extends State<ConfirmPage> {
           children: <Widget>[
             new AddressView(),
             new GoodsView(),
+            new Expanded(
+              flex: 1,
+              child: new PreviewGroupView(),
+            ),
+            new OperationGroupView(),
           ],
         ),
       ),
