@@ -6,8 +6,13 @@ import 'package:woosai_mall/pages/details/detailsPage.dart';
 import 'package:woosai_mall/pages/confirm/confirmPage.dart';
 import 'package:woosai_mall/pages/address/addressPage.dart';
 import 'package:woosai_mall/pages/address/addressInfoPage.dart';
+import 'package:woosai_mall/pages/login/loginPage.dart';
 
 class RouterUtil {
+
+  static pushLogin (BuildContext context) {
+    NavigatorRouter(context, new LoginPage());
+  }
 
   static pushAddressInfo (BuildContext context) {
     NavigatorRouter(context, new AddressInfoPage());
