@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/common/utils/routerUtil.dart';
+
 
 class HotGoodsView extends StatefulWidget {
 
@@ -41,37 +43,11 @@ class _HotGoodsViewState extends State<HotGoodsView> {
                 children: <Widget>[
                   new Expanded(
                     flex: 1,
-                    child: new Card(
-                      elevation: 0,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                      child: new Container(
-                        height: 120.0,
-                        child: new ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: new Image.network(
-                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: _goodsItem(),
                   ),
                   new Expanded(
                     flex: 1,
-                    child: new Card(
-                      elevation: 0,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                      child: new Container(
-                        height: 120.0,
-                        child: new ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: new Image.network(
-                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: _goodsItem(),
                   ),
                 ],
               ),
@@ -79,37 +55,11 @@ class _HotGoodsViewState extends State<HotGoodsView> {
                 children: <Widget>[
                   new Expanded(
                     flex: 1,
-                    child: new Card(
-                      elevation: 0,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                      child: new Container(
-                        height: 120.0,
-                        child: new ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: new Image.network(
-                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: _goodsItem(),
                   ),
                   new Expanded(
                     flex: 1,
-                    child: new Card(
-                      elevation: 0,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                      child: new Container(
-                        height: 120.0,
-                        child: new ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: new Image.network(
-                            'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: _goodsItem(),
                   ),
                 ],
               ),
@@ -120,27 +70,25 @@ class _HotGoodsViewState extends State<HotGoodsView> {
     );
   }
 
-
-  List<String> getDataList() {
-    List<String> list = [];
-    for (int i = 0; i < 100; i++) {
-      list.add(i.toString());
-    }
-    return list;
-  }
-
-  List<Widget> getWidgetList() {
-    return getDataList().map((item) => getItemContainer(item)).toList();
-  }
-
-  Widget getItemContainer(String item) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        item,
-        style: TextStyle(color: Colors.white, fontSize: 20),
+  Widget _goodsItem () {
+    return new Container(
+      child: new InkWell(
+        onTap: () => RouterUtil.pushDetails(context),
+        child: new Card(
+          elevation: 0,
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          child: new Container(
+            height: 120.0,
+            child: new ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: new Image.network(
+                'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+        ),
       ),
-      color: Colors.blue,
     );
   }
 

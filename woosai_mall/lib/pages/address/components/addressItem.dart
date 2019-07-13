@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class AddressItem extends StatefulWidget {
 
@@ -92,26 +93,29 @@ class _AddressItemState extends State<AddressItem> {
                 ),
                 new Expanded(
                   flex: 1,
-                  child: new Container(
-                    decoration: new BoxDecoration(
-                        border: new Border(
-                            right: new BorderSide(
-                              color: Color(0xffdddddd),
-                              width: 0.5,
-                            )
-                        )
-                    ),
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Text(
-                          '设为默认',
-                          style: new TextStyle(
-                            color: Color(0xff333333),
-                            fontSize: 14.0,
-                          ),
-                        )
-                      ],
+                  child: new InkWell(
+                    onTap: () => RouterUtil.pushAddressInfo(context),
+                    child: new Container(
+                      decoration: new BoxDecoration(
+                          border: new Border(
+                              right: new BorderSide(
+                                color: Color(0xffdddddd),
+                                width: 0.5,
+                              )
+                          )
+                      ),
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new Text(
+                            '编辑地址',
+                            style: new TextStyle(
+                              color: Color(0xff333333),
+                              fontSize: 14.0,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -122,9 +126,9 @@ class _AddressItemState extends State<AddressItem> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         new Text(
-                          '设为默认',
+                          '删除地址',
                           style: new TextStyle(
-                            color: Color(0xff333333),
+                            color: Color(0xffef2c2c),
                             fontSize: 14.0,
                           ),
                         )
