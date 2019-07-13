@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/find/findPage.dart';
-import 'package:woosai_mall/pages/cartPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
 
 class AppPage extends StatefulWidget {
@@ -23,7 +22,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     tabController = new TabController(
-        length: 4, // Tab页的个数
+        length: 3, // Tab页的个数
         vsync: this, // 动画效果的异步处理，默认格式
     );
   }
@@ -33,22 +32,11 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     initData();
     return new Scaffold(
-//      body: new TabBarView(
-//        controller: tabController,
-//        physics: new NeverScrollableScrollPhysics(),
-//        children: <Widget>[
-//          new HomePage(),
-//          new HomePage(),
-//          new HomePage(),
-//          new HomePage(),
-//        ],
-//      ),
       body: IndexedStack(
         index: tabIndex,
         children: <Widget>[
           new HomePage(),
           new FindPage(),
-//          new CartPage(),
           new MinePage(),
         ],
       ),
@@ -77,20 +65,11 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
                 ],
               ),
             ),
-//            new Tab(
-//              child: new Column(
-//                mainAxisAlignment: MainAxisAlignment.center,
-//                children: <Widget>[
-//                  getTabIcon(2),
-//                  new Text('购物车', style: TextStyle(fontSize: 10)),
-//                ],
-//              ),
-//            ),
             new Tab(
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  getTabIcon(3),
+                  getTabIcon(2),
                   new Text('我的', style: TextStyle(fontSize: 10)),
                 ],
               ),
@@ -136,10 +115,6 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
       [
         getTabImage('assets/images/app-find-icon.png'),
         getTabImage('assets/images/app-find-active-icon.png'),
-      ],
-      [
-        getTabImage('assets/images/app-cart-icon.png'),
-        getTabImage('assets/images/app-cart-active-icon.png'),
       ],
       [
         getTabImage('assets/images/app-mine-icon.png'),
