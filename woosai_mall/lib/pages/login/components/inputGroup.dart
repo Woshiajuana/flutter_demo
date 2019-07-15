@@ -61,6 +61,7 @@ class _InputGroupState extends State<InputGroup> {
             child: new TextField(
               controller: phoneController,
               maxLength: 11,
+              keyboardType: TextInputType.number,
               onChanged: (value) => _onChange(value, 'username'),
               decoration: new InputDecoration(
                 labelText: '账号',

@@ -12,8 +12,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  String username = '1312485161';
-  String password = '123456';
+  String username = '';
+  String password = '';
   
   @override
   Widget build(BuildContext context) {
@@ -25,16 +25,10 @@ class _LoginPageState extends State<LoginPage> {
           new InputGroup(
             username: username,
             password: password,
-            usernameChange: (value) => this.setState(() {
-              username = value;
-            }),
-            passwordChange: (value) => this.setState(() {
-              password = value;
-            }),
+            usernameChange: (value) => this.setState(() => username = value),
+            passwordChange: (value) => this.setState(() => password = value),
           ),
           new ButtonGroup(),
-          new Text('$username'),
-          new Text('$password'),
         ],
       ),
     );
