@@ -16,13 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
-          '用户登录'
-        ),
-      ),
-      body: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: new ListView(
         children: <Widget>[
           new HeaderGroup(),
           new InputGroup(),

@@ -14,7 +14,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
     // TODO: implement build
     return new Container(
       height: 45.0,
-      margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 32.0),
+      margin: const EdgeInsets.only(left: 60.0, right: 60.0, top: 32.0),
       decoration: new BoxDecoration(
         color: Colors.blue,
         borderRadius: new BorderRadius.circular(30.0),

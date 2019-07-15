@@ -13,7 +13,7 @@ class _InputGroupState extends State<InputGroup> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Container(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 32.0),
       child: new Column(
         children: <Widget>[
           _inputItem(),
@@ -27,7 +27,11 @@ class _InputGroupState extends State<InputGroup> {
   Widget _inputItem () {
     return new Container(
       margin: const EdgeInsets.only(top: 16.0),
-      child: new TextField(),
+      child: new TextField(
+        decoration: new InputDecoration(
+          labelText: '账号',
+        ),
+      ),
     );
   }
 

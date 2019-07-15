@@ -14,7 +14,7 @@ class _HeaderGroupState extends State<HeaderGroup> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Container(
-      padding: const EdgeInsets.only(top: 32.0, left: 16.0),
+      padding: const EdgeInsets.only(top: 46.0, left: 20.0),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
