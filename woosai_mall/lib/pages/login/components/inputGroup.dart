@@ -52,7 +52,7 @@ class _InputGroupState extends State<InputGroup> {
                 fontSize: 14.0,
               ),
             ),
-          )
+          ),
         ],
       ),
     );
