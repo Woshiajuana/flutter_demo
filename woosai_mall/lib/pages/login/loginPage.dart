@@ -28,9 +28,16 @@ class _LoginPageState extends State<LoginPage> {
             usernameChange: (value) => this.setState(() => username = value),
             passwordChange: (value) => this.setState(() => password = value),
           ),
-          new ButtonGroup(),
+          new ButtonGroup(
+            onTap: () => _handleSubmit(),
+          ),
         ],
       ),
     );
+  }
+
+  // 提交
+  void _handleSubmit() {
+
   }
 }
