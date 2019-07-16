@@ -19,7 +19,7 @@ class ApiUtil {
       Options _options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
       var respBody = await HttpUtil.request(HttpConfig.USER_LOGIN, data: requestParams, options: _options);
       PrintUtil.info(respBody);
-//      userInfoModal = UserInfoModal.fromJson(respBody);
+      userInfoModal = UserInfoModal.fromJson(respBody);
     } catch (err) {
       PrintUtil.err(err);
       Fluttertoast.showToast(gravity: ToastGravity.CENTER, msg: err.toString());

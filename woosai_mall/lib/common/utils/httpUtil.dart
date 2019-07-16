@@ -31,7 +31,7 @@ class HttpUtil {
       var respMessage = response.data['resp_message'];
       if (HttpConfig.SUCCESS_CODE.indexOf(respCode) == -1)
         throw(respMessage);
-      return json.decode(respBody);
+      return respBody;
     } catch (err) {
       PrintUtil.err(err);
       return new Future.error(err);
