@@ -7,6 +7,9 @@ import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
 
 class AppPage extends StatefulWidget {
+
+  static final String sName = 'app';
+
   @override
   _AppPageState createState() => new _AppPageState();
 }

@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StoreUtil {
+
+  static const String USER_INFO = 'USER_INFO';
+
   // 保存
   static save(String key, dynamic value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

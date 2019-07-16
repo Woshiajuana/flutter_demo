@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:woosai_mall/pages/appPage.dart';
 import 'package:woosai_mall/pages/list/listPage.dart';
 import 'package:woosai_mall/pages/details/detailsPage.dart';
 import 'package:woosai_mall/pages/confirm/confirmPage.dart';
@@ -10,8 +11,12 @@ import 'package:woosai_mall/pages/login/loginPage.dart';
 
 class RouterUtil {
 
+  static pushApp (BuildContext context) {
+    Navigator.pushReplacementNamed(context, AppPage.sName);
+  }
+
   static pushLogin (BuildContext context) {
-    NavigatorRouter(context, new LoginPage());
+    Navigator.pushReplacementNamed(context, LoginPage.sName);
   }
 
   static pushAddressInfo (BuildContext context) {

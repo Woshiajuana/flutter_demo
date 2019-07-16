@@ -6,7 +6,9 @@ import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
 
 class LoginPage extends StatefulWidget {
-  
+
+  static final String sName = 'login';
+
   @override
   _LoginPageState createState() => new _LoginPageState();
 }
