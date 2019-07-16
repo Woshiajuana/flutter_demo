@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
   String _username = '13127590698';
-  String _password = '123456';
+  String _password = '111111';
   
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   // 提交
   void _handleSubmit() async {
     var respBody = await ApiUtil.userLogin(_username, _password);
+    if (respBody == null) return;
     print('login page => $respBody');
   }
 }

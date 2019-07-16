@@ -7,7 +7,6 @@ class HttpUtil {
 
   static BaseOptions _options = new BaseOptions(
     method: 'POST',
-    contentType: ContentType.parse("application/x-www-form-urlencoded"),
     connectTimeout: 1000 * 10,
     receiveTimeout: 1000 * 20,
   );
@@ -19,19 +18,15 @@ class HttpUtil {
     BaseOptions options,
     CancelToken cancelToken,
   }) async {
-    Response response = await _dio.request(path, data: data, cancelToken: cancelToken);
     try {
-      print('paht=> $path');
-      print('data=> $data');
-      print('response=> $response');
+      print('[$path] 请求发起参数=> $data');
+      Response response = await _dio.request(path, data: data, cancelToken: cancelToken);
+      print('[$path] 请求返回结果=> $response');
       if (response.statusCode != HttpStatus.ok)
         throw('网络繁忙，请稍后再试');
       var respBody = response.data['data'];
       var respCode = response.data['resp_code'];
       var respMessage = response.data['resp_message'];
-      print('respBody=> $respBody');
-      print('respCode=> $respCode');
-      print('respMessage=> $respMessage');
       if (HttpConfig.SUCCESS_CODE.indexOf(respCode) == -1)
         throw(respMessage);
       return respBody;
