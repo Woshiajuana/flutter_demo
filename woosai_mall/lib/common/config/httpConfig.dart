@@ -2,7 +2,7 @@
 class HttpConfig {
 
 
-  static const BASE_URL = 'http://47.102.215.115';
+  static const BASE_URL = 'https://ddapi.doujiusm.com';
 
   static const String SUCCESS_CODE = '000000';
 

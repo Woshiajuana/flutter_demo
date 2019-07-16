@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/login/components/headerGroup.dart';
 import 'package:woosai_mall/pages/login/components/inputGroup.dart';
 import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
+import 'package:woosai_mall/common/utils/httpUtil.dart';
 
 class LoginPage extends StatefulWidget {
   
@@ -38,6 +39,6 @@ class _LoginPageState extends State<LoginPage> {
 
   // 提交
   void _handleSubmit() {
-
+    HttpUtil.request(HttpC);
   }
 }

@@ -1,14 +1,28 @@
 
-import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:woosai_mall/common/config/httpConfig.dart';
 
 class HttpUtil {
 
-  get() async {
-    var httpClient = new HttpClient();
-    var uri = new Uri.http('example.com', '/path1/path2', {'param1': '42', 'param2': 'foo'});
-    var request = await httpClient.getUrl(uri);
-    var response = await request.close();
-//    var responseBody = await response.transform(utf8.decoder).join();
+  static BaseOptions _options = new BaseOptions(
+//    baseUrl: "https://www.xx.com/api",
+    connectTimeout: 1000 * 10,
+    receiveTimeout: 1000 * 20,
+  );
+
+  static Dio _dio = new Dio(_options);
+
+  static request (String path, {
+    data,
+    BaseOptions options,
+    CancelToken cancelToken,
+  }) async {
+    try {
+      Response response = await _dio.request(path, data: data, cancelToken: cancelToken);
+      print(response);
+    } catch (e) {
+      print(e);
+    }
   }
 
 }
