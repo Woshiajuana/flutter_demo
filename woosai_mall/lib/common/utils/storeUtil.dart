@@ -12,7 +12,7 @@ class StoreUtil {
     if (value is Map) {
       value = json.encode(value);
     }
-    sharedPreferences.setString(key, value.toString());
+    sharedPreferences.setString(key, value);
   }
 
   // 取出

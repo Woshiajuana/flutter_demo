@@ -6,6 +6,7 @@ import 'package:woosai_mall/common/utils/httpUtil.dart';
 import 'package:woosai_mall/common/utils/printUtil.dart';
 import 'package:woosai_mall/common/config/httpConfig.dart';
 import 'package:woosai_mall/common/model/userInfoModal.dart';
+import 'package:woosai_mall/common/utils/storeUtil.dart';
 
 class ApiUtil {
   // 用户登录
@@ -18,7 +19,7 @@ class ApiUtil {
       };
       Options _options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
       var respBody = await HttpUtil.request(HttpConfig.USER_LOGIN, data: requestParams, options: _options);
-      PrintUtil.info(respBody);
+      await StoreUtil.save(StoreUtil.USER_INFO, respBody);
       userInfoModal = UserInfoModal.fromJson(respBody);
     } catch (err) {
       PrintUtil.err(err);

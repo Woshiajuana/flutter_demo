@@ -4,7 +4,6 @@ import 'package:woosai_mall/pages/login/components/headerGroup.dart';
 import 'package:woosai_mall/pages/login/components/inputGroup.dart';
 import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
-import 'package:woosai_mall/common/utils/storeUtil.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class LoginPage extends StatefulWidget {
@@ -46,7 +45,6 @@ class _LoginPageState extends State<LoginPage> {
     var respBody = await ApiUtil.userLogin(_username, _password);
     if (respBody == null) return;
     print('login page => $respBody');
-    await StoreUtil.save(StoreUtil.USER_INFO, respBody);
     RouterUtil.pushApp(context);
   }
 }
