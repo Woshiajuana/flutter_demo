@@ -19,15 +19,15 @@ class _ButtonGroupState extends State<ButtonGroup> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new InkWell(
-      onTap: () => widget.onTap(),
-      child: new Container(
-        height: 45.0,
-        margin: const EdgeInsets.only(left: 60.0, right: 60.0, top: 60.0),
-        decoration: new BoxDecoration(
-          color: Colors.blue,
-          borderRadius: new BorderRadius.circular(30.0),
-        ),
+    return new Container(
+      height: 45.0,
+      margin: const EdgeInsets.only(left: 60.0, right: 60.0, top: 60.0),
+      decoration: new BoxDecoration(
+        color: Colors.blue,
+        borderRadius: new BorderRadius.circular(30.0),
+      ),
+      child: new InkWell(
+        onTap: () => widget.onTap(),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

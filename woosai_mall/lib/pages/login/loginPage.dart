@@ -39,11 +39,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // 提交
   void _handleSubmit() async {
-    try {
-      var respBody = await ApiUtil.userLogin(_username, _password);
-      print('login page => $respBody');
-    } catch (e) {
-      print(e);
-    }
+    var respBody = await ApiUtil.userLogin(_username, _password);
+    print('login page => $respBody');
   }
 }
