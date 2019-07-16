@@ -16,23 +16,11 @@ class _WelcomePageState extends State<WelcomePage> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
-    print('userInfo => $userInfo');
-  }
-
-
-  void _judgeUserStatus () async {
-    var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
-    print('userInfo => $userInfo');
-    if (userInfo == null)
-      RouterUtil.pushLogin(context);
-    new Future.delayed(const Duration(seconds: 1), () async {
-
-    });
+    userInfo == null ? RouterUtil.pushLogin(context) : RouterUtil.pushApp(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    _judgeUserStatus();
     return SafeArea(
       top: false,
       bottom: false,
