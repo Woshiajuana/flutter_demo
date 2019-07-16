@@ -14,8 +14,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  String username = '13127590698';
-  String password = '123456';
+  String _username = '13127590698';
+  String _password = '123456';
   
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           new HeaderGroup(),
           new InputGroup(
-            username: username,
-            password: password,
-            usernameChange: (value) => this.setState(() => username = value),
-            passwordChange: (value) => this.setState(() => password = value),
+            username: _username,
+            password: _password,
+            usernameChange: (value) => this.setState(() => _username = value),
+            passwordChange: (value) => this.setState(() => _password = value),
           ),
           new ButtonGroup(
             onTap: () => _handleSubmit(),
@@ -41,8 +41,8 @@ class _LoginPageState extends State<LoginPage> {
   // 提交
   void _handleSubmit() async {
     Map data = {
-      'phone': username,
-      'password': password,
+      'phone': _username,
+      'password': _password,
     };
     await HttpUtil.request(HttpConfig.USER_LOGIN, data: data);
   }

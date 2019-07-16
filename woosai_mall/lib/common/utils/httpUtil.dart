@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 class HttpUtil {
 
   static BaseOptions _options = new BaseOptions(
-//    baseUrl: "https://www.xx.com/api",
+    method: 'POST',
     contentType: ContentType.parse("application/x-www-form-urlencoded"),
     connectTimeout: 1000 * 10,
     receiveTimeout: 1000 * 20,
