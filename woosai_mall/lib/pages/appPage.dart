@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
+import 'package:woosai_mall/common/utils/printUtil.dart';
+import 'package:woosai_mall/common/utils/storeUtil.dart';
 
 class AppPage extends StatefulWidget {
 
@@ -30,9 +32,17 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
     );
   }
 
+  void _getUserInfo () async {
+    var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
+
+    PrintUtil.info(userInfo);
+  }
+
   // 生命周期方法构建Widget时调用
   @override
   Widget build(BuildContext context) {
+    PrintUtil.info('xxxxxxxxxxxxxxxxx');
+    _getUserInfo();
     initData();
     return new Scaffold(
       body: IndexedStack(
