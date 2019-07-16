@@ -4,6 +4,7 @@ import 'package:woosai_mall/pages/login/components/headerGroup.dart';
 import 'package:woosai_mall/pages/login/components/inputGroup.dart';
 import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
 import 'package:woosai_mall/common/utils/httpUtil.dart';
+import 'package:woosai_mall/common/config/httpConfig.dart';
 
 class LoginPage extends StatefulWidget {
   
@@ -38,7 +39,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // 提交
-  void _handleSubmit() {
-    HttpUtil.request(HttpC);
+  void _handleSubmit() async {
+    Map data = {
+      'phone': username,
+      'password': password,
+    };
+    await HttpUtil.request(HttpConfig.USER_LOGIN, data: data);
   }
 }

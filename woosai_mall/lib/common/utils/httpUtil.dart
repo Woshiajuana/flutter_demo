@@ -1,6 +1,5 @@
 
 import 'package:dio/dio.dart';
-import 'package:woosai_mall/common/config/httpConfig.dart';
 
 class HttpUtil {
 
