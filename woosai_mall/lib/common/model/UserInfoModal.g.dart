@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'UserInfoModal.dart';
+part of 'userInfoModal.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

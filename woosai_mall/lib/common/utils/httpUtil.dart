@@ -25,21 +25,18 @@ class HttpUtil {
       print('data=> $data');
       print('response=> $response');
       if (response.statusCode != HttpStatus.ok)
-        return new Future.error(new DioError(
-          response: response,
-          message: "statusCode: $response.statusCode, service error",
-          type: DioErrorType.RESPONSE,
-        ));
-
-      print(response.statusCode);
-//      var code = response['resp_code'] ||
-//      if (HttpConfig.SUCCESS_CODE.indexOf(response.statusCode) > -1)
-    } catch (e) {
-      return new Future.error(new DioError(
-        response: response,
-        message: "data parsing exception...",
-        type: DioErrorType.RESPONSE,
-      ));
+        throw('网络繁忙，请稍后再试');
+      var respBody = response.data['data'];
+      var respCode = response.data['resp_code'];
+      var respMessage = response.data['resp_message'];
+      print('respBody=> $respBody');
+      print('respCode=> $respCode');
+      print('respMessage=> $respMessage');
+      if (HttpConfig.SUCCESS_CODE.indexOf(respCode) == -1)
+        throw(respMessage);
+      return respBody;
+    } catch (err) {
+      return new Future.error(err);
     }
   }
 
