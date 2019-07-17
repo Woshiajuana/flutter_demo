@@ -34,7 +34,7 @@ class _MinePageState extends State<MinePage> {
     return new StoreBuilder<AppState>(builder: (context, store) {
       return new Scaffold(
         appBar: new AppBar(
-          title: new Text(_getTitle()),
+          title: new Text(store?.state?.userInfoModal?.phone ?? '我的1'),
         ),
         body: new Container(
           color: Color(0xfff2f2f2),

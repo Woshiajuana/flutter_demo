@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/pages/login/components/headerGroup.dart';
 import 'package:woosai_mall/pages/login/components/inputGroup.dart';
 import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/common/redux/appState.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -22,28 +25,31 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
-      body: new ListView(
-        children: <Widget>[
-          new HeaderGroup(),
-          new InputGroup(
-            username: _username,
-            password: _password,
-            usernameChange: (value) => this.setState(() => _username = value),
-            passwordChange: (value) => this.setState(() => _password = value),
-          ),
-          new ButtonGroup(
-            onTap: () => _handleSubmit(),
-          ),
-        ],
-      ),
-    );
+    return new StoreBuilder<AppState>(builder: (context, store){
+      return new Scaffold(
+        body: new ListView(
+          children: <Widget>[
+            new HeaderGroup(),
+            new InputGroup(
+              username: _username,
+              password: _password,
+              usernameChange: (value) => this.setState(() => _username = value),
+              passwordChange: (value) => this.setState(() => _password = value),
+            ),
+            new ButtonGroup(
+              onTap: () => _handleSubmit(store),
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   // 提交
-  void _handleSubmit() async {
+  void _handleSubmit(Store store) async {
     var respBody = await ApiUtil.userLogin(_username, _password);
     if (respBody == null) return;
+    store.dispatch(new UpdateUserAction(respBody));
     print('login page => $respBody');
     RouterUtil.pushApp(context);
   }
