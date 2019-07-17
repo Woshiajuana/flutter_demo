@@ -1,6 +1,6 @@
 
-
 import 'package:woosai_mall/common/model/userInfoModal.dart';
+import 'package:woosai_mall/common/redux/userRedux.dart';
 
 // 全局Redux store 的对象，保存State数据
 class AppState {
@@ -20,6 +20,6 @@ class AppState {
 // 我们自定义了 appReducer 用于创建 store
 AppState appReducer(AppState state, action) {
   return AppState(
-    userInfoModal: UserReducer(state.userInfoModal, action);
+    userInfoModal: userReducer(state.userInfoModal, action),
   );
 }
