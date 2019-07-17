@@ -16,7 +16,7 @@ class _TopScreenState extends State<TopScreen> {
         title: Text('Top Screen'),
       ),
       body: Center(
-        child: StoreConnector<CountState,int>(
+        child: StoreConnector(
           converter: (store) => store.state.count,
           builder: (context, count) {
             return Text(
