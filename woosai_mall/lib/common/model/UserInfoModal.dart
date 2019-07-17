@@ -23,4 +23,7 @@ class UserInfoModal {
   factory UserInfoModal.fromJson(Map<String, dynamic> json) => _$UserInfoModalFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserInfoModalToJson(this);
+
+  // 命名构造函数
+  UserInfoModal.empty();
 }

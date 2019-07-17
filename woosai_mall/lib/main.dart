@@ -29,19 +29,24 @@ class MyApp extends StatelessWidget {
     ),
   );
 
+  MyApp({Key key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'WoosaiMall',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: <String, WidgetBuilder> {
-        '/': (_) => new WelcomePage(),
-        'app': (_) => new AppPage(),
-        'login': (_) => new LoginPage(),
-      },
+    return new StoreProvider(
+        store: store,
+        child: MaterialApp(
+          title: 'WoosaiMall',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          routes: <String, WidgetBuilder> {
+            '/': (_) => new WelcomePage(),
+            'app': (_) => new AppPage(),
+            'login': (_) => new LoginPage(),
+          },
+        ),
     );
   }
 }
