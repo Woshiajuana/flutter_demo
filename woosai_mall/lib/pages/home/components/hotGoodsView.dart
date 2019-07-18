@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/common/model/hotRecommendModal.dart';
 
-
 class HotGoodsView extends StatefulWidget {
 
   const HotGoodsView({
@@ -46,41 +45,27 @@ class _HotGoodsViewState extends State<HotGoodsView> {
               ],
             ),
           ),
-          new Column(
-            children: <Widget>[
-              new Row(
-                children: <Widget>[
-                  new Expanded(
-                    flex: 1,
-                    child: _goodsItem(),
-                  ),
-                  new Expanded(
-                    flex: 1,
-                    child: _goodsItem(),
-                  ),
-                ],
-              ),
-              new Row(
-                children: <Widget>[
-                  new Expanded(
-                    flex: 1,
-                    child: _goodsItem(),
-                  ),
-                  new Expanded(
-                    flex: 1,
-                    child: _goodsItem(),
-                  ),
-                ],
-              ),
-            ],
+          new Wrap(
+            children: _goodsList(),
           )
         ],
       ),
     );
   }
 
-  Widget _goodsItem () {
+  List<Widget> _goodsList () {
+    List<Widget> list = [];
+    if (widget.data != null) {
+      widget.data.forEach((item) {
+        list.add(_goodsItem(item));
+      });
+    }
+    return list;
+  }
+
+  Widget _goodsItem (GoodsItemModal goodsItemModal) {
     return new Container(
+      width: 165.0,
       child: new InkWell(
         onTap: () => RouterUtil.pushDetails(context),
         child: new Card(
@@ -91,7 +76,7 @@ class _HotGoodsViewState extends State<HotGoodsView> {
             child: new ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: new Image.network(
-                'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                _goodsImage(goodsItemModal),
                 fit: BoxFit.fill,
               ),
             ),
@@ -101,4 +86,8 @@ class _HotGoodsViewState extends State<HotGoodsView> {
     );
   }
 
+  String _goodsImage (GoodsItemModal goodsItemModal) {
+    String thumbnailPath = goodsItemModal.thumbnailPath;
+    return thumbnailPath.split(',')[0];
+  }
 }
