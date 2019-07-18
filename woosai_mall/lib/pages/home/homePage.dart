@@ -14,8 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -27,24 +25,33 @@ class _HomePageState extends State<HomePage> {
         ),
         preferredSize: Size.fromHeight(0),
       ),
-      body: new Container(
-        color: Color(0xfff2f2f2),
-        child: new Column(
-          children: <Widget>[
-            new HeadView(),
-            new Expanded(
-              child: new ListView(
-                children: <Widget>[
-                  new CarouselView(),
-                  new HotGoodsView(),
-                  new HotGoodsView(),
-                  new ListGoodsView(),
-                ],
+      body: new RefreshIndicator(
+        onRefresh: _handleRefresh,
+        child: new Container(
+          color: Color(0xfff2f2f2),
+          child: new Column(
+            children: <Widget>[
+              new HeadView(),
+              new Expanded(
+                child: new ListView(
+                  children: <Widget>[
+                    new CarouselView(),
+                    new HotGoodsView(),
+                    new HotGoodsView(),
+                    new ListGoodsView(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      )
+      ),
     );
   }
+
+  Future<void>  _handleRefresh () async {
+    if (!mounted) return;
+    print('刷新了哦----');
+  }
+
 }

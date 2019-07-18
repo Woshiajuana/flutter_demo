@@ -26,24 +26,16 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    initData();
     tabController = new TabController(
         length: 3, // Tab页的个数
         vsync: this, // 动画效果的异步处理，默认格式
     );
   }
 
-  void _getUserInfo () async {
-    var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
-
-    PrintUtil.info(userInfo);
-  }
-
   // 生命周期方法构建Widget时调用
   @override
   Widget build(BuildContext context) {
-    PrintUtil.info('xxxxxxxxxxxxxxxxx');
-    _getUserInfo();
-    initData();
     return new Scaffold(
       body: IndexedStack(
         index: tabIndex,
