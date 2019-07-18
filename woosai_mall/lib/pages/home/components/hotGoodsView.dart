@@ -70,7 +70,7 @@ class _HotGoodsViewState extends State<HotGoodsView> {
     return new Container(
       width: 164.0,
       child: new InkWell(
-        onTap: () => RouterUtil.pushDetails(context),
+        onTap: () => RouterUtil.pushDetails(context, goodsId: goodsItemModal?.id),
         child: new Container(
           height: 120.0,
           decoration: new BoxDecoration(

@@ -36,7 +36,6 @@ class RouterUtil {
   }
 
   static pushDetails (BuildContext context, { goodsId }) {
-    print('goodsId$goodsId');
     navigatorRouter(context, new DetailsPage(goodsId: goodsId));
   }
 

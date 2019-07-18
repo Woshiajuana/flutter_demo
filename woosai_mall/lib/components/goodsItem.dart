@@ -19,7 +19,7 @@ class _GoodsItemState extends State<GoodsItem> {
   @override
   Widget build(BuildContext context) {
     return new InkWell(
-      onTap: () => RouterUtil.pushDetails(context, goodsId: 2),
+      onTap: () => RouterUtil.pushDetails(context, goodsId: widget.data?.id),
       child: new Container(
         color: Color(0xfff7f7f7),
         margin: const EdgeInsets.only(bottom: 10.0),
