@@ -8,7 +8,7 @@ import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/common/redux/appState.dart';
-import 'package:woosai_mall/common/redux/userRedux.dart';
+import 'package:woosai_mall/common/mixins/userMixin.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -18,7 +18,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => new _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with UserMixin {
 
   String _username = '13127590698';
   String _password = '111111';
@@ -50,8 +50,7 @@ class _LoginPageState extends State<LoginPage> {
   void _handleSubmit(Store store) async {
     var respBody = await ApiUtil.userLogin(_username, _password);
     if (respBody == null) return;
-    store.dispatch(new UpdateUserAction(respBody));
-    print('login page => $respBody');
+    await userUpdateInfo(store, respBody);
     RouterUtil.pushApp(context);
   }
 }

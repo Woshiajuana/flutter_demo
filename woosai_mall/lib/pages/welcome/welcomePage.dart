@@ -15,6 +15,7 @@ class _WelcomePageState extends State<WelcomePage> {
   void didChangeDependencies() async {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
+
     var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
     userInfo == null ? RouterUtil.pushLogin(context) : RouterUtil.pushApp(context);
   }
