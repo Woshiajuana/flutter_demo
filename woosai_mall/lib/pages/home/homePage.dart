@@ -39,8 +39,14 @@ class _HomePageState extends State<HomePage> {
                 child: new ListView(
                   children: <Widget>[
                     new CarouselView(),
-                    new HotGoodsView(data: hotRecommendModal.hotGoodsInfoList),
-                    new HotGoodsView(data: hotRecommendModal.recomGoodsInfoList),
+                    new HotGoodsView(
+                      title: '抢购商品',
+                      data: hotRecommendModal.hotGoodsInfoList,
+                    ),
+                    new HotGoodsView(
+                      title: '热门商品',
+                      data: hotRecommendModal.recomGoodsInfoList,
+                    ),
                     new ListGoodsView(),
                   ],
                 ),

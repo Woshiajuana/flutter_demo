@@ -8,9 +8,11 @@ class HotGoodsView extends StatefulWidget {
 
   const HotGoodsView({
     this.data,
+    this.title,
   });
 
   final List<GoodsItemModal> data;
+  final String title;
 
   @override
   _HotGoodsViewState createState() => new _HotGoodsViewState();
@@ -40,7 +42,7 @@ class _HotGoodsViewState extends State<HotGoodsView> {
                   color: Color(0xff1296db),
                   margin: const EdgeInsets.only(right: 5.0),
                 ),
-                new Text('热门商品', style: TextStyle(fontSize: 16.0),),
+                new Text(widget.title, style: TextStyle(fontSize: 16.0),),
               ],
             ),
           ),
