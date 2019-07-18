@@ -11,6 +11,7 @@ class UserInfoModal {
   UserInfoModal(
     this.phone,
     this.userToken,
+    this.accessToken,
   );
 
   @JsonKey(name: 'phone')
@@ -18,6 +19,9 @@ class UserInfoModal {
 
   @JsonKey(name: 'userToken')
   String userToken;
+
+  @JsonKey(name: 'access_token')
+  String accessToken;
 
   //不同的类使用不同的mixin即可
   factory UserInfoModal.fromJson(Map<String, dynamic> json) => _$UserInfoModalFromJson(json);
