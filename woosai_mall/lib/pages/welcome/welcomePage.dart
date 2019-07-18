@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/storeUtil.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/common/mixins/userMixin.dart';
+import 'package:woosai_mall/common/redux/appState.dart';
 
 class WelcomePage extends StatefulWidget {
 
@@ -9,14 +12,14 @@ class WelcomePage extends StatefulWidget {
   _WelcomePageState createState() => new _WelcomePageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _WelcomePageState extends State<WelcomePage> with UserMixin {
 
   @override
   void didChangeDependencies() async {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-
-    var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
+    Store<AppState> store = StoreProvider.of(context);
+    var userInfo = await userGetInfo(store);
     userInfo == null ? RouterUtil.pushLogin(context) : RouterUtil.pushApp(context);
   }
 

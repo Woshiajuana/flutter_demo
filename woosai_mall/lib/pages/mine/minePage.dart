@@ -15,32 +15,18 @@ class MinePage extends StatefulWidget {
 
 class _MinePageState extends State<MinePage> {
 
-  Store<AppState> _getStore() {
-    if (context == null) {
-      return null;
-    }
-    return StoreProvider.of(context);
-  }
-
-  _getTitle() {
-    if (_getStore()?.state?.userInfoModal == null) {
-      return null;
-    }
-    return _getStore()?.state?.userInfoModal?.phone ?? '我的';
-  }
-
   @override
   Widget build(BuildContext context) {
     return new StoreBuilder<AppState>(builder: (context, store) {
       return new Scaffold(
         appBar: new AppBar(
-          title: new Text(store?.state?.userInfoModal?.phone ?? '我的1'),
+          title: new Text('我的'),
         ),
         body: new Container(
           color: Color(0xfff2f2f2),
           child: new Column(
             children: <Widget>[
-              new UserGroup(),
+              new UserGroup(store: store),
               new MenuGroup(),
               new ExitGroup(),
             ],

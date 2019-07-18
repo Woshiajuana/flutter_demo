@@ -21,7 +21,9 @@ mixin UserMixin {
   userGetInfo (Store store) async {
     var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
     if (userInfo == null) return null;
-    
+    UserInfoModal userInfoModal = UserInfoModal.fromJson(userInfo);
+    store.dispatch(new UpdateUserAction(userInfoModal));
+    return userInfoModal;
   }
 
 }

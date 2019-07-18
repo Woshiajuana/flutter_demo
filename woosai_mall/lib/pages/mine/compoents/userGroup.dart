@@ -1,7 +1,17 @@
 
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
+import 'package:woosai_mall/common/redux/appState.dart';
 
 class UserGroup extends StatefulWidget {
+
+  Store<AppState> store;
+
+  UserGroup({
+    Key key,
+    this.store,
+  }) : super(key: key);
+
 
   @override
   _UserGroupState createState() => new _UserGroupState();
@@ -30,7 +40,7 @@ class _UserGroupState extends State<UserGroup> {
             ),
           ),
           new Text(
-            '陈先生',
+            widget.store?.state?.userInfoModal?.phone??'您好请先登录',
             style: new TextStyle(
               color: Colors.white,
               fontSize: 18.0,
