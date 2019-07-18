@@ -29,6 +29,7 @@ class _HotGoodsViewState extends State<HotGoodsView> {
         border: new Border.all(color: Color(0xffdddddd), width: 0.5)
       ),
       child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
             padding: const EdgeInsets.only(top: 16.0, bottom: 10.0),
@@ -46,6 +47,8 @@ class _HotGoodsViewState extends State<HotGoodsView> {
             ),
           ),
           new Wrap(
+            spacing: 10.0,
+            runSpacing: 10.0,
             children: _goodsList(),
           )
         ],
@@ -65,20 +68,23 @@ class _HotGoodsViewState extends State<HotGoodsView> {
 
   Widget _goodsItem (GoodsItemModal goodsItemModal) {
     return new Container(
-      width: 165.0,
+      width: 164.0,
       child: new InkWell(
         onTap: () => RouterUtil.pushDetails(context),
-        child: new Card(
-          elevation: 0,
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-          child: new Container(
-            height: 120.0,
-            child: new ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: new Image.network(
-                _goodsImage(goodsItemModal),
-                fit: BoxFit.fill,
-              ),
+        child: new Container(
+          height: 120.0,
+          decoration: new BoxDecoration(
+            border: new Border.all(
+              color: Color(0xffdddddd),
+              width: 0.5,
+            ),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: new ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: new Image.network(
+              _goodsImage(goodsItemModal),
+              fit: BoxFit.fill,
             ),
           ),
         ),

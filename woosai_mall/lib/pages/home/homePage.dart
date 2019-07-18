@@ -47,7 +47,10 @@ class _HomePageState extends State<HomePage> {
                       title: '热门商品',
                       data: hotRecommendModal.recomGoodsInfoList,
                     ),
-                    new ListGoodsView(),
+                    new ListGoodsView(
+                      title: '商品列表',
+                      data: hotRecommendModal.goodsInfoList,
+                    ),
                   ],
                 ),
               ),

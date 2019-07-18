@@ -2,8 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/common/model/hotRecommendModal.dart';
 
 class ListGoodsView extends StatefulWidget {
+
+  const ListGoodsView({
+    this.data,
+    this.title,
+  });
+
+  final List<GoodsItemModal> data;
+  final String title;
 
   @override
   _ListGoodsViewState createState() => new _ListGoodsViewState();
@@ -32,7 +41,7 @@ class _ListGoodsViewState extends State<ListGoodsView> {
                   color: Color(0xff1296db),
                   margin: const EdgeInsets.only(right: 5.0),
                 ),
-                new Text('商品列表', style: TextStyle(fontSize: 16.0),),
+                new Text(widget.title, style: TextStyle(fontSize: 16.0),),
                 new Expanded(
                   flex: 1,
                   child: new Row(
@@ -54,37 +63,18 @@ class _ListGoodsViewState extends State<ListGoodsView> {
               ],
             ),
           ),
-          new GoodsItem(),
-          new GoodsItem(),
-          new GoodsItem(),
-          new GoodsItem(),
-          new GoodsItem(),
+          new Column(
+            children: _getWidgetList(widget.data),
+          ),
         ],
       ),
     );
   }
 
-  List<String> getDataList() {
-    List<String> list = [];
-    for (int i = 0; i < 100; i++) {
-      list.add(i.toString());
-    }
-    return list;
+  List<Widget> _getWidgetList(data) {
+    if (data)
+    return data.map((item) => new GoodsItem(item)).toList();
   }
 
-  List<Widget> getWidgetList() {
-    return getDataList().map((item) => getItemContainer(item)).toList();
-  }
-
-  Widget getItemContainer(String item) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        item,
-        style: TextStyle(color: Colors.white, fontSize: 20),
-      ),
-      color: Colors.blue,
-    );
-  }
 
 }
