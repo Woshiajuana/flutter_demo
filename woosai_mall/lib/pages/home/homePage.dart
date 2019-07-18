@@ -4,6 +4,7 @@ import 'package:woosai_mall/pages/home/components/headView.dart';
 import 'package:woosai_mall/pages/home/components/carouselView.dart';
 import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
+import 'package:woosai_mall/common/utils/httpUtil.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
 
   @override
   Widget build(BuildContext context) {
