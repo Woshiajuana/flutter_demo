@@ -6,11 +6,11 @@ import 'package:woosai_mall/common/model/hotRecommendModal.dart';
 
 class HotGoodsView extends StatefulWidget {
 
-  HotGoodsView({
+  const HotGoodsView({
     this.data,
   });
 
-  List<GoodsItemModal> data;
+  final List<GoodsItemModal> data;
 
   @override
   _HotGoodsViewState createState() => new _HotGoodsViewState();

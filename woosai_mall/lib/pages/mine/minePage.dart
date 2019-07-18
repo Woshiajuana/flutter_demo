@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/pages/mine/compoents/userGroup.dart';
 import 'package:woosai_mall/pages/mine/compoents/menuGroup.dart';

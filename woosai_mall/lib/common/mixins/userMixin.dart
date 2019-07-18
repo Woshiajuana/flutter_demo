@@ -1,6 +1,5 @@
 
 import 'package:redux/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/common/model/userInfoModal.dart';
 import 'package:woosai_mall/common/utils/storeUtil.dart';
 import 'package:woosai_mall/common/redux/userRedux.dart';

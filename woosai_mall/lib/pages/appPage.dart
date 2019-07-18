@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
-import 'package:woosai_mall/common/utils/printUtil.dart';
-import 'package:woosai_mall/common/utils/storeUtil.dart';
 
 class AppPage extends StatefulWidget {
 
@@ -126,21 +124,6 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
         getTabImage('assets/images/app-mine-active-icon.png'),
       ],
     ];
-  }
-
-  // 监听安卓的返回键操作
-  Future<bool> _onWillPop() {
-    return showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('退出App?'),
-        content: new Text('Do you want to exit an App'),
-        actions: <Widget>[
-          new FlatButton(onPressed: () => Navigator.of(context).pop(false), child: new Text('不')),
-          new FlatButton(onPressed: () async { await pop(); }, child: new Text('不')),
-        ],
-      ),
-    ) ?? false;
   }
 
   static Future<void> pop() async {

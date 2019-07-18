@@ -15,6 +15,9 @@ class _CarouselViewState extends State<CarouselView> {
 
   @override
   void initState() {
+
+    super.initState();
+
     imageList
       ..add(Image.network(
         'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',

@@ -13,11 +13,6 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
 
   ScrollController _scrollController = new ScrollController();
 
-
-  int _page = 0;
-  int _size = 10;
-  int _beLoad = 0; // 0表示不显示, 1表示正在请求, 2表示没有更多数据
-
   var posts;
 
   @override
@@ -35,6 +30,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     posts = [1.0, 2.0, 3.0, 2.0, 3.0, 2.0, 3.0, 2.0, 3.0, 3.0, 2.0, 3.0, 2.0];
     return Scaffold(
       appBar: new AppBar(

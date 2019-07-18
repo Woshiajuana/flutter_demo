@@ -5,9 +5,9 @@ import 'package:woosai_mall/common/redux/appState.dart';
 
 class UserGroup extends StatefulWidget {
 
-  Store<AppState> store;
+  final Store<AppState> store;
 
-  UserGroup({
+  const UserGroup({
     Key key,
     this.store,
   }) : super(key: key);

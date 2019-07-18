@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class InputGroup extends StatefulWidget {
 
-  InputGroup({
+  const InputGroup({
     Key key,
     this.usernameChange = '',
     this.passwordChange = '',
@@ -13,8 +13,8 @@ class InputGroup extends StatefulWidget {
 
   final usernameChange;
   final passwordChange;
-  String username;
-  String password;
+  final String username;
+  final String password;
 
   @override
   _InputGroupState createState() => new _InputGroupState();

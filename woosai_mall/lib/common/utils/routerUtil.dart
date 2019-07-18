@@ -20,27 +20,27 @@ class RouterUtil {
   }
 
   static pushAddressInfo (BuildContext context) {
-    NavigatorRouter(context, new AddressInfoPage());
+    navigatorRouter(context, new AddressInfoPage());
   }
 
   static pushAddress (BuildContext context) {
-    NavigatorRouter(context, new AddressPage());
+    navigatorRouter(context, new AddressPage());
   }
 
   static pushConfirm (BuildContext context) {
-    NavigatorRouter(context, new ConfirmPage());
+    navigatorRouter(context, new ConfirmPage());
   }
 
   static pushList (BuildContext context) {
-    NavigatorRouter(context, new ListPage());
+    navigatorRouter(context, new ListPage());
   }
 
   static pushDetails (BuildContext context) {
-    NavigatorRouter(context, new DetailsPage());
+    navigatorRouter(context, new DetailsPage());
   }
 
   // 修改路由动画
-  static NavigatorRouter(BuildContext context, Widget widget) {
+  static navigatorRouter(BuildContext context, Widget widget) {
     return Navigator.push(context, new CupertinoPageRoute(builder: (context) => widget));
   }
 
