@@ -48,7 +48,7 @@ class _DetailsPageState extends State<DetailsPage> {
               new Expanded(
                 child: new ListView(
                   children: <Widget>[
-                    new CarouselView(),
+                    new CarouselView(data: goodsDetailsModal?.fileList),
                     new BaseInfoView(),
                     new SpecsGroupView(),
                     new DetailsGroupView(),

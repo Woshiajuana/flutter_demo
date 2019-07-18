@@ -4,6 +4,13 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 
 class CarouselView extends StatefulWidget {
 
+  const CarouselView({
+    Key key,
+    this.data,
+  }) : super(key: key);
+
+  final List data;
+
   @override
   _CarouselViewState createState() => new _CarouselViewState();
 }
@@ -11,26 +18,14 @@ class CarouselView extends StatefulWidget {
 class _CarouselViewState extends State<CarouselView> {
 
   // 声明一个list 存放image Widget
-  List<Widget> imageList = List();
+  List<Widget> imageList = [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    imageList
-      ..add(Image.network(
-        'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-        fit: BoxFit.fill,
-      ))
-      ..add(Image.network(
-        'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-        fit: BoxFit.fill,
-      ))
-      ..add(Image.network(
-        'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-        fit: BoxFit.fill,
-      ));
+    _formatData();
   }
 
   @override
@@ -57,6 +52,26 @@ class _CarouselViewState extends State<CarouselView> {
 
   Widget _carouselBuilder(BuildContext context, int index) {
     return (imageList[index]);
+  }
+
+  void _formatData () {
+    List<String> arrImageSrc;
+    if (!mounted) return;
+    widget.data?.forEach((item) {
+      if (item['type'] == 'wheelPlanting') {
+        arrImageSrc = item['filePath'].split(',');
+      }
+    });
+    print('arrImageSrc => $arrImageSrc');
+    arrImageSrc.forEach((item) {
+      imageList.add(Image.network(
+        item,
+        fit: BoxFit.fill,
+      ));
+    });
+    this.setState(() {
+      imageList: imageList;
+    });
   }
 
 }
