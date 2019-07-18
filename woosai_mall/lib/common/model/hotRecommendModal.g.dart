@@ -34,13 +34,13 @@ Map<String, dynamic> _$HotRecommendModalToJson(HotRecommendModal instance) =>
 
 GoodsItemModal _$GoodsItemModalFromJson(Map<String, dynamic> json) {
   return GoodsItemModal(
-      json['id'] as String,
+      json['id'] as int,
       json['thumbnailPath'] as String,
       json['goodsName'] as String,
       json['goodsDetails'] as String,
-      json['goodsPrice'] as String,
-      json['goodsDiscountPrice'] as String,
-      json['discountPoints'] as String);
+      json['goodsPrice'] as int,
+      json['goodsDiscountPrice'] as int,
+      json['discountPoints'] as int);
 }
 
 Map<String, dynamic> _$GoodsItemModalToJson(GoodsItemModal instance) =>

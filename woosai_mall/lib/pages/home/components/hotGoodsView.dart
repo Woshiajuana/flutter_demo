@@ -1,11 +1,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/common/model/hotRecommendModal.dart';
 
 
 class HotGoodsView extends StatefulWidget {
 
+  HotGoodsView({
+    this.data,
+  });
 
+  List<GoodsItemModal> data;
 
   @override
   _HotGoodsViewState createState() => new _HotGoodsViewState();

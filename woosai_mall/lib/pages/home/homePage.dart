@@ -5,6 +5,7 @@ import 'package:woosai_mall/pages/home/components/carouselView.dart';
 import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
+import 'package:woosai_mall/common/model/hotRecommendModal.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -13,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  HotRecommendModal hotRecommendModal;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,8 @@ class _HomePageState extends State<HomePage> {
     if (!mounted) return;
     print('刷新了哦----');
     var respBody = await ApiUtil.reqHotAndRecommendGoods();
-    print('respBody => $respBody');
+    hotRecommendModal = HotRecommendModal.fromJson(respBody);
+    print('hotRecommendModal => $hotRecommendModal');
   }
 
 }

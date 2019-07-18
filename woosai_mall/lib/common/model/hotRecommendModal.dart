@@ -44,7 +44,7 @@ class GoodsItemModal extends Object {
   );
 
   @JsonKey(name: 'id')
-  String id;
+  int id;
 
   @JsonKey(name: 'thumbnailPath')
   String thumbnailPath;
@@ -56,13 +56,13 @@ class GoodsItemModal extends Object {
   String goodsDetails;
 
   @JsonKey(name: 'goodsPrice')
-  String goodsPrice;
+  int goodsPrice;
 
   @JsonKey(name: 'goodsDiscountPrice')
-  String goodsDiscountPrice;
+  int goodsDiscountPrice;
 
   @JsonKey(name: 'discountPoints')
-  String discountPoints;
+  int discountPoints;
 
 
   //不同的类使用不同的mixin即可
