@@ -36,7 +36,8 @@ class RouterUtil {
   }
 
   static pushDetails (BuildContext context, { goodsId }) {
-    navigatorRouter(context, new DetailsPage( goodsId ));
+    print('goodsId$goodsId');
+    navigatorRouter(context, new DetailsPage(goodsId: goodsId));
   }
 
   // 修改路由动画

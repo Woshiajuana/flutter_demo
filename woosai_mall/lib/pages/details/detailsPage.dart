@@ -5,13 +5,13 @@ import 'package:woosai_mall/pages/details/components/operationView.dart';
 import 'package:woosai_mall/pages/details/components/baseInfoView.dart';
 import 'package:woosai_mall/pages/details/components/specsGroupView.dart';
 import 'package:woosai_mall/pages/details/components/detailsGroupView.dart';
-import 'package:woosai_mall/common/model/goodsItemModal.dart';
 import 'package:woosai_mall/common/model/goodsDetailsModal.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
 
 class DetailsPage extends StatefulWidget {
 
-  const DetailsPage(Key key, {
+  const DetailsPage({
+    Key key,
     this.goodsId,
   }) : super(key: key);
 
