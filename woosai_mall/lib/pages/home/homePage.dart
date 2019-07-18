@@ -18,6 +18,14 @@ class _HomePageState extends State<HomePage> {
   HotRecommendModal hotRecommendModal;
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+
+    _handleRefresh();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
@@ -41,15 +49,15 @@ class _HomePageState extends State<HomePage> {
                     new CarouselView(),
                     new HotGoodsView(
                       title: '抢购商品',
-                      data: hotRecommendModal.hotGoodsInfoList,
+                      data: hotRecommendModal?.hotGoodsInfoList,
                     ),
                     new HotGoodsView(
                       title: '热门商品',
-                      data: hotRecommendModal.recomGoodsInfoList,
+                      data: hotRecommendModal?.recomGoodsInfoList,
                     ),
                     new ListGoodsView(
                       title: '商品列表',
-                      data: hotRecommendModal.goodsInfoList,
+                      data: hotRecommendModal?.goodsInfoList,
                     ),
                   ],
                 ),
@@ -63,9 +71,10 @@ class _HomePageState extends State<HomePage> {
 
   Future<void>  _handleRefresh () async {
     if (!mounted) return;
-    print('刷新了哦----');
-    var respBody = await ApiUtil.reqHotAndRecommendGoods();
-    hotRecommendModal = HotRecommendModal.fromJson(respBody);
+    hotRecommendModal = await ApiUtil.reqHotAndRecommendGoods();
+    this.setState(() {
+      hotRecommendModal = hotRecommendModal;
+    });
     print('hotRecommendModal => $hotRecommendModal');
   }
 

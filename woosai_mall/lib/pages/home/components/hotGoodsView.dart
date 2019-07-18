@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
-import 'package:woosai_mall/common/model/hotRecommendModal.dart';
+import 'package:woosai_mall/common/model/goodsItemModal.dart';
 
 class HotGoodsView extends StatefulWidget {
 

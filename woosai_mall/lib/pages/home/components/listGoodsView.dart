@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
-import 'package:woosai_mall/common/model/hotRecommendModal.dart';
+import 'package:woosai_mall/common/model/goodsItemModal.dart';
 
 class ListGoodsView extends StatefulWidget {
 
@@ -71,9 +71,14 @@ class _ListGoodsViewState extends State<ListGoodsView> {
     );
   }
 
-  List<Widget> _getWidgetList(data) {
-    if (data)
-    return data.map((item) => new GoodsItem(item)).toList();
+  List<Widget> _getWidgetList(List data) {
+    List<GoodsItem> list = [];
+    if (data != null) {
+      data.forEach((item) {
+        list.add(new GoodsItem(data: item));
+      });
+    }
+    return list;
   }
 
 

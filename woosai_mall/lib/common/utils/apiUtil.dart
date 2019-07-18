@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:woosai_mall/common/utils/httpUtil.dart';
 import 'package:woosai_mall/common/utils/printUtil.dart';
 import 'package:woosai_mall/common/config/httpConfig.dart';
+import 'package:woosai_mall/common/model/hotRecommendModal.dart';
+import 'package:woosai_mall/common/model/goodsDetailsModal.dart';
 
 class ApiUtil {
 
@@ -33,14 +35,32 @@ class ApiUtil {
 
   // 首页数据
   static reqHotAndRecommendGoods () async {
-    var respBody;
+    HotRecommendModal hotRecommendModal;
     try {
-      respBody = await HttpUtil.request(HttpConfig.REQ_HOT_RECOMMEND);
+      var respBody = await HttpUtil.request(HttpConfig.REQ_HOT_RECOMMEND);
+      hotRecommendModal = HotRecommendModal.fromJson(respBody);
     } catch (err) {
       PrintUtil.err(err);
       Fluttertoast.showToast(gravity: ToastGravity.CENTER, msg: err.toString());
     }
-    return respBody;
+    return hotRecommendModal;
+  }
+
+  // 商品详情页数据
+  static reqGoodsDetails (goodsId) async {
+    GoodsDetailsModal goodsDetailsModal;
+    Map params = {
+      'goodsId': goodsId,
+    };
+    try {
+      var respBody = await HttpUtil.request(HttpConfig.REQ_GOODS_DETAILS, data: params);
+      goodsDetailsModal = GoodsDetailsModal.fromJson(respBody);
+    } catch (err) {
+      PrintUtil.err(err);
+      Fluttertoast.showToast(gravity: ToastGravity.CENTER, msg: err.toString());
+    }
+    return goodsDetailsModal;
+
   }
 
 }

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
-import 'package:woosai_mall/common/model/hotRecommendModal.dart';
+import 'package:woosai_mall/common/model/goodsItemModal.dart';
 
 class GoodsItem extends StatefulWidget {
   const GoodsItem({
@@ -19,7 +19,7 @@ class _GoodsItemState extends State<GoodsItem> {
   @override
   Widget build(BuildContext context) {
     return new InkWell(
-      onTap: () => RouterUtil.pushDetails(context),
+      onTap: () => RouterUtil.pushDetails(context, goodsId: widget.data?.id),
       child: new Container(
         color: Color(0xfff7f7f7),
         margin: const EdgeInsets.only(bottom: 10.0),
@@ -29,10 +29,17 @@ class _GoodsItemState extends State<GoodsItem> {
             new Container(
               width: 100.0,
               height: 100.0,
+              decoration: new BoxDecoration(
+                border: new Border.all(
+                  color: Color(0xffdddddd),
+                  width: 0.5,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
               child: new ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: new Image.network(
-                  'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+                  _goodsImage(widget.data),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -46,7 +53,7 @@ class _GoodsItemState extends State<GoodsItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     new Text(
-                      '买蝉花虫草送摩登mini口红伞买蝉花虫草送摩登mini口红伞',
+                      widget.data?.goodsName ?? '',
                       style: TextStyle(color: Color(0xff4A4A4A), fontSize: 16.0),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -54,7 +61,7 @@ class _GoodsItemState extends State<GoodsItem> {
                     new Padding(
                       padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: new Text(
-                        '摩登水晶伞Crystal umbrella经典四色摩登经典四色摩登水晶水晶伞Crystal umbrella经典四色',
+                        widget.data?.goodsDetails ?? '',
                         style: TextStyle(color: Color(0xff9B9B9B), fontSize: 13.0),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -69,23 +76,24 @@ class _GoodsItemState extends State<GoodsItem> {
                             new Container(
                               margin: const EdgeInsets.only(right: 4.0),
                               child: new Text(
-                                '￥358.00',
+                                _formatAmount(widget.data?.goodsDiscountPrice ?? 0),
                                 style: TextStyle(
                                   color: Color(0xffEF2C2C),
                                   fontSize: 16.0,
                                 ),
                               ),
                             ),
+                            widget.data?.discountPoints != 0 ?
                             new Container(
                               padding: const EdgeInsets.only(bottom: 2.0),
                               child: new Text(
-                                '积分换购 立减179元',
+                                '积分换购 立减' + _formatAmount(widget.data?.discountPoints ?? 0) + '元',
                                 style: TextStyle(
                                   color: Color(0xff9B9B9B),
                                   fontSize: 13.0,
                                 ),
                               ),
-                            ),
+                            ) : null,
                           ],
                         ),
                       ),
@@ -98,5 +106,15 @@ class _GoodsItemState extends State<GoodsItem> {
         ),
       ),
     );
+  }
+
+  String _goodsImage (GoodsItemModal goodsItemModal) {
+    String thumbnailPath = goodsItemModal.thumbnailPath;
+    return thumbnailPath.split(',')[0];
+  }
+
+  String _formatAmount (int data) {
+    double amount = data / 100;
+    return '￥' + amount?.toString() ?? '--';
   }
 }
