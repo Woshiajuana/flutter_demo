@@ -19,7 +19,6 @@ class StoreUtil {
   static get(String key) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var value = sharedPreferences.get(key);
-    print('value => $value');
     try {
       value = json.decode(value);
     } catch (e) {

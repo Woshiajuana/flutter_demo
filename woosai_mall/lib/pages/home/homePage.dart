@@ -4,7 +4,7 @@ import 'package:woosai_mall/pages/home/components/headView.dart';
 import 'package:woosai_mall/pages/home/components/carouselView.dart';
 import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
-import 'package:woosai_mall/common/utils/httpUtil.dart';
+import 'package:woosai_mall/common/utils/apiUtil.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -52,6 +52,8 @@ class _HomePageState extends State<HomePage> {
   Future<void>  _handleRefresh () async {
     if (!mounted) return;
     print('刷新了哦----');
+    var respBody = await ApiUtil.reqHotAndRecommendGoods();
+    print('respBody => $respBody');
   }
 
 }

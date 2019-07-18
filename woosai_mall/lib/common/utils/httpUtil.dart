@@ -22,6 +22,9 @@ class HttpUtil {
   }) async {
     try {
       PrintUtil.info('[$path] 请求发起参数=> $data');
+      if (options == null) {
+        options = new Options();
+      }
       options.headers['access-token'] = await getAccessToken();
       Response response = await _dio.request(path, data: data, cancelToken: cancelToken, options: options);
       PrintUtil.info('[$path] 请求返回结果=> $response');
@@ -41,6 +44,6 @@ class HttpUtil {
 
   static getAccessToken () async {
     var userInfo = await StoreUtil.get(StoreUtil.USER_INFO);
-    return userInfo == null ? userInfo['accessToken'] ?? '0' : '';
+    return userInfo == null ? '' : userInfo['access_token'] ?? '';
   }
 }

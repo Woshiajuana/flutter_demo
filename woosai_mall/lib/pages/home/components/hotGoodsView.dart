@@ -5,6 +5,8 @@ import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class HotGoodsView extends StatefulWidget {
 
+
+
   @override
   _HotGoodsViewState createState() => new _HotGoodsViewState();
 }
