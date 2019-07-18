@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/style/WowStyle.dart';
+import 'package:woosai_mall/common/style/wowStyle.dart';
 
 class HeaderGroup extends StatefulWidget {
   
