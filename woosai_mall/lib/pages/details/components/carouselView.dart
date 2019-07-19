@@ -35,7 +35,7 @@ class _CarouselViewState extends State<CarouselView> {
       height: 345.0,
       child: Swiper(
         itemBuilder: _carouselBuilder,
-        itemCount: 3,
+        itemCount: imageList.length,
         pagination: new SwiperPagination(
           builder: DotSwiperPaginationBuilder(
             color: Colors.black54,
@@ -55,7 +55,7 @@ class _CarouselViewState extends State<CarouselView> {
   }
 
   void _formatData () {
-    List<String> arrImageSrc;
+    List<String> arrImageSrc = [];
     if (!mounted) return;
     widget.data?.forEach((item) {
       if (item['type'] == 'wheelPlanting') {
