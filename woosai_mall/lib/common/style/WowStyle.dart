@@ -5,7 +5,7 @@ class WOWIcons {
 
   static const String TAO_BAO_FAMILY = 'taobaoIconFont';
 
-  static const String logo100 = 'assets/images/app-logo-icon-100.png';
+  static const String logo100 = 'assets/images/app-logo-icon-1001.png';
 
   static const String address = 'assets/images/address-icon.png';
 

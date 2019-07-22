@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/style/wowStyle.dart';
+import 'package:woosai_mall/common/config/httpConfig.dart';
 
 class HeaderGroup extends StatefulWidget {
   
@@ -25,7 +26,7 @@ class _HeaderGroupState extends State<HeaderGroup> {
               width: 100.0,
               height: 100.0,
               fit: BoxFit.fill,
-              color: Colors.blue,
+//              color: Colors.blue,
             ),
           ),
           new Text(
@@ -36,7 +37,7 @@ class _HeaderGroupState extends State<HeaderGroup> {
             ),
           ),
           new Text(
-            '欢迎使用哇噻商城，请先登录，',
+            '欢迎使用${HttpConfig.APP_NAME}，请先登录，',
             style: new TextStyle(
               fontSize: 16.0,
               color: Color(0xff333333),

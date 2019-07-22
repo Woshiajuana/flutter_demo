@@ -17,7 +17,7 @@ class _WebViewPageState extends State<WebViewPage> {
 
   bool _isIndex = true;
 
-  String _stringTitle = '哇噻商城';
+  String _stringTitle = '';
 
   @override
   void initState() {
@@ -59,11 +59,16 @@ class _WebViewPageState extends State<WebViewPage> {
           actions: <Widget>[
             new GestureDetector(
               onTap: () => _flutterWebviewPlugin.reload(),
-              child: new Text(
-                '刷新',
-                style: new TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.white,
+              child: new Container(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: new Center(
+                  child: new Text(
+                    '刷新',
+                    style: new TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -76,7 +81,7 @@ class _WebViewPageState extends State<WebViewPage> {
   //获取h5页面标题
   void _getWebTitle() async {
     _stringTitle = await _flutterWebviewPlugin.evalJavascript('window.document.title');
-    _stringTitle = _stringTitle.replaceAll('"', '');
+    _stringTitle = _isIndex ? HttpConfig.APP_NAME : _stringTitle.replaceAll('"', '');
     setState(() {});
   }
 

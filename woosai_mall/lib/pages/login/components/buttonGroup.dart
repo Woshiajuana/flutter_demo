@@ -26,8 +26,8 @@ class _ButtonGroupState extends State<ButtonGroup> {
         color: Colors.blue,
         borderRadius: new BorderRadius.circular(30.0),
       ),
-      child: new InkWell(
-        onTap: () => widget.onTap(),
+      child: new FlatButton(
+        onPressed: () => widget.onTap(),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

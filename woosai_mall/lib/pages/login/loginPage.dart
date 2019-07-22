@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:woosai_mall/pages/login/components/headerGroup.dart';
 import 'package:woosai_mall/pages/login/components/inputGroup.dart';
 import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
@@ -20,8 +21,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> with UserMixin {
 
-  String _username = '13127590698';
-  String _password = '111111';
+  String _username = '';
+  String _password = '';
   
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,14 @@ class _LoginPageState extends State<LoginPage> with UserMixin {
 
   // 提交
   void _handleSubmit(Store store) async {
+    if (_username == null || _username == '') {
+      Fluttertoast.showToast(gravity: ToastGravity.CENTER, msg: '请输入账号');
+      return;
+    }
+    if (_password == null || _password == '') {
+      Fluttertoast.showToast(gravity: ToastGravity.CENTER, msg: '请输入密码');
+      return;
+    }
     var respBody = await ApiUtil.userLogin(_username, _password);
     if (respBody == null) return;
     await userUpdateInfo(store, respBody);

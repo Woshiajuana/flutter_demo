@@ -11,7 +11,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="哇噻商城"
+        android:label="玩购商城"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
