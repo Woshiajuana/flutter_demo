@@ -9,8 +9,8 @@ part 'userInfoModal.g.dart';
 
 class UserInfoModal {
   UserInfoModal(
-    this.phone,
-    this.userToken,
+      this.phone,
+      this.userToken,
     this.accessToken,
   );
 
