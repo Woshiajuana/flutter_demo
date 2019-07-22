@@ -56,6 +56,18 @@ class _WebViewPageState extends State<WebViewPage> {
             ),
           ),
           centerTitle: true,
+          actions: <Widget>[
+            new GestureDetector(
+              onTap: () => _flutterWebviewPlugin.reload(),
+              child: new Text(
+                '刷新',
+                style: new TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       );
     });
