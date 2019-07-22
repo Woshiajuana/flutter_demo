@@ -1,6 +1,8 @@
 
 class HttpConfig {
 
+  static const String MALL_H51 = 'http://mall-h5.doujiusm.com/index.html?platformNo=P001&pfUserToken=';
+  static const String MALL_H5 = 'http://mall-h5.test.ptjxd.com//index.html?platformNo=P001&pfUserToken=';
 
   static const String BASE_URL = 'http://mall-boss-api.dev.ptjxd.com/api/v1';
 

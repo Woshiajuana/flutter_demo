@@ -8,8 +8,13 @@ import 'package:woosai_mall/pages/confirm/confirmPage.dart';
 import 'package:woosai_mall/pages/address/addressPage.dart';
 import 'package:woosai_mall/pages/address/addressInfoPage.dart';
 import 'package:woosai_mall/pages/login/loginPage.dart';
+import 'package:woosai_mall/pages/webview/webviewPage.dart';
 
 class RouterUtil {
+
+  static pushWebView (BuildContext context) {
+    return navigatorRouter(context, new WebViewPage());
+  }
 
   static pushApp (BuildContext context) {
     Navigator.pushReplacementNamed(context, AppPage.sName);

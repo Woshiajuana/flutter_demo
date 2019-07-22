@@ -9,6 +9,7 @@ import 'package:woosai_mall/pages/appPage.dart';
 import 'package:woosai_mall/pages/welcome/welcomePage.dart';
 import 'package:woosai_mall/pages/login/loginPage.dart';
 import 'package:woosai_mall/common/redux/appState.dart';
+import 'package:woosai_mall/pages/webview/webviewPage.dart';
 
 void main() {
   if (Platform.isAndroid) {
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
           ),
           routes: <String, WidgetBuilder> {
             '/': (_) => new WelcomePage(),
-            'app': (_) => new AppPage(),
+            'app': (_) => new WebViewPage(),
+//            'app': (_) => new AppPage(),
             'login': (_) => new LoginPage(),
           },
         ),

@@ -16,6 +16,7 @@ class _MinePageState extends State<MinePage> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return new StoreBuilder<AppState>(builder: (context, store) {
       return new Scaffold(
         appBar: new AppBar(

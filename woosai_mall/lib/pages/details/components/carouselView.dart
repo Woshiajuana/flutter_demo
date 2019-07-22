@@ -69,9 +69,7 @@ class _CarouselViewState extends State<CarouselView> {
         fit: BoxFit.fill,
       ));
     });
-    this.setState(() {
-      imageList: imageList;
-    });
+    this.setState(() {});
   }
 
 }
