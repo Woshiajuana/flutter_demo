@@ -18,10 +18,9 @@ class _WelcomePageState extends State<WelcomePage> with UserMixin {
   void didChangeDependencies() async {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-//    Store<AppState> store = StoreProvider.of(context);
-//    var userInfo = await userGetInfo(store);
-//    userInfo == null ? RouterUtil.pushLogin(context) : RouterUtil.pushApp(context);
-    RouterUtil.pushApp(context);
+    Store<AppState> store = StoreProvider.of(context);
+    var userInfo = await userGetInfo(store);
+    userInfo == null ? RouterUtil.pushApp(context) : RouterUtil.pushApp(context);
   }
 
   @override
