@@ -20,6 +20,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  
 
   // 创建Store 引用appState 中的 appReducer 创建的 Reducer
   final store = new Store<AppState>(
