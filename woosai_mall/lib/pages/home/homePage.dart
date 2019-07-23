@@ -36,6 +36,9 @@ class _HomePageState extends State<HomePage> {
     print('widget.env => ${widget.env}');
     print('application => ${Application.config.env}');
     print('application => ${widget.env == Application.config.env}');
+    print('Application.config.env => ${Application.config.env == Application.config.env}');
+    print('Application.config.api => ${Application.config.api == Application.config.api}');
+    print('Application.config.style => ${Application.config.style == Application.config.style}');
 
     // TODO: implement build
     return new Scaffold(

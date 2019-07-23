@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/config/index.config.dart';
+import 'package:woosai_mall/config/index.dart';
 
 class Application {
 
