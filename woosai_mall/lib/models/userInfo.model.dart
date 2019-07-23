@@ -8,11 +8,7 @@ part 'userInfo.model.g.dart';
 @JsonSerializable()
 
 class UserInfo {
-  UserInfo(
-      this.phone,
-      this.userToken,
-      this.accessToken,
-      );
+  UserInfo(this.phone, this.userToken, this.accessToken);
 
   @JsonKey(name: 'phone')
   String phone;

@@ -36,9 +36,7 @@ class MyApp extends StatelessWidget {
 
   // 判断
   void _test() {
-    var env1 = Application.config.env;
-    var env2 = Application.config.env;
-    print(env1 == env2);
+    Application.model.userInfo userInfo = Application.model.userInfo.fromJson({});
   }
 
   // This widget is the root of your application.

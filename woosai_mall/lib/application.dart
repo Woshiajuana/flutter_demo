@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/config/index.dart';
+import 'package:woosai_mall/config/config.dart';
 
 class Application {
 
@@ -8,5 +8,6 @@ class Application {
   static Config get config {
     return new Config();
   }
+
 
 }
