@@ -1,6 +1,7 @@
 
 import 'package:woosai_mall/utils/print.util.dart';
 import 'package:woosai_mall/utils/http.util.dart';
+import 'package:woosai_mall/utils/store.util.dart';
 
 class Util {
 
@@ -22,5 +23,9 @@ class Util {
     return new Http();
   }
 
+  // 获取存储工具
+  Store get store {
+    return new Store();
+  }
 
 }
