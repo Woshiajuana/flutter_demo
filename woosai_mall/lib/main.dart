@@ -9,6 +9,8 @@ import 'package:woosai_mall/pages/appPage.dart';
 import 'package:woosai_mall/pages/welcome/welcomePage.dart';
 import 'package:woosai_mall/pages/login/loginPage.dart';
 import 'package:woosai_mall/common/redux/appState.dart';
+import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/config/env.config.dart';
 
 void main() {
   if (Platform.isAndroid) {
@@ -20,7 +22,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  
+
 
   // 创建Store 引用appState 中的 appReducer 创建的 Reducer
   final store = new Store<AppState>(
@@ -32,9 +34,19 @@ class MyApp extends StatelessWidget {
 
   MyApp({Key key}) : super(key: key);
 
+
+  // 判断
+  void _test() {
+    Application.config.env;
+
+    _test();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+
     return new StoreProvider(
         store: store,
         child: MaterialApp(
