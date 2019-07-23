@@ -32,11 +32,11 @@ class Router {
 
   Map<String, WidgetBuilder> get routes {
     Map<String, WidgetBuilder> routes = {};
-
-    ()
-
-    return
-  };
+    config.forEach((key, value) {
+      routes[key] = value['route'];
+    });
+    return routes;
+  }
 
   push (BuildContext context) {
     return navigatorRouter(context, new AddressPage());
