@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
+import 'package:woosai_mall/application.dart';
 
 class AppPage extends StatefulWidget {
 
@@ -20,6 +21,9 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   TabController tabController;
   var tabImages;
   int tabIndex = 0;
+
+
+  var env = Application.config.env;
 
   @override
   void initState() {
@@ -38,7 +42,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
       body: IndexedStack(
         index: tabIndex,
         children: <Widget>[
-          new HomePage(),
+          new HomePage(env: env),
           new FindPage(),
           new MinePage(),
         ],

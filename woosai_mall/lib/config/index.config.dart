@@ -6,7 +6,9 @@ import 'package:woosai_mall/config/style.config.dart';
 class Config {
 
   // 获取env
-  var env = Env;
+  Env get env {
+    return new Env();
+  }
 
   // 获取api
   Api get api {

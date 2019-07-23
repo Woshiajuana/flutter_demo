@@ -6,8 +6,13 @@ import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
 import 'package:woosai_mall/common/model/hotRecommendModal.dart';
+import 'package:woosai_mall/application.dart';
 
 class HomePage extends StatefulWidget {
+
+  const HomePage({Key key, this.env}) : super(key:key);
+
+  final env;
 
   @override
   _HomePageState createState() => new _HomePageState();
@@ -27,6 +32,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    print('widget.env => ${widget.env}');
+    print('application => ${Application.config.env}');
+    print('application => ${widget.env == Application.config.env}');
+
     // TODO: implement build
     return new Scaffold(
       appBar: new PreferredSize(
