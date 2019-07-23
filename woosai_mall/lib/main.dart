@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
 
   // 判断
   void _test() {
-    Application.model.userInfo userInfo = Application.model.userInfo.fromJson({});
+
   }
 
   // This widget is the root of your application.
