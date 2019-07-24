@@ -3,6 +3,7 @@ import 'package:woosai_mall/utils/print.util.dart';
 import 'package:woosai_mall/utils/http.util.dart';
 import 'package:woosai_mall/utils/store.util.dart';
 import 'package:woosai_mall/utils/verify.util.dart';
+import 'package:woosai_mall/utils/modal.util.dart';
 
 class Util {
 
@@ -32,6 +33,11 @@ class Util {
   // 参数验证工具
   Verify get verify {
     return new Verify();
+  }
+
+  // 弹窗提示工具
+  Modal get modal {
+    return new Modal();
   }
 
 }

@@ -14,7 +14,7 @@ class Env {
     return 'http://mall-boss-api.dev.ptjxd.com/api/v1/';
   }
 
-  List<String> get successCode {
+  List<String> get arrSucCode {
     return ['000000', 'S0001'];
   }
 

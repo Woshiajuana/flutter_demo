@@ -34,11 +34,25 @@ class Http {
       }
       return options;
     }, onResponse: (Response response) {
-      print('response => ${response}');
-      return response;
+      Application.util.print.info('[${response.request.path}] 请求返回结果=> ${response.data}');
+      var data = response.data;
+      if (data == null) return _dio.reject(new DioError(response: response));
+      var respCode = data['resp_code'] ?? data['respCode'];
+      if (Application.config.env.arrSucCode.indexOf(respCode) == -1)
+        return _dio.reject(new DioError(response: response));
+      var respBody = data['data'] ?? data['result'];
+      return respBody;
     }, onError: (DioError dioErr) {
-      print('dioErr => ${dioErr}');
-      return dioErr;
+      Application.util.print.info('[${dioErr?.response?.request?.path ?? ''}] 请求返回结果=> $dioErr');
+      Response response = dioErr?.response;
+      String respMessage = '网络繁忙，请稍后再试';
+      if (dioErr.type == DioErrorType.RECEIVE_TIMEOUT
+      || dioErr.type == DioErrorType.CONNECT_TIMEOUT) {
+        respMessage = '网络超时，请稍后再试';
+      } else if (response != null) {
+        respMessage = response.data['resp_message'] ?? response.data['respMessage'] ?? '网络繁忙，请稍后再试';
+      }
+      throw Future.error('xxxxx');
     }));
   }
 
@@ -53,6 +67,7 @@ class Http {
 //    if (_dio == null) {
       await _init();
 //    }
+    Application.util.print.info('[$url] 请求发起参数=> $params');
     return await _dio.post(url, data: params, options: options);
   }
 
