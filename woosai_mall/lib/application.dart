@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:woosai_mall/config/config.dart';
 import 'package:woosai_mall/router/router.dart';
 import 'package:woosai_mall/utils/util.dart';
+import 'package:woosai_mall/services/service.dart';
 
 class Application {
 
@@ -17,8 +18,13 @@ class Application {
   }
 
   // 获取工具
-  static Util get util{
+  static Util get util {
     return new Util();
+  }
+
+  // 获取服务
+  static Service get service {
+    return new Service();
   }
 
 
