@@ -2,6 +2,7 @@
 import 'package:woosai_mall/utils/print.util.dart';
 import 'package:woosai_mall/utils/http.util.dart';
 import 'package:woosai_mall/utils/store.util.dart';
+import 'package:woosai_mall/utils/verify.util.dart';
 
 class Util {
 
@@ -26,6 +27,11 @@ class Util {
   // 获取存储工具
   Store get store {
     return new Store();
+  }
+
+  // 参数验证工具
+  Verify get verify {
+    return new Verify();
   }
 
 }

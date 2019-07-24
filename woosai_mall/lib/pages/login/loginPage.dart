@@ -49,9 +49,12 @@ class _LoginPageState extends State<LoginPage> with UserMixin {
 
   // 提交
   void _handleSubmit(Store store) async {
-    var respBody = await ApiUtil.userLogin(_username, _password);
-    if (respBody == null) return;
-    await userUpdateInfo(store, respBody);
-    RouterUtil.pushApp(context);
+
+    
+
+//    var respBody = await ApiUtil.userLogin(_username, _password);
+//    if (respBody == null) return;
+//    await userUpdateInfo(store, respBody);
+//    RouterUtil.pushApp(context);
   }
 }

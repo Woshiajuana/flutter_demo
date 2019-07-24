@@ -11,8 +11,10 @@ class User {
 
   User._internal();
 
-  Future doUserLogin ({ String phone, String password }) {
-
+  Future doUserLogin ({ String phone, String password }) async {
+    String url = Application.config.api.doUserLogin;
+    Map params = {'phone': phone, 'password': password};
+    var respBody = await Application.util.http.get(url, params: params);
   }
 
 }
