@@ -14,13 +14,9 @@ class Http {
 
   static Dio _dio;
 
-
-
-  static BaseOptions _options = new BaseOptions(
-    method: 'POST',
-    connectTimeout: 1000 * 10,
-    receiveTimeout: 1000 * 20,
-  );
+  static Future _init() async {
+    _dio = await SharedPreferences.getInstance();
+  }
 
 
 }
