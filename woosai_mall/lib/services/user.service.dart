@@ -16,6 +16,7 @@ class User {
 
   User._internal();
 
+  // 用户登录
   Future doUserLogin ({ String phone, String password }) async {
     String url = Application.config.api.doUserLogin;
     Map<String, dynamic> params = {'phone': phone, 'password': password};
@@ -27,10 +28,6 @@ class User {
     var respBody2 = await Application.util.http.post(url, params: params);
     respBody['access_token'] = respBody2['access_token'];
     return respBody;
-  }
-
-  Future updateUserAction (Store store) async {
-
   }
 
 }

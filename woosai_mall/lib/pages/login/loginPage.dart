@@ -51,7 +51,8 @@ class _LoginPageState extends State<LoginPage> with UserMixin {
   void _handleSubmit(Store store) async {
     try {
       var respBody = await Application.service.user.doUserLogin(phone: _username, password: _password);
-      
+
+
     } catch (err) {
       Application.util.modal.toast(err);
     }
