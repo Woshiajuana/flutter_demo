@@ -15,6 +15,7 @@ class Http {
 
   static Dio _dio;
   static BaseOptions _options = new BaseOptions(
+    baseUrl: Application.config.env.baseUrl,
     method: 'POST',
     connectTimeout: 1000 * 10,
     receiveTimeout: 1000 * 20,
@@ -22,23 +23,23 @@ class Http {
 
   static Future _init() async {
     _dio = new Dio(_options);
-//    _dio.interceptors
-//    .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
-//      String accessTokenKey = Application.config.store.accessToken;
-//      String accessToken = await Application.util.store.get(accessTokenKey);
-//      if (accessToken != null) {
-//        options.headers = {
-//          'access-token': accessToken,
-//        };
-//      }
-//      return options;
-//    }, onResponse: (Response response) {
-//      print('response => ${response}');
-//      return response;
-//    }, onError: (DioError dioErr) {
-//      print('dioErr => ${dioErr}');
-//      return dioErr;
-//    }));
+    _dio.interceptors
+    .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+      String accessTokenKey = Application.config.store.accessToken;
+      String accessToken = await Application.util.store.get(accessTokenKey);
+      if (accessToken != null) {
+        options.headers = {
+          'access-token': accessToken,
+        };
+      }
+      return options;
+    }, onResponse: (Response response) {
+      print('response => ${response}');
+      return response;
+    }, onError: (DioError dioErr) {
+      print('dioErr => ${dioErr}');
+      return dioErr;
+    }));
   }
 
   Future get (String url, {Map<String, dynamic> params, Options options}) async {
@@ -49,9 +50,9 @@ class Http {
   }
 
   Future post (String url, {Map<String, dynamic> params, Options options}) async {
-    if (_dio == null) {
+//    if (_dio == null) {
       await _init();
-    }
+//    }
     return await _dio.post(url, data: params, options: options);
   }
 
