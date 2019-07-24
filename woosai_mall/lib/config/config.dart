@@ -2,6 +2,7 @@
 import 'package:woosai_mall/config/env.config.dart';
 import 'package:woosai_mall/config/api.config.dart';
 import 'package:woosai_mall/config/style.config.dart';
+import 'package:woosai_mall/config/store.config.dart';
 
 class Config {
 
@@ -26,6 +27,10 @@ class Config {
   // 获取style
   Style get style {
     return new Style();
+  }
+
+  Store get store {
+    return new Store();
   }
 
 }

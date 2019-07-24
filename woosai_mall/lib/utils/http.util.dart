@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:woosai_mall/application.dart';
 
 class Http {
 
@@ -22,8 +23,14 @@ class Http {
   static Future _init() async {
     _dio = new Dio(_options);
     _dio.interceptors
-    .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-
+    .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+      String accessToken = await Application.util.store.get(Application.config.store.accessToken);
+      if (accessToken != null) {
+        options.headers = {
+          'access-token': accessToken,
+        };
+      }
+      return options;
     }, onResponse: (Response response){
 
     }, onError: (DioError dioErr) {
