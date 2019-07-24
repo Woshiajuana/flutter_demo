@@ -14,13 +14,13 @@ class User {
   User._internal();
 
   Future doUserLogin ({ String phone, String password }) async {
-//    String url = Application.config.api.doUserLogin;
-    String url = Application.config.env.baseUrl + Application.config.api.doAuthLogin;
-    print(url);
+    String url = Application.config.api.doUserLogin;
+//    String url = Application.config.env.baseUrl + Application.config.api.doAuthLogin;
+//    print(url);
     Map<String, dynamic> params = {'phone': phone, 'password': password};
 //    Options options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
 //    var respBody = await Application.util.http.post(url, params: params, options: options);
-    var respBody = await Application.util.http.post(url, params: params);
+    var respBody = await Application.util.http.request(url, params: params);
     print('respBody => $respBody');
   }
 

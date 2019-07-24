@@ -49,11 +49,11 @@ class _LoginPageState extends State<LoginPage> with UserMixin {
 
   // 提交
   void _handleSubmit(Store store) async {
-//    try {
+    try {
       await Application.service.user.doUserLogin(phone: _username, password: _password);
-//    } catch (e) {
-//      print (e);
-//    }
+    } catch (e) {
+      print (e);
+    }
 
 //    var respBody = await ApiUtil.userLogin(_username, _password);
 //    if (respBody == null) return;
