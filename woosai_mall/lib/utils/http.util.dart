@@ -32,24 +32,24 @@ class Http {
       }
       return options;
     }, onResponse: (Response response){
-
+      
     }, onError: (DioError dioErr) {
 
     }));
   }
 
-  Future get (String url, {Map<String, dynamic> params}) async {
+  Future get (String url, {Map<String, dynamic> params, Options options}) async {
     if (_dio == null) {
       await _init();
     }
-    return await _dio.get(url, queryParameters: params);
+    return await _dio.get(url, queryParameters: params, options: options);
   }
 
-  Future post (String url, {Map<String, dynamic> params}) async {
+  Future post (String url, {Map<String, dynamic> params, Options options}) async {
     if (_dio == null) {
       await _init();
     }
-    return await _dio.post(url, data: params);
+    return await _dio.post(url, data: params, options: options);
   }
 
 }

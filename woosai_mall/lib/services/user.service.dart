@@ -1,4 +1,6 @@
 
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:woosai_mall/application.dart';
 
 class User {
@@ -14,7 +16,8 @@ class User {
   Future doUserLogin ({ String phone, String password }) async {
     String url = Application.config.api.doUserLogin;
     Map<String, dynamic> params = {'phone': phone, 'password': password};
-    var respBody = await Application.util.http.get(url, params: params);
+    Options options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
+    var respBody = await Application.util.http.post(url, params: params, options: options);
   }
 
 }
