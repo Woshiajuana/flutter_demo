@@ -20,6 +20,7 @@ class ApiUtil {
       };
       Options _options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
       respBody = await HttpUtil.request(HttpConfig.USER_LOGIN, data: params, options: _options);
+      print('respBody => ${respBody is Map}');
       Map params2 = {
         'platformNo': HttpConfig.PLATFORM_NO,
         'pfUserToken': respBody['userToken'],

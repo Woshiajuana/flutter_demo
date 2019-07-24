@@ -15,13 +15,13 @@ class Modal {
   Modal._internal();
 
   void toast (msg, {ToastGravity gravity = ToastGravity.CENTER}) {
-    if (msg == '' || msg == null) return;
     if (msg is DioError) {
-      
+      msg = msg.message;
     }
+    if (msg == '' || msg == null) return;
     Fluttertoast.showToast(
       gravity: gravity,
-      msg: msg?.message?.toString() ?? msg.toString(),
+      msg: msg.toString(),
     );
   }
 

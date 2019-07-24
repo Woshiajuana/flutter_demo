@@ -18,4 +18,8 @@ class Env {
     return ['000000', 'S0001'];
   }
 
+  String get platformNo {
+    return 'P001';
+  }
+
 }

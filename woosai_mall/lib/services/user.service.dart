@@ -15,10 +15,17 @@ class User {
 
   Future doUserLogin ({ String phone, String password }) async {
     String url = Application.config.api.doUserLogin;
-    Map<String, dynamic> params = {'phone': '13135621245', 'password': password};
+    Map<String, dynamic> params = {'phone': phone, 'password': password};
     Options options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
     var respBody = await Application.util.http.post(url, params: params, options: options);
     print('respBody => $respBody');
+    print('respBody => ${respBody is Map}');
+//    print('respBody => ${respBody['userToken']}');
+    url = Application.config.api.doAuthLogin;
+    String platformNo = Application.config.env.platformNo;
+    params = {'platformNo': platformNo, 'pfUserToken': respBody['userToken']};
+    var respBody2 = await Application.util.http.post(url, params: params);
+    print('respBody2 => $respBody2');
   }
 
 }
