@@ -9,6 +9,7 @@ import 'package:woosai_mall/common/utils/apiUtil.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/common/redux/appState.dart';
 import 'package:woosai_mall/common/mixins/userMixin.dart';
+import 'package:woosai_mall/application.dart';
 
 class LoginPage extends StatefulWidget {
 
