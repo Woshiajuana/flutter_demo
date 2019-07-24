@@ -1,6 +1,8 @@
 
 
+import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 
 class Modal {
 
@@ -14,9 +16,12 @@ class Modal {
 
   void toast (msg, {ToastGravity gravity = ToastGravity.CENTER}) {
     if (msg == '' || msg == null) return;
+    if (msg is DioError) {
+      
+    }
     Fluttertoast.showToast(
       gravity: gravity,
-      msg: msg.toString(),
+      msg: msg?.message?.toString() ?? msg.toString(),
     );
   }
 

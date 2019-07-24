@@ -52,9 +52,7 @@ class _LoginPageState extends State<LoginPage> with UserMixin {
     try {
       await Application.service.user.doUserLogin(phone: _username, password: _password);
     } catch (err) {
-      print('err.message => ${err.message}');
-      print('err.message => ${err is Error}');
-      reflect(err);
+      print('err.message => $err');
       Application.util.modal.toast(err);
     }
 

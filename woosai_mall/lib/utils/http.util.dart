@@ -45,14 +45,15 @@ class Http {
     }, onError: (DioError dioErr) {
       Application.util.print.info('[${dioErr?.response?.request?.path ?? ''}] 请求返回结果=> $dioErr');
       Response response = dioErr?.response;
-      String respMessage = '网络繁忙，请稍后再试';
+      var message;
       if (dioErr.type == DioErrorType.RECEIVE_TIMEOUT
       || dioErr.type == DioErrorType.CONNECT_TIMEOUT) {
-        respMessage = '网络超时，请稍后再试';
+        message = '网络超时，请稍后再试';
       } else if (response != null) {
-        respMessage = response.data['resp_message'] ?? response.data['respMessage'] ?? '网络繁忙，请稍后再试';
+        message = response.data['resp_message'] ?? response.data['respMessage'] ?? '网络繁忙，请稍后再试';
       }
-      throw Future.error('xxxxx');
+      dioErr.message = message;
+      return dioErr;
     }));
   }
 
@@ -64,11 +65,13 @@ class Http {
   }
 
   Future post (String url, {Map<String, dynamic> params, Options options}) async {
+
 //    if (_dio == null) {
-      await _init();
+    await _init();
 //    }
     Application.util.print.info('[$url] 请求发起参数=> $params');
     return await _dio.post(url, data: params, options: options);
+
   }
 
   Future request (String url, {Map<String, dynamic> params, Options options}) async {
