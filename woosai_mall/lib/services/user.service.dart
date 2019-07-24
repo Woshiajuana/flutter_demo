@@ -11,8 +11,7 @@ class User {
 
   User._internal();
 
-  Future doUserLogin () {
-
+  Future doUserLogin ({ String phone, String password }) {
 
   }
 
