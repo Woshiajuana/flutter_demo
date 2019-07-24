@@ -24,17 +24,20 @@ class Http {
     _dio = new Dio(_options);
     _dio.interceptors
     .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
-      String accessToken = await Application.util.store.get(Application.config.store.accessToken);
+      String accessTokenKey = Application.config.store.accessToken;
+      String accessToken = await Application.util.store.get(accessTokenKey);
       if (accessToken != null) {
         options.headers = {
           'access-token': accessToken,
         };
       }
       return options;
-    }, onResponse: (Response response){
-      
+    }, onResponse: (Response response) {
+      print('response => ${response}');
+      return response;
     }, onError: (DioError dioErr) {
-
+      print('dioErr => ${dioErr}');
+      return dioErr;
     }));
   }
 

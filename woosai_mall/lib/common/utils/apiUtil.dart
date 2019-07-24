@@ -18,11 +18,11 @@ class ApiUtil {
         'phone': username,
         'password': password,
       };
-      Options _options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
-      respBody = await HttpUtil.request(HttpConfig.USER_LOGIN, data: params, options: _options);
+//      Options _options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
+//      respBody = await HttpUtil.request(HttpConfig.USER_LOGIN, data: params, options: _options);
       Map params2 = {
         'platformNo': HttpConfig.PLATFORM_NO,
-        'pfUserToken': respBody['userToken'],
+//        'pfUserToken': respBody['userToken'],
       };
       var respBody2 = await HttpUtil.request(HttpConfig.DO_AUTH_LOGIN, data: params2);
       respBody['access_token'] = respBody2['access_token'];
