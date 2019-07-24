@@ -2,7 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:woosai_mall/application.dart';
 
 class Modal {
 
@@ -19,6 +19,7 @@ class Modal {
       msg = msg.message;
     }
     if (msg == '' || msg == null) return;
+    Application.util.print.info(msg.toString());
     Fluttertoast.showToast(
       gravity: gravity,
       msg: msg.toString(),

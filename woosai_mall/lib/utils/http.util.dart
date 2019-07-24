@@ -16,8 +16,6 @@ class Http {
   static Dio _dio;
   static BaseOptions _options = new BaseOptions(
     baseUrl: Application.config.env.baseUrl,
-    method: 'POST',
-    responseType: ResponseType.json,
     connectTimeout: 1000 * 10,
     receiveTimeout: 1000 * 20,
   );
@@ -37,7 +35,8 @@ class Http {
     }, onResponse: (Response response) {
       Application.util.print.info('[${response.request.path}] 请求返回结果=> ${response.data}');
       var data = response.data;
-      if (data == null) return _dio.reject(new DioError(response: response));
+      if (data == null)
+        return _dio.reject(new DioError(response: response));
       var respCode = data['resp_code'] ?? data['respCode'];
       if (Application.config.env.arrSucCode.indexOf(respCode) == -1)
         return _dio.reject(new DioError(response: response));
