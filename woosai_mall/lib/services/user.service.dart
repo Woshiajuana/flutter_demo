@@ -25,11 +25,12 @@ class User {
     String platformNo = Application.config.env.platformNo;
     params = {'platformNo': platformNo, 'pfUserToken': respBody['userToken']};
     var respBody2 = await Application.util.http.post(url, params: params);
-    print('respBody2 => $respBody2');
+    respBody['access_token'] = respBody2['access_token'];
+    return respBody;
   }
 
   Future updateUserAction (Store store) async {
-    
+
   }
 
 }
