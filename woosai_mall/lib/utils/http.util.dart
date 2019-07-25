@@ -23,11 +23,11 @@ class Http {
     _dio = new Dio(_options);
     _dio.interceptors
     .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
-      String accessTokenKey = Application.config.store.accessToken;
-      String accessToken = await Application.util.store.get(accessTokenKey);
-      if (accessToken != null) {
+      String userInfoJsonKey = Application.config.store.userInfoJson;
+      var userInfoJson = await Application.util.store.get(userInfoJsonKey);
+      if (userInfoJson != null) {
         options.headers = {
-          'access-token': accessToken,
+          'access-token': userInfoJson['access_token'],
         };
       }
       return options;
@@ -44,12 +44,16 @@ class Http {
     }, onError: (DioError dioErr) {
       _log(dioErr?.response?.request?.path ?? '', '请求返回结果=> ${dioErr.toString()}');
       Response response = dioErr?.response;
+      int stateCode = response?.statusCode ?? -999;
       var message = '网络繁忙，请稍后再试';
       if (dioErr.type == DioErrorType.RECEIVE_TIMEOUT
       || dioErr.type == DioErrorType.CONNECT_TIMEOUT) {
         message = '网络超时，请稍后再试';
       } else if (response != null) {
         message = response.data['resp_message'] ?? response.data['respMessage'] ?? '网络繁忙，请稍后再试';
+      }
+      if (stateCode == 401) {
+        Application.router.replace(Application.context, 'login');
       }
       dioErr.message = message;
       return dioErr;
@@ -72,9 +76,9 @@ class Http {
   }
 
   Future post (String url, {Map<String, dynamic> params, Options options}) async {
-    if (_dio == null) {
+//    if (_dio == null) {
       await _init();
-    }
+//    }
     _log(url, '请求发起参数=> $params');
     Response response = await _dio.post(url, data: params, options: options);
     return response.data;

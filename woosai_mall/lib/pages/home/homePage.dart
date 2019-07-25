@@ -4,8 +4,8 @@ import 'package:woosai_mall/pages/home/components/headView.dart';
 import 'package:woosai_mall/pages/home/components/carouselView.dart';
 import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
-import 'package:woosai_mall/common/utils/apiUtil.dart';
 import 'package:woosai_mall/models/hotRecommend.model.dart';
+import 'package:woosai_mall/application.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -21,12 +21,12 @@ class _HomePageState extends State<HomePage> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-
     _handleRefresh();
   }
 
   @override
   Widget build(BuildContext context) {
+    Application.context = context;
     // TODO: implement build
     return new Scaffold(
       appBar: new PreferredSize(
@@ -70,12 +70,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void>  _handleRefresh () async {
-    if (!mounted) return;
-    hotRecommendModal = await ApiUtil.reqHotAndRecommendGoods();
-    this.setState(() {
-      hotRecommendModal = hotRecommendModal;
-    });
-    print('hotRecommendModal => $hotRecommendModal');
+    try {
+      hotRecommendModal = await Application.service.goods.reqHotAndRecommendGoods();
+      this.setState((){});
+    } catch (err) {
+      print('err=>$err');
+      Application.util.modal.toast(err);
+    }
   }
 
 }

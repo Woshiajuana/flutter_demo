@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
 
   MyApp({Key key}) : super(key: key);
 
-
   // 判断
   void _test() {
     print('Application.router.routes => ${Application.router.routes == Application.router.routes}');

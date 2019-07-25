@@ -4,7 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/pages/mine/compoents/userGroup.dart';
 import 'package:woosai_mall/pages/mine/compoents/menuGroup.dart';
 import 'package:woosai_mall/pages/mine/compoents/exitGroup.dart';
-import 'package:woosai_mall/common/redux/appState.dart';
+import 'package:woosai_mall/redux/app.redux.dart';
 
 class MinePage extends StatefulWidget {
 
