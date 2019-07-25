@@ -22,8 +22,7 @@ class _WelcomePageState extends State<WelcomePage> {
     String userInfoJsonKey = Application.config.store.userInfoJson;
     var userInfoJson = await Application.util.store.get(userInfoJsonKey);
     if (userInfoJson == null) {
-      Application.router.push(context, 'login');
-      return;
+      return Application.router.push(context, 'login');
     }
     UserInfo userInfo = UserInfo.fromJson(userInfoJson);
     Store<AppState> store = StoreProvider.of(context);
