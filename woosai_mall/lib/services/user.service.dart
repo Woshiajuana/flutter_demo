@@ -1,10 +1,7 @@
 
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:redux/redux.dart';
 import 'package:woosai_mall/application.dart';
-import 'package:woosai_mall/common/redux/userRedux.dart';
-import 'package:woosai_mall/models/userInfo.model.dart';
 
 class User {
 

@@ -5,8 +5,7 @@ import 'package:woosai_mall/pages/home/components/carouselView.dart';
 import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
 import 'package:woosai_mall/common/utils/apiUtil.dart';
-import 'package:woosai_mall/common/model/hotRecommendModal.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/models/hotRecommend.model.dart';
 
 class HomePage extends StatefulWidget {
 
