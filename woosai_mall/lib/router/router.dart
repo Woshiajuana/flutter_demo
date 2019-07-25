@@ -86,6 +86,10 @@ class Router {
     return navigatorRouter(context, config[path]['handle']());
   }
 
+  replace (BuildContext context, String routeName) {
+    return Navigator.pushReplacementNamed(context, routeName);
+  }
+
   // 修改路由动画
   static navigatorRouter(BuildContext context, Widget widget) {
     return Navigator.push(context, new CupertinoPageRoute(builder: (context) => widget));

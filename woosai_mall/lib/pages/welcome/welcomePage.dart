@@ -22,12 +22,12 @@ class _WelcomePageState extends State<WelcomePage> {
     String userInfoJsonKey = Application.config.store.userInfoJson;
     var userInfoJson = await Application.util.store.get(userInfoJsonKey);
     if (userInfoJson == null) {
-      return Application.router.push(context, 'login');
+      return Application.router.replace(context, 'login');
     }
     UserInfo userInfo = UserInfo.fromJson(userInfoJson);
     Store<AppState> store = StoreProvider.of(context);
     store.dispatch(new UpdateUserInfoAction(userInfo));
-    Application.router.push(context, 'app');
+    Application.router.replace(context, 'app');
   }
 
   @override

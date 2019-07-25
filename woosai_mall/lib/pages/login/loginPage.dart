@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
       await Application.util.store.set(userInfoJsonKey, userInfoJson);
       UserInfo userInfo = UserInfo.fromJson(userInfoJson);
       store.dispatch(new UpdateUserInfoAction(userInfo));
-      Application.router.push(context, 'app');
+      Application.router.replace(context, 'app');
     } catch (err) {
       Application.util.modal.toast(err);
     }
