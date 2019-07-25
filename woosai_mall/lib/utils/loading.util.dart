@@ -20,7 +20,7 @@ class Loading {
     showDialog(
       context: _context,
       builder: (context) {
-        return SpinKitFadingCircle(color: Colors.white);
+        return _widgetLoading();
       },
     ).then((value) {
       if (callback != null) {
@@ -30,9 +30,26 @@ class Loading {
   }
 
   void hide () {
-    Navigator.pop(_context);
-    _context = null;
+    if (_context != null) {
+      Navigator.pop(_context);
+      _context = null;
+    }
   }
 
+  static Widget _widgetLoading () {
+    return new Center(
+      child: new Container(
+        width: 80.0,
+        height: 80.0,
+        decoration: new BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: new Center(
+          child: new CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
 
 }

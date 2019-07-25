@@ -50,7 +50,12 @@ class _LoginPageState extends State<LoginPage> {
   void _handleSubmit(Store store) async {
     try {
       Application.util.loading.show(context);
-      var userInfoJson = await Application.service.user.doUserLogin(phone: _username, password: _password);
+//      var userInfoJson = await Application.service.user.doUserLogin(phone: _username, password: _password);
+//      Application.util.loading.hide();
+
+      new Future.delayed(const Duration(seconds: 1), () {
+//        Application.util.loading.hide();
+      });
 //      String userInfoJsonKey = Application.config.store.userInfoJson;
 //      await Application.util.store.set(userInfoJsonKey, userInfoJson);
 //      UserInfo userInfo = UserInfo.fromJson(userInfoJson);
