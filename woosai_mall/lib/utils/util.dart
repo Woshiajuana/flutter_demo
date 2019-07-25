@@ -41,4 +41,9 @@ class Util {
     return new Modal();
   }
 
+  // loading 工具
+  Loading get loading {
+    return new Loading();
+  }
+
 }
