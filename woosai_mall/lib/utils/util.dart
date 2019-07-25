@@ -4,6 +4,7 @@ import 'package:woosai_mall/utils/http.util.dart';
 import 'package:woosai_mall/utils/store.util.dart';
 import 'package:woosai_mall/utils/verify.util.dart';
 import 'package:woosai_mall/utils/modal.util.dart';
+import 'package:woosai_mall/utils/loading.util.dart';
 
 class Util {
 
