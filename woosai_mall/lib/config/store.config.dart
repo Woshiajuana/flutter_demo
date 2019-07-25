@@ -12,7 +12,12 @@ class Store {
 
   // 登录
   String get accessToken {
-    return 'ACCESS-TOKEN';
+    return 'ACCESS_TOKEN';
+  }
+
+  // 用户信息
+  String get userInfoJson {
+    return 'USER_INFO_JSON';
   }
   
 }
