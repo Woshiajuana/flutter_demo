@@ -1,6 +1,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:woosai_mall/common/model/goodsItemModal.dart';
+import 'package:woosai_mall/models/goodsItem.modal.dart';
 
 // user.g.dart 将在我们运行生成命令后自动生成
 part 'goodsDetailsModal.g.dart';

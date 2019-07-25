@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
-import 'package:woosai_mall/common/model/goodsItemModal.dart';
+import 'package:woosai_mall/models/goodsItem.modal.dart';
 
 class GoodsItem extends StatefulWidget {
   const GoodsItem({

@@ -4,6 +4,7 @@ import 'package:woosai_mall/pages/home/components/headView.dart';
 import 'package:woosai_mall/pages/home/components/carouselView.dart';
 import 'package:woosai_mall/pages/home/components/hotGoodsView.dart';
 import 'package:woosai_mall/pages/home/components/listGoodsView.dart';
+import 'package:woosai_mall/components/wowView.dart';
 import 'package:woosai_mall/models/hotRecommend.model.dart';
 import 'package:woosai_mall/application.dart';
 
@@ -16,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   HotRecommendModal hotRecommendModal;
+  bool _isLoading;
 
   @override
   void didChangeDependencies() {
@@ -44,24 +46,27 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               new HeadView(),
               new Expanded(
-                child: new ListView(
-                  children: <Widget>[
-                    new CarouselView(),
-                    new HotGoodsView(
-                      title: '抢购商品',
-                      data: hotRecommendModal?.hotGoodsInfoList,
-                    ),
-                    new HotGoodsView(
-                      title: '热门商品',
-                      data: hotRecommendModal?.recomGoodsInfoList,
-                    ),
-                    new ListGoodsView(
-                      title: '商品列表',
-                      data: hotRecommendModal?.goodsInfoList,
-                    ),
-                  ],
+                child: new WowView(
+                  isLoading: _isLoading,
+                  child: new ListView(
+                    children: <Widget>[
+                      new CarouselView(),
+                      new HotGoodsView(
+                        title: '抢购商品',
+                        data: hotRecommendModal?.hotGoodsInfoList,
+                      ),
+                      new HotGoodsView(
+                        title: '热门商品',
+                        data: hotRecommendModal?.recomGoodsInfoList,
+                      ),
+                      new ListGoodsView(
+                        title: '商品列表',
+                        data: hotRecommendModal?.goodsInfoList,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                ),
             ],
           ),
         ),
@@ -69,13 +74,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<void>  _handleRefresh () async {
+  Future<void> _handleRefresh () async {
+//    this.setState(() { _isLoading = true; });
     try {
       hotRecommendModal = await Application.service.goods.reqHotAndRecommendGoods();
-      this.setState((){});
     } catch (err) {
       print('err=>$err');
       Application.util.modal.toast(err);
+    } finally {
+      this.setState(() { _isLoading = false; });
     }
   }
 
