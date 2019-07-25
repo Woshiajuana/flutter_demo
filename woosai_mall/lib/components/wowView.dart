@@ -15,10 +15,16 @@ class WowView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Container(
-      child: new Center(
-        child: this.isLoading == false ? this.child : new CircularProgressIndicator(),
-      ),
+    return new Stack(
+      children: <Widget>[
+        this.child,
+        new Container(
+          color: Color.fromRGBO(0, 0, 0, 0.5),
+          child: new Center(
+            child: new CircularProgressIndicator(),
+          ),
+        ),
+      ],
     );
   }
 }
