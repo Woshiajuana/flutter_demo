@@ -10,10 +10,6 @@ import 'package:woosai_mall/application.dart';
 
 class HomePage extends StatefulWidget {
 
-  const HomePage({Key key, this.env}) : super(key:key);
-
-  final env;
-
   @override
   _HomePageState createState() => new _HomePageState();
 }
@@ -32,14 +28,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-    print('widget.env => ${widget.env}');
-    print('application => ${Application.config.env}');
-    print('application => ${widget.env == Application.config.env}');
-    print('Application.config.env => ${Application.config.env == Application.config.env}');
-    print('Application.config.api => ${Application.config.api == Application.config.api}');
-    print('Application.config.style => ${Application.config.style == Application.config.style}');
-
     // TODO: implement build
     return new Scaffold(
       appBar: new PreferredSize(

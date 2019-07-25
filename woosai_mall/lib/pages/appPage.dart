@@ -22,9 +22,6 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   var tabImages;
   int tabIndex = 0;
 
-
-  var env = Application.config.env;
-
   @override
   void initState() {
     super.initState();
@@ -42,7 +39,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
       body: IndexedStack(
         index: tabIndex,
         children: <Widget>[
-          new HomePage(env: env),
+          new HomePage(),
           new FindPage(),
           new MinePage(),
         ],

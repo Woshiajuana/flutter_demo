@@ -33,7 +33,7 @@ class Http {
       }
       return options;
     }, onResponse: (Response response) {
-      Application.util.print.info('[${response.request.path}] 请求返回结果=> ${response.data}');
+      _log(response.request.path, '请求返回结果=> ${response.data}');
       var data = response.data;
       if (data == null)
         return _dio.reject(new DioError(response: response));
@@ -43,7 +43,7 @@ class Http {
       response.data = data['data'] ?? data['result'];
       return response;
     }, onError: (DioError dioErr) {
-      Application.util.print.info('[${dioErr?.response?.request?.path ?? ''}] 请求返回结果=> ${dioErr.toString()}');
+      _log(dioErr?.response?.request?.path ?? '', '请求返回结果=> ${dioErr.toString()}');
       Response response = dioErr?.response;
       var message = '网络繁忙，请稍后再试';
       if (dioErr.type == DioErrorType.RECEIVE_TIMEOUT
@@ -57,6 +57,13 @@ class Http {
     }));
   }
 
+  static void _log (String url, String content) {
+    if (url != null && url != '' && url.indexOf('http') == -1) {
+      url = Application.config.env.baseUrl + url;
+    }
+    Application.util.print.info('[$url] $content}');
+  }
+
   Future get (String url, {Map<String, dynamic> params, Options options}) async {
     if (_dio == null) {
       await _init();
@@ -66,10 +73,10 @@ class Http {
   }
 
   Future post (String url, {Map<String, dynamic> params, Options options}) async {
-//    if (_dio == null) {
+    if (_dio == null) {
       await _init();
-//    }
-    Application.util.print.info('[$url] 请求发起参数=> $params');
+    }
+    _log(url, '请求发起参数=> $params');
     Response response = await _dio.post(url, data: params, options: options);
     return response.data;
   }
@@ -78,7 +85,7 @@ class Http {
     if (_dio == null) {
       await _init();
     }
-    Application.util.print.info('[$url] 请求发起参数=> $params');
+    _log(url, '请求发起参数=> $params');
     return await _dio.request(url, data: params, options: options);
   }
 }

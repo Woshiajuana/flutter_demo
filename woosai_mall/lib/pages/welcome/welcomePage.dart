@@ -20,7 +20,6 @@ class _WelcomePageState extends State<WelcomePage> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     String userInfoJsonKey = Application.config.store.userInfoJson;
-    await Application.util.store.remove(userInfoJsonKey);
     var userInfoJson = await Application.util.store.get(userInfoJsonKey);
     print('userInfoJson => $userInfoJson');
     if (userInfoJson == null) {
