@@ -17,13 +17,31 @@ class WowView extends StatelessWidget{
     // TODO: implement build
     return new Stack(
       children: <Widget>[
-        this.child,
-        new Container(
-          color: Color.fromRGBO(0, 0, 0, 0.5),
+        isLoading == null ? new Container() : this.child,
+        isLoading != false ? new Container(
           child: new Center(
-            child: new CircularProgressIndicator(),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Container(
+                  width: 20.0,
+                  height: 20.0,
+                  margin: const EdgeInsets.only(right: 10.0),
+                  child: new CircularProgressIndicator(
+                    strokeWidth: 2.0,
+                  ),
+                ),
+                new Text(
+                  '加载中...',
+                  style: new TextStyle(
+                    color: Colors.blue,
+                    fontSize: 12.0,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        ) : new Container(),
       ],
     );
   }

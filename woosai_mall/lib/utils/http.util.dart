@@ -67,7 +67,7 @@ class Http {
     Application.util.print.info('[$url] $content}');
   }
 
-  Future get (String url, {Map<String, dynamic> params, Options options}) async {
+  Future get (String url, {Map params, Options options}) async {
     if (_dio == null) {
       await _init();
     }
@@ -75,7 +75,7 @@ class Http {
     return response.data;
   }
 
-  Future post (String url, {Map<String, dynamic> params, Options options}) async {
+  Future post (String url, {Map params, Options options}) async {
 //    if (_dio == null) {
       await _init();
 //    }

@@ -16,7 +16,7 @@ class User {
   // 用户登录
   Future doUserLogin ({ String phone, String password }) async {
     String url = Application.config.api.doUserLogin;
-    Map<String, dynamic> params = {'phone': phone, 'password': password};
+    Map params = {'phone': phone, 'password': password};
     Options options = new Options(contentType: ContentType.parse('application/x-www-form-urlencoded'));
     var respBody = await Application.util.http.post(url, params: params, options: options);
     url = Application.config.api.doAuthLogin;

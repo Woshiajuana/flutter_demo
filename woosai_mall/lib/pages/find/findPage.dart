@@ -2,6 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/models/goodsList.modal.dart';
+import 'package:woosai_mall/models/goodsItem.modal.dart';
+import 'package:woosai_mall/components/wowView.dart';
 
 class FindPage extends StatefulWidget {
 
@@ -12,12 +16,14 @@ class FindPage extends StatefulWidget {
 class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin {
 
   ScrollController _scrollController = new ScrollController();
-
+  GoodsListModal _goodsListModal;
+  int _pageNum = 1;
   var posts;
 
   @override
   void initState() {
     super.initState();
+    _refreshData();
     // 首次拉取数据
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
@@ -27,11 +33,12 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
       }
     });
   }
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    posts = [1.0, 2.0, 3.0, 2.0, 3.0, 2.0, 3.0, 2.0, 3.0, 3.0, 2.0, 3.0, 2.0];
     return Scaffold(
       appBar: new AppBar(
         title: new Text('商品列表'),
@@ -43,12 +50,12 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
           child: StaggeredGridView.countBuilder(
             padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
             controller: _scrollController,
-            itemCount: posts.length,
+            itemCount: _goodsListModal?.list?.length ?? 0,
             primary: false,
             crossAxisCount: 4,
             mainAxisSpacing: 8.0,
             crossAxisSpacing: 8.0,
-            itemBuilder: (context, index) =>_goodsItem(index),
+            itemBuilder: (context, index) =>_widgetGoodsItem(index),
             staggeredTileBuilder: (index) => StaggeredTile.fit(2),
           ),
         ),
@@ -56,16 +63,25 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
     );
   }
 
-  @override
-  bool get wantKeepAlive => true;
-
-  Future<Null> _refreshData() async {
+  Future _refreshData () async {
     print('下拉刷新');
-//    _page = 0;
-//    _getPostData(false);
+    _pageNum = 1;
+    _reqGoodsList();
   }
 
-  Widget _goodsItem (height) {
+  Future _reqGoodsList () async {
+    try {
+      _goodsListModal = await Application.service.goods.reqGoodsList(
+        pageNum: _pageNum,
+      );
+      this.setState(() {});
+    } catch (err) {
+      Application.util.modal.toast(err);
+    }
+  }
+
+  Widget _widgetGoodsItem (index) {
+    GoodsItemModal goodsItemModal = _goodsListModal.list[index];
     return new InkWell(
       onTap: () => RouterUtil.pushDetails(context),
       child: new Container(
@@ -81,7 +97,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Container(
-              height: height * 10.0 + 50.0,
+              height: index * 10.0 + 50.0,
               child: new ClipRRect(
                 borderRadius: new BorderRadius.only(
                   topLeft: Radius.circular(5.0),

@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  HotRecommendModal hotRecommendModal;
+  HotRecommendModal _hotRecommendModal;
   bool _isLoading;
 
   @override
@@ -53,15 +53,15 @@ class _HomePageState extends State<HomePage> {
                       new CarouselView(),
                       new HotGoodsView(
                         title: '抢购商品',
-                        data: hotRecommendModal?.hotGoodsInfoList,
+                        data: _hotRecommendModal?.hotGoodsInfoList,
                       ),
                       new HotGoodsView(
                         title: '热门商品',
-                        data: hotRecommendModal?.recomGoodsInfoList,
+                        data: _hotRecommendModal?.recomGoodsInfoList,
                       ),
                       new ListGoodsView(
                         title: '商品列表',
-                        data: hotRecommendModal?.goodsInfoList,
+                        data: _hotRecommendModal?.goodsInfoList,
                       ),
                     ],
                   ),
@@ -75,14 +75,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _handleRefresh () async {
-//    this.setState(() { _isLoading = true; });
     try {
-      hotRecommendModal = await Application.service.goods.reqHotAndRecommendGoods();
+      _hotRecommendModal = await Application.service.goods.reqHotAndRecommendGoods();
     } catch (err) {
       print('err=>$err');
       Application.util.modal.toast(err);
     } finally {
-      this.setState(() { _isLoading = false; });
+      new Future.delayed(const Duration(seconds: 1), () {
+        this.setState(() { _isLoading = false; });
+      });
     }
   }
 
