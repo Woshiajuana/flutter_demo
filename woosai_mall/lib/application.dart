@@ -5,6 +5,7 @@ import 'package:woosai_mall/router/router.dart';
 import 'package:woosai_mall/utils/util.dart';
 import 'package:woosai_mall/services/service.dart';
 
+
 class Application {
 
   // 获取配置
@@ -26,6 +27,5 @@ class Application {
   static Service get service {
     return new Service();
   }
-
 
 }

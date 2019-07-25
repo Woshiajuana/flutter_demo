@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:woosai_mall/common/model/userInfoModal.dart';
-import 'package:woosai_mall/common/redux/appState.dart';
+import 'package:woosai_mall/models/userInfo.model.dart';
+import 'package:woosai_mall/redux/app.redux.dart';
 import 'package:woosai_mall/application.dart';
 
 void main() {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   final store = new Store<AppState>(
     appReducer,
     initialState: new AppState(
-      userInfoModal: UserInfoModal.empty(),
+      userInfo: UserInfo.empty(),
     ),
   );
 

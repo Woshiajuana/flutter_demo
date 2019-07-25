@@ -4,7 +4,9 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/common/mixins/userMixin.dart';
-import 'package:woosai_mall/common/redux/appState.dart';
+import 'package:woosai_mall/models/userInfo.model.dart';
+import 'package:woosai_mall/redux/app.redux.dart';
+import 'package:woosai_mall/application.dart';
 
 class WelcomePage extends StatefulWidget {
 
