@@ -76,9 +76,9 @@ class Http {
   }
 
   Future post (String url, {Map params, Options options}) async {
-//    if (_dio == null) {
+    if (_dio == null) {
       await _init();
-//    }
+    }
     _log(url, '请求发起参数=> $params');
     Response response = await _dio.post(url, data: params, options: options);
     return response.data;

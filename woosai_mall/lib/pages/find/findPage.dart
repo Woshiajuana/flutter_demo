@@ -18,7 +18,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
   ScrollController _scrollController = new ScrollController();
   GoodsListModal _goodsListModal;
   int _pageNum = 1;
-  var posts;
+  bool _isLoading;
 
   @override
   void initState() {
@@ -28,7 +28,6 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-//        _addMoreData();
         print('我监听到底部了!');
       }
     });
@@ -44,20 +43,23 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
       appBar: new AppBar(
         title: new Text('商品列表'),
       ),
-      body: RefreshIndicator(
-        onRefresh: _refreshData,
-        child: Container(
-          color: Color(0xfff2f2f2),
-          child: StaggeredGridView.countBuilder(
-            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-            controller: _scrollController,
-            itemCount: _goodsListModal?.list?.length ?? 0,
-            primary: false,
-            crossAxisCount: 4,
-            mainAxisSpacing: 8.0,
-            crossAxisSpacing: 8.0,
-            itemBuilder: (context, index) =>_widgetGoodsItem(index),
-            staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+      body: new WowView(
+        isLoading: _isLoading,
+        child: new RefreshIndicator(
+          onRefresh: _refreshData,
+          child: new Container(
+            color: Color(0xfff2f2f2),
+            child: StaggeredGridView.countBuilder(
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+              controller: _scrollController,
+              itemCount: _goodsListModal?.list?.length ?? 0,
+              primary: false,
+              crossAxisCount: 4,
+              mainAxisSpacing: 8.0,
+              crossAxisSpacing: 8.0,
+              itemBuilder: (context, index) =>_widgetGoodsItem(index),
+              staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+            ),
           ),
         ),
       ),
@@ -75,9 +77,13 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
       _goodsListModal = await Application.service.goods.reqGoodsList(
         pageNum: _pageNum,
       );
-      this.setState(() {});
     } catch (err) {
       Application.util.modal.toast(err);
+    } finally {
+      new Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
+        this.setState(() { _isLoading = false; });
+      });
     }
   }
 
