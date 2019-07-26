@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
+import 'package:woosai_mall/application.dart';
 
 class AppPage extends StatefulWidget {
 
@@ -20,7 +21,9 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
   TabController tabController;
   var tabImages;
   int tabIndex = 0;
-
+  var _controller = PageController(
+    initialPage: 0,
+  );
   @override
   void initState() {
     super.initState();
@@ -29,20 +32,31 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
         length: 3, // Tab页的个数
         vsync: this, // 动画效果的异步处理，默认格式
     );
+    Application.context = context;
   }
 
   // 生命周期方法构建Widget时调用
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: IndexedStack(
-        index: tabIndex,
+
+      body: new PageView(
+        controller: _controller,
+        physics: new NeverScrollableScrollPhysics(),
         children: <Widget>[
           new HomePage(),
           new FindPage(),
           new MinePage(),
         ],
       ),
+//      body: IndexedStack(
+//        index: tabIndex,
+//        children: <Widget>[
+//          new HomePage(),
+//          new FindPage(),
+//          new MinePage(),
+//        ],
+//      ),
       bottomNavigationBar: new Material(
         color: Colors.white,
         elevation: 0.0,
@@ -81,6 +95,7 @@ class _AppPageState extends State<AppPage> with SingleTickerProviderStateMixin {
           labelColor: Color(0xff1296db),
           unselectedLabelColor: Color(0xff999999),
           onTap: (index) {
+            _controller.jumpToPage(index);
             setState(() {
               tabIndex = index;
             });

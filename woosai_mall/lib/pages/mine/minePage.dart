@@ -12,10 +12,16 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => new _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> {
+class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin {
+
+
+  @override
+  bool get wantKeepAlive => true; // 要点2
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // 要点3
+    // TODO: implement build
     return new StoreBuilder<AppState>(builder: (context, store) {
       return new Scaffold(
         appBar: new AppBar(
@@ -23,9 +29,12 @@ class _MinePageState extends State<MinePage> {
         ),
         body: new Container(
           color: Color(0xfff2f2f2),
-          child: new Column(
+          child: new ListView(
             children: <Widget>[
               new UserGroup(store: store),
+              new MenuGroup(),
+              new MenuGroup(),
+              new MenuGroup(),
               new MenuGroup(),
               new ExitGroup(),
             ],

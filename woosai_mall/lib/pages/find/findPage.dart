@@ -13,7 +13,7 @@ class FindPage extends StatefulWidget {
   _FindPageState createState() => new _FindPageState();
 }
 
-class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin {
+class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin { // 要点1
 
   ScrollController _scrollController = new ScrollController();
   GoodsListModal _goodsListModal;
@@ -33,12 +33,13 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
       }
     });
   }
+
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => true; // 要点2
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+    super.build(context); // 要点3
     return Scaffold(
       appBar: new AppBar(
         title: new Text('商品列表'),

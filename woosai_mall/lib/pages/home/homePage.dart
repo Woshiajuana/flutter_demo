@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin { // 要点1
 
   HotRecommendModal _hotRecommendModal;
   bool _isLoading;
@@ -27,8 +27,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  bool get wantKeepAlive => true; // 要点2
+
+  @override
   Widget build(BuildContext context) {
-    Application.context = context;
+    super.build(context); // 要点3
     // TODO: implement build
     return new Scaffold(
       appBar: new PreferredSize(
