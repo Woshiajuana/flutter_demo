@@ -74,9 +74,23 @@ class _ListPageState extends State<ListPage> {
   }
 
   Widget _widgetItemBuilder (BuildContext context, int index) {
-    GoodsItemModal goodsItemModal = _arrData[index];
     if (index < _arrData.length) {
+      GoodsItemModal goodsItemModal = _arrData[index];
       return new GoodsItem(data: goodsItemModal);
+    }
+    if (_pageNum >= _lastPage) {
+      return new Container(
+        height: 100.0,
+        child: new Center(
+          child: new Text(
+            '没有更多了',
+            style: new TextStyle(
+              color: Color(0xff999999),
+              fontSize: 12.0,
+            ),
+          ),
+        ),
+      );
     }
     return new Container(
       height: 100.0,
@@ -85,11 +99,11 @@ class _ListPageState extends State<ListPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Container(
-              width: 20.0,
-              height: 20.0,
+              width: 16.0,
+              height: 16.0,
               margin: const EdgeInsets.only(right: 10.0),
               child: new CircularProgressIndicator(
-                strokeWidth: 2.0,
+                strokeWidth: 1.0,
               ),
             ),
             new Text(
