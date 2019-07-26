@@ -29,8 +29,17 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         print('我监听到底部了!');
+        _pageNum++;
+        
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -104,7 +113,6 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Container(
-//              height: index * 10.0 + 50.0,
               child: new ClipRRect(
                 borderRadius: new BorderRadius.only(
                   topLeft: Radius.circular(5.0),
@@ -142,88 +150,106 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            new Container(
-              padding: const EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
-              child: new Wrap(
-                children: <Widget>[
-                  new Container(
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.circular(2.0),
-                        border: new Border.all(
-                          color: Colors.red,
-                          width: 0.5,
-                        )
-                    ),
-                    padding: const EdgeInsets.only(left: 3.0, right: 3.0),
-                    margin: const EdgeInsets.only(right: 8.0),
-                    child: new Text(
-                      '包邮',
-                      style: new TextStyle(
-                        color: Colors.red,
-                        fontSize: 10.0,
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.circular(2.0),
-                        border: new Border.all(
-                          color: Colors.red,
-                          width: 0.5,
-                        )
-                    ),
-                    padding: const EdgeInsets.only(left: 3.0, right: 3.0),
-                    child: new Text(
-                      '99积分可减99元',
-                      style: new TextStyle(
-                        color: Colors.red,
-                        fontSize: 10.0,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            new Container(
-              padding: const EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0, bottom: 5.0),
-              child: new Row(
-                children: <Widget>[
-                  new Container(
-                    child: new Text(
-                      '￥',
-                      style: new TextStyle(
-                        color: Colors.red,
-                        fontSize: 10.0,
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    child: new Text(
-                      '198.88',
-                      style: new TextStyle(
-                        color: Colors.red,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    margin: const EdgeInsets.only(left: 8.0),
-                    child: new Text(
-                      '￥298.88',
-                      style: new TextStyle(
-                        color: Color(0xff999999),
-                        fontSize: 10.0,
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _widgetDiscount(goodsItemModal),
+            _widgetPrice(goodsItemModal),
           ],
         ),
       ),
     );
+  }
+
+  Widget _widgetPrice (GoodsItemModal goodsItemModal) {
+    int goodsPrice = goodsItemModal?.goodsPrice ?? 0;
+    int goodsDiscountPrice = goodsItemModal?.goodsDiscountPrice ?? 0;
+    return new Container(
+      padding: const EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0, bottom: 5.0),
+      child: new Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: <Widget>[
+          new Container(
+            child: new Text(
+              '￥',
+              style: new TextStyle(
+                color: Colors.red,
+                fontSize: 10.0,
+              ),
+            ),
+          ),
+          new Container(
+            child: new Text(
+              '${_formatAmount(goodsDiscountPrice)}',
+              style: new TextStyle(
+                color: Colors.red,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+          new Container(
+            margin: const EdgeInsets.only(left: 8.0),
+            child: new Text(
+              '￥${_formatAmount(goodsPrice)}',
+              style: new TextStyle(
+                color: Color(0xff999999),
+                fontSize: 10.0,
+                decoration: TextDecoration.lineThrough,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _widgetDiscount (GoodsItemModal goodsItemModal) {
+    int discountPoints = goodsItemModal?.discountPoints ?? 0;
+    return new Container(
+      padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+      child: new Wrap(
+        children: <Widget>[
+          new Container(
+            decoration: new BoxDecoration(
+                borderRadius: new BorderRadius.circular(2.0),
+                border: new Border.all(
+                  color: Colors.red,
+                  width: 0.5,
+                )
+            ),
+            padding: const EdgeInsets.only(left: 3.0, right: 3.0),
+            margin: const EdgeInsets.only(right: 8.0, top: 5.0),
+            child: new Text(
+              '包邮',
+              style: new TextStyle(
+                color: Colors.red,
+                fontSize: 10.0,
+              ),
+            ),
+          ),
+          discountPoints == 0 ? new Container() : new Container(
+            decoration: new BoxDecoration(
+                borderRadius: new BorderRadius.circular(2.0),
+                border: new Border.all(
+                  color: Colors.red,
+                  width: 0.5,
+                )
+            ),
+            padding: const EdgeInsets.only(left: 3.0, right: 3.0),
+            margin: const EdgeInsets.only(right: 8.0, top: 5.0),
+            child: new Text(
+              '$discountPoints积分可减$discountPoints元',
+              style: new TextStyle(
+                color: Colors.red,
+                fontSize: 10.0,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatAmount (int data) {
+    double amount = data / 100;
+    return amount?.toString() ?? '--';
   }
 
   String _formatImage (GoodsItemModal goodsItemModal) {
