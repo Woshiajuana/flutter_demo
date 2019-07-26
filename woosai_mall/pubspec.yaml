@@ -69,6 +69,7 @@ flutter:
     - assets/images/address-icon.png
     - assets/images/launch_image.png
     - assets/images/welcome.png
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

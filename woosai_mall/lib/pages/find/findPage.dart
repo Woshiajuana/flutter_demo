@@ -31,7 +31,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         print('我监听到底部了!');
-        if (_lastPage != null && _pageNum > _lastPage) return;
+        if (_lastPage != null && _pageNum >= _lastPage) return;
         _pageNum++;
         _reqGoodsList();
       }
@@ -128,7 +128,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
                 ),
                 child: new Center(
                   child: new FadeInImage.assetNetwork(
-                    placeholder: '',
+                    placeholder: Application.config.style.srcGoodsNull,
                     image: _formatImage(goodsItemModal),
                     fit: BoxFit.fill,
                   ),

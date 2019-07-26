@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
 import 'package:woosai_mall/application.dart';
 import 'package:woosai_mall/models/goodsList.modal.dart';
@@ -16,32 +15,30 @@ class ListPage extends StatefulWidget {
 
 class _ListPageState extends State<ListPage> {
 
-  RefreshController _refreshController;
+  List<GoodsItemModal> _arrData;
+  int _pageNum = 1;
+  int _lastPage;
+  bool _isLoading;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _refreshController = RefreshController(initialRefresh:true);
+    _onRefresh();
   }
 
-  void _onRefresh(){
+  Future _onRefresh () async{
     print('刷新');
-    _refreshController.refreshCompleted();
+    _pageNum = 1;
+    _reqGoodsList();
   }
 
-  void _onLoading(){
-    print('加载');
-    _refreshController.refreshCompleted();
-  }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _refreshController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,33 +46,41 @@ class _ListPageState extends State<ListPage> {
       appBar: new AppBar(
         title: new Text('商品列表'),
       ),
-      body: SmartRefresher(
-        controller: _refreshController,
-        enablePullUp: true,
-        onRefresh: _onRefresh,
-        onLoading: _onLoading,
-        child: new ListView(
-          children: <Widget>[
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-            new GoodsItem(),
-          ],
+      body: new WowView(
+        isLoading: _isLoading,
+        child: new RefreshIndicator(
+          onRefresh: () => _onRefresh(),
+          child: new ListView.builder(
+            itemCount: _arrData?.length ?? 0,
+            itemBuilder: (BuildContext context, int index) {
+              GoodsItemModal goodsItemModal = _arrData[index];
+              return new GoodsItem(data: goodsItemModal);
+            },
+          ),
         ),
       ),
     );
+  }
+
+  void _reqGoodsList () async {
+    try {
+      GoodsListModal _goodsListModal = await Application.service.goods.reqGoodsList(
+        pageNum: _pageNum,
+        pageSize: 8,
+      );
+      if (_pageNum == 1) {
+        _arrData = _goodsListModal?.list ?? [];
+      } else {
+        _arrData.addAll(_goodsListModal?.list ?? []);
+      }
+      _lastPage = _goodsListModal?.lastPage ?? 0;
+    } catch (err) {
+      Application.util.modal.toast(err);
+    } finally {
+      new Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
+        this.setState(() { _isLoading = false; });
+      });
+    }
   }
 }

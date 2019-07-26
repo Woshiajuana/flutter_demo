@@ -21,6 +21,10 @@ class Style {
     return 'assets/images/app-logo-icon-100.png';
   }
 
+  String get srcGoodsNull {
+    return 'assets/images/goods-icon-null-bg.png';
+  }
+
   IconData get iconSearch {
     return IconData(0xe7da, fontFamily: TAO_BAO_FAMILY);
   }

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
+import 'package:woosai_mall/application.dart';
 
 class HotGoodsView extends StatefulWidget {
 
@@ -85,7 +86,7 @@ class _HotGoodsViewState extends State<HotGoodsView> {
             child: new FadeInImage.assetNetwork(
               width: 164.0,
               height: 120.0,
-              placeholder: '',
+              placeholder: Application.config.style.srcGoodsNull,
               image: _goodsImage(goodsItemModal),
               fit: BoxFit.fill,
             ),
