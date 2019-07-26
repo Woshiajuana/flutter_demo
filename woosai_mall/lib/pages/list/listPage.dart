@@ -15,6 +15,7 @@ class ListPage extends StatefulWidget {
 
 class _ListPageState extends State<ListPage> {
 
+  ScrollController _scrollController;
   List<GoodsItemModal> _arrData;
   int _pageNum = 1;
   int _lastPage;
@@ -24,10 +25,21 @@ class _ListPageState extends State<ListPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _onRefresh();
+    _handleRefresh();
+    _scrollController = new ScrollController();
+    // 首次拉取数据
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        print('我监听到底部了!');
+        if (_lastPage != null && _pageNum >= _lastPage) return;
+        _pageNum++;
+        _reqGoodsList();
+      }
+    });
   }
 
-  Future _onRefresh () async{
+  Future _handleRefresh () async{
     print('刷新');
     _pageNum = 1;
     _reqGoodsList();
@@ -36,6 +48,7 @@ class _ListPageState extends State<ListPage> {
 
   @override
   void dispose() {
+    _scrollController.dispose();
     // TODO: implement dispose
     super.dispose();
   }
@@ -49,14 +62,44 @@ class _ListPageState extends State<ListPage> {
       body: new WowView(
         isLoading: _isLoading,
         child: new RefreshIndicator(
-          onRefresh: () => _onRefresh(),
+          onRefresh: () => _handleRefresh(),
           child: new ListView.builder(
-            itemCount: _arrData?.length ?? 0,
-            itemBuilder: (BuildContext context, int index) {
-              GoodsItemModal goodsItemModal = _arrData[index];
-              return new GoodsItem(data: goodsItemModal);
-            },
+            controller: _scrollController,
+            itemCount: _arrData == null ? 0 : _arrData.length + 1,
+            itemBuilder: _widgetItemBuilder,
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _widgetItemBuilder (BuildContext context, int index) {
+    GoodsItemModal goodsItemModal = _arrData[index];
+    if (index < _arrData.length) {
+      return new GoodsItem(data: goodsItemModal);
+    }
+    return new Container(
+      height: 100.0,
+      child: new Center(
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Container(
+              width: 20.0,
+              height: 20.0,
+              margin: const EdgeInsets.only(right: 10.0),
+              child: new CircularProgressIndicator(
+                strokeWidth: 2.0,
+              ),
+            ),
+            new Text(
+              '加载中...',
+              style: new TextStyle(
+                color: Colors.blue,
+                fontSize: 12.0,
+              ),
+            ),
+          ],
         ),
       ),
     );
