@@ -82,8 +82,17 @@ class Router {
     return _routes;
   }
 
-  push (BuildContext context, path, { params }) {
-    return navigatorRouter(context, config[path]['handle']());
+  static Widget routerWidget (String routeName, {Map params}) {
+    if (routeName == 'list') {
+      return new ListPage();
+    }
+    return null;
+  }
+
+  push (BuildContext context, routeName, { params }) {
+
+//    return navigatorRouter(context, config[routeName]['handle']());
+    return navigatorRouter(context, routerWidget(routeName));
   }
 
   replace (BuildContext context, String routeName) {

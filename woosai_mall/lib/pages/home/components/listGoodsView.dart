@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
+import 'package:woosai_mall/application.dart';
 
 class ListGoodsView extends StatefulWidget {
 
@@ -48,7 +49,8 @@ class _ListGoodsViewState extends State<ListGoodsView> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       new GestureDetector(
-                        onTap: () => RouterUtil.pushList(context),
+//                        onTap: () => RouterUtil.pushList(context),
+                        onTap: () => Application.router.push(context, 'list'),
                         child: new Text(
                           '更多>>',
                           style: TextStyle(
