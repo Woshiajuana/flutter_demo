@@ -5,8 +5,9 @@ import 'package:woosai_mall/pages/details/components/operationView.dart';
 import 'package:woosai_mall/pages/details/components/baseInfoView.dart';
 import 'package:woosai_mall/pages/details/components/specsGroupView.dart';
 import 'package:woosai_mall/pages/details/components/detailsGroupView.dart';
-import 'package:woosai_mall/common/model/goodsDetailsModal.dart';
-import 'package:woosai_mall/common/utils/apiUtil.dart';
+import 'package:woosai_mall/models/goodsDetails.modal.dart';
+import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/components/wowView.dart';
 
 class DetailsPage extends StatefulWidget {
 
@@ -23,7 +24,8 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
 
-  GoodsDetailsModal goodsDetailsModal;
+  GoodsDetailsModal _goodsDetailsModal;
+  bool _isLoading;
 
   @override
   void initState() {
@@ -39,24 +41,27 @@ class _DetailsPageState extends State<DetailsPage> {
       appBar: new AppBar(
         title: new Text('商品详情'),
       ),
-      body: new RefreshIndicator(
-        onRefresh: _handleRefresh,
-        child: new Container(
-          color: Color(0xfff2f2f2),
-          child: new Column(
-            children: <Widget>[
-              new Expanded(
-                child: new ListView(
-                  children: <Widget>[
-                    new CarouselView(data: goodsDetailsModal?.fileList),
-                    new BaseInfoView(),
-                    new SpecsGroupView(),
-                    new DetailsGroupView(),
-                  ],
+      body: new WowView(
+        isLoading: _isLoading,
+        child: new RefreshIndicator(
+          onRefresh: _handleRefresh,
+          child: new Container(
+            color: Color(0xfff2f2f2),
+            child: new Column(
+              children: <Widget>[
+                new Expanded(
+                  child: new ListView(
+                    children: <Widget>[
+                      new CarouselView(data: _goodsDetailsModal?.fileList),
+                      new BaseInfoView(data: _goodsDetailsModal?.goodsInfo),
+                      new SpecsGroupView(),
+                      new DetailsGroupView(),
+                    ],
+                  ),
                 ),
-              ),
-              new OperationView(),
-            ],
+                new OperationView(),
+              ],
+            ),
           ),
         ),
       ),
@@ -64,12 +69,13 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Future<void>  _handleRefresh () async {
-    if (!mounted) return;
-    goodsDetailsModal = await ApiUtil.reqGoodsDetails(widget.goodsId);
-    this.setState(() {
-      goodsDetailsModal = goodsDetailsModal;
-    });
-    print('goodsDetailsModal => $goodsDetailsModal');
+    try {
+      _goodsDetailsModal = await Application.service.goods.reqGoodsDetails(goodsId: widget.goodsId);
+    } catch (err) {
+      Application.util.modal.toast(err);
+    } finally {
+      this.setState(() {_isLoading = false;});
+    }
   }
 
 }

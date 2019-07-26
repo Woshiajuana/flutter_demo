@@ -20,25 +20,28 @@ class _OperationViewState extends State<OperationView> {
             height: 50.0,
             width: 125.0,
             color: Color(0xffc1c1c1),
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                new Text('客服',
-                  style: new TextStyle(
-                    color: Color(0xffffffff),
-                    fontSize: 16.0,
+            child: new FlatButton(
+              onPressed: () {},
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  new Text('客服',
+                    style: new TextStyle(
+                      color: Color(0xffffffff),
+                      fontSize: 16.0,
+                    ),
                   ),
-                ),
-              ],
+                ]
+              ),
             ),
           ),
           new Expanded(
-            child: new InkWell(
-              onTap: () => RouterUtil.pushConfirm(context),
-              child: new Container(
-                height: 50.0,
-                color: Color(0xffef2c2c),
+            child: new Container(
+              height: 50.0,
+              color: Color(0xffef2c2c),
+              child: new FlatButton(
+                onPressed: () {},
                 child: new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

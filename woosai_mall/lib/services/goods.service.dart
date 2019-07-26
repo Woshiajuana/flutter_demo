@@ -2,6 +2,7 @@
 import 'package:woosai_mall/application.dart';
 import 'package:woosai_mall/models/hotRecommend.model.dart';
 import 'package:woosai_mall/models/goodsList.modal.dart';
+import 'package:woosai_mall/models/goodsDetails.modal.dart';
 
 class Goods {
 
@@ -28,6 +29,15 @@ class Goods {
     var respBody = await Application.util.http.post(url, params: params);
     GoodsListModal goodsListModal = GoodsListModal.fromJson(respBody);
     return goodsListModal;
+  }
+
+  // 获取商品详情
+  Future reqGoodsDetails ({goodsId}) async {
+    String url = Application.config.api.reqGoodsDetails;
+    Map params = {'goodsId': goodsId};
+    var respBody = await Application.util.http.post(url, params: params);
+    GoodsDetailsModal goodsDetailsModal = GoodsDetailsModal.fromJson(respBody);
+    return goodsDetailsModal;
   }
 
 }
