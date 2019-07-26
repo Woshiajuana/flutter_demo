@@ -30,7 +30,7 @@ class _ListPageState extends State<ListPage> {
     // 首次拉取数据
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
-          _scrollController.position.maxScrollExtent - 50) {
+          _scrollController.position.maxScrollExtent) {
         print('我监听到底部了!');
         if (_lastPage != null && _pageNum >= _lastPage) return;
         _pageNum++;
