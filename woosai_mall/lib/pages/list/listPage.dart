@@ -30,7 +30,7 @@ class _ListPageState extends State<ListPage> {
     // 首次拉取数据
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
-          _scrollController.position.maxScrollExtent) {
+          _scrollController.position.maxScrollExtent - 50) {
         print('我监听到底部了!');
         if (_lastPage != null && _pageNum >= _lastPage) return;
         _pageNum++;
@@ -80,20 +80,38 @@ class _ListPageState extends State<ListPage> {
     }
     if (_pageNum >= _lastPage) {
       return new Container(
-        height: 100.0,
+        height: 50.0,
         child: new Center(
-          child: new Text(
-            '没有更多了',
-            style: new TextStyle(
-              color: Color(0xff999999),
-              fontSize: 12.0,
-            ),
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Container(
+                color: Color(0xffdddddd),
+                width: 80.0,
+                height: 0.5,
+              ),
+              new Container(
+                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: new Text(
+                  '没有更多了',
+                  style: new TextStyle(
+                    color: Color(0xff999999),
+                    fontSize: 12.0,
+                  ),
+                ),
+              ),
+              new Container(
+                color: Color(0xffdddddd),
+                width: 80.0,
+                height: 0.5,
+              ),
+            ],
           ),
         ),
       );
     }
     return new Container(
-      height: 100.0,
+      height: 50.0,
       child: new Center(
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
