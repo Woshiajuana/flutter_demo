@@ -82,8 +82,11 @@ class _HotGoodsViewState extends State<HotGoodsView> {
           ),
           child: new ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
-            child: new Image.network(
-              _goodsImage(goodsItemModal),
+            child: new FadeInImage.assetNetwork(
+              width: 164.0,
+              height: 120.0,
+              placeholder: '',
+              image: _goodsImage(goodsItemModal),
               fit: BoxFit.fill,
             ),
           ),

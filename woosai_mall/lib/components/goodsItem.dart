@@ -38,8 +38,11 @@ class _GoodsItemState extends State<GoodsItem> {
               ),
               child: new ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: new Image.network(
-                  _goodsImage(widget.data),
+                child: new FadeInImage.assetNetwork(
+                  width: 100.0,
+                  height: 100.0,
+                  placeholder: '',
+                  image: _goodsImage(widget.data),
                   fit: BoxFit.fill,
                 ),
               ),

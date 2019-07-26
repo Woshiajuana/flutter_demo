@@ -29,7 +29,7 @@ class _HeaderGroupState extends State<HeaderGroup> {
             ),
           ),
           new Text(
-            '您好，',
+            '您好，${MediaQuery.of(context).size.width}',
             style: new TextStyle(
               fontSize: 28.0,
               color: Color(0xff333333),

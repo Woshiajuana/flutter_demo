@@ -15,22 +15,25 @@ class FindPage extends StatefulWidget {
 
 class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin { // 要点1
 
-  ScrollController _scrollController = new ScrollController();
-  GoodsListModal _goodsListModal;
+  ScrollController _scrollController;
+  List<GoodsItemModal> _arrData;
   int _pageNum = 1;
+  int _lastPage;
   bool _isLoading;
 
   @override
   void initState() {
     super.initState();
     _refreshData();
+    _scrollController = new ScrollController();
     // 首次拉取数据
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         print('我监听到底部了!');
+        if (_lastPage != null && _pageNum > _lastPage) return;
         _pageNum++;
-        
+        _reqGoodsList();
       }
     });
   }
@@ -49,6 +52,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
   Widget build(BuildContext context) {
     super.build(context); // 要点3
     return Scaffold(
+      backgroundColor: Color(0xfff2f2f2),
       appBar: new AppBar(
         title: new Text('商品列表'),
       ),
@@ -56,19 +60,16 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
         isLoading: _isLoading,
         child: new RefreshIndicator(
           onRefresh: _refreshData,
-          child: new Container(
-            color: Color(0xfff2f2f2),
-            child: StaggeredGridView.countBuilder(
-              padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-              controller: _scrollController,
-              itemCount: _goodsListModal?.list?.length ?? 0,
-              primary: false,
-              crossAxisCount: 4,
-              mainAxisSpacing: 8.0,
-              crossAxisSpacing: 8.0,
-              itemBuilder: (context, index) =>_widgetGoodsItem(index),
-              staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-            ),
+          child: StaggeredGridView.countBuilder(
+            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+            controller: _scrollController,
+            itemCount: _arrData?.length ?? 0,
+            primary: false,
+            crossAxisCount: 4,
+            mainAxisSpacing: 8.0,
+            crossAxisSpacing: 8.0,
+            itemBuilder: (context, index) =>_widgetGoodsItem(index),
+            staggeredTileBuilder: (index) => StaggeredTile.fit(2),
           ),
         ),
       ),
@@ -83,9 +84,16 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
 
   Future _reqGoodsList () async {
     try {
-      _goodsListModal = await Application.service.goods.reqGoodsList(
+      GoodsListModal _goodsListModal = await Application.service.goods.reqGoodsList(
         pageNum: _pageNum,
+        pageSize: 8,
       );
+      if (_pageNum == 1) {
+        _arrData = _goodsListModal?.list ?? [];
+      } else {
+        _arrData.addAll(_goodsListModal?.list ?? []);
+      }
+      _lastPage = _goodsListModal?.lastPage ?? 0;
     } catch (err) {
       Application.util.modal.toast(err);
     } finally {
@@ -97,17 +105,17 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
   }
 
   Widget _widgetGoodsItem (index) {
-    GoodsItemModal goodsItemModal = _goodsListModal.list[index];
+    GoodsItemModal goodsItemModal = _arrData[index];
     return new InkWell(
       onTap: () => RouterUtil.pushDetails(context),
       child: new Container(
         decoration: new BoxDecoration(
-            color: Colors.white,
-            borderRadius: new BorderRadius.circular(5.0),
-            border: new Border.all(
-              color: Color(0xffdddddd),
-              width: 0.5,
-            )
+          color: Colors.white,
+          borderRadius: new BorderRadius.circular(5.0),
+          border: new Border.all(
+            color: Color(0xffdddddd),
+            width: 0.5,
+          )
         ),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,8 +127,9 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
                   topRight: Radius.circular(5.0),
                 ),
                 child: new Center(
-                  child: new Image.network(
-                    _formatImage(goodsItemModal),
+                  child: new FadeInImage.assetNetwork(
+                    placeholder: '',
+                    image: _formatImage(goodsItemModal),
                     fit: BoxFit.fill,
                   ),
                 ),
