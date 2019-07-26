@@ -97,22 +97,24 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Container(
-              height: index * 10.0 + 50.0,
+//              height: index * 10.0 + 50.0,
               child: new ClipRRect(
                 borderRadius: new BorderRadius.only(
                   topLeft: Radius.circular(5.0),
                   topRight: Radius.circular(5.0),
                 ),
-                child: new Image.network(
-                  'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-                  fit: BoxFit.fill,
+                child: new Center(
+                  child: new Image.network(
+                    _formatImage(goodsItemModal),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
             new Container(
               padding: const EdgeInsets.only(top: 3.0, left: 5.0, right: 5.0),
               child: new Text(
-                'AOC 25英寸大屏 4K高清广角AOC 25英寸大屏 4K高清 IPS广角',
+                goodsItemModal?.goodsName ?? '',
                 style: new TextStyle(
                   color: Color(0xff333333),
                   fontSize: 14.0,
@@ -124,7 +126,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
             new Container(
               padding: const EdgeInsets.only(top: 3.0,left: 5.0, right: 5.0, bottom: 3.0),
               child: new Text(
-                'AOC 25英寸大屏 4K高清广角AOC 25英寸大屏 4K高清 IPS广角',
+                goodsItemModal?.goodsDetails ?? '',
                 style: new TextStyle(
                   color: Color(0xff999999),
                   fontSize: 10.0,
@@ -215,5 +217,11 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
         ),
       ),
     );
+  }
+
+  String _formatImage (GoodsItemModal goodsItemModal) {
+    if (goodsItemModal == null) return '';
+    String thumbnailPath = goodsItemModal.thumbnailPath;
+    return thumbnailPath.split(',')[0];
   }
 }

@@ -16,19 +16,10 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
 
   @override
-  void didChangeDependencies() async {
+  void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    String userInfoJsonKey = Application.config.store.userInfoJson;
-    var userInfoJson = await Application.util.store.get(userInfoJsonKey);
-    print('userInfoJson => $userInfoJson');
-    if (userInfoJson == null) {
-      return Application.router.replace(context, 'login');
-    }
-    UserInfo userInfo = UserInfo.fromJson(userInfoJson);
-    Store<AppState> store = StoreProvider.of(context);
-    store.dispatch(new UpdateUserInfoAction(userInfo));
-    Application.router.replace(context, 'app');
+    _judgeUserStatus();
   }
 
   @override
@@ -40,5 +31,18 @@ class _WelcomePageState extends State<WelcomePage> {
         fit: BoxFit.fill,
         image: new AssetImage('assets/images/launch_image.png')),
     );
+  }
+
+  void _judgeUserStatus () async {
+    String userInfoJsonKey = Application.config.store.userInfoJson;
+    var userInfoJson = await Application.util.store.get(userInfoJsonKey);
+    print('userInfoJson => $userInfoJson');
+    if (userInfoJson == null) {
+      return Application.router.replace(context, 'login');
+    }
+    UserInfo userInfo = UserInfo.fromJson(userInfoJson);
+    Store<AppState> store = StoreProvider.of(context);
+    store.dispatch(new UpdateUserInfoAction(userInfo));
+    Application.router.replace(context, 'app');
   }
 }

@@ -82,6 +82,7 @@ class _HomePageState extends State<HomePage> {
       Application.util.modal.toast(err);
     } finally {
       new Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
         this.setState(() { _isLoading = false; });
       });
     }
