@@ -8,6 +8,7 @@ import 'package:woosai_mall/pages/details/components/detailsGroupView.dart';
 import 'package:woosai_mall/models/goodsDetails.modal.dart';
 import 'package:woosai_mall/application.dart';
 import 'package:woosai_mall/components/wowView.dart';
+import 'package:woosai_mall/common/utils/routerUtil.dart';
 
 class DetailsPage extends StatefulWidget {
 
@@ -60,13 +61,21 @@ class _DetailsPageState extends State<DetailsPage> {
                     ],
                   ),
                 ),
-                new OperationView(data: _goodsDetailsModal?.goodsInfo, customerPhone: _goodsDetailsModal?.customerPhone),
+                new OperationView(
+                  data: _goodsDetailsModal?.goodsInfo,
+                  customerPhone: _goodsDetailsModal?.customerPhone,
+                  onJump: () => _handleJump(),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _handleJump () {
+    RouterUtil.pushConfirm(context, goodsId: widget.goodsId, specs: _specs);
   }
 
   Future<void>  _handleRefresh () async {

@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressItem extends StatefulWidget {

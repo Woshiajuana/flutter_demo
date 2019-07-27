@@ -91,7 +91,8 @@ class Address {
   }) async {
     String url = Application.config.api.reqAddressDetails;
     Map params = {'addressId': addressId};
-    AddressItemModal addressItemModal = await Application.util.http.post(url, params: params);
+    var respBody = await Application.util.http.post(url, params: params);
+    AddressItemModal addressItemModal = AddressItemModal.fromJson(respBody);
     return addressItemModal;
   }
 

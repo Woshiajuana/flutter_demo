@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
 
 class OperationView extends StatefulWidget {
@@ -9,10 +8,12 @@ class OperationView extends StatefulWidget {
     Key key,
     this.data,
     this.customerPhone,
+    this.onJump,
   }) : super(key: key);
 
   final GoodsItemModal data;
   final String customerPhone;
+  final dynamic onJump;
 
 
   @override
@@ -52,7 +53,7 @@ class _OperationViewState extends State<OperationView> {
               height: 50.0,
               color: (widget?.data?.goodsStockNum ?? -1) <= 0 ? Color(0xff999999) : Color(0xffef2c2c),
               child: new FlatButton(
-                onPressed: () => RouterUtil.pushConfirm(context),
+                onPressed: () => widget?.onJump(),
                 child: new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

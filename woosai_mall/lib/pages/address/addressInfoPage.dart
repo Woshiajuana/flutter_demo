@@ -33,11 +33,18 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
     // TODO: implement initState
     super.initState();
     if (widget?.addressId != null) _reqAddressDetails();
-    else {10
-      _contactNameContainer = new TextEditingController(text: _contactName);
-      _contactPhoneContainer = new TextEditingController(text: _contactPhone);
-      _contactAddressContainer = new TextEditingController(text: _contactAddress);
-    }
+    _contactNameContainer = new TextEditingController(text: _contactName);
+    _contactPhoneContainer = new TextEditingController(text: _contactPhone);
+    _contactAddressContainer = new TextEditingController(text: _contactAddress);
+  }
+
+  @override
+  void dispose() {
+    _contactNameContainer.dispose();
+    _contactPhoneContainer.dispose();
+    _contactAddressContainer.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -46,7 +53,7 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(
-          '收货地址详情',
+          widget?.addressId == null ? '新增地址' : '编辑地址',
         ),
       ),
       body: new Container(
@@ -180,9 +187,6 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
   }
 
   void _handleSubmit () async {
-    print('_contactName => $_contactName');
-    print('_contactPhone => $_contactPhone');
-    print('_contactAddress => $_contactAddress');
     if (_contactName == '' || _contactAddress == '' || _city == ''
         || _county == '' || _province == '' || _contactPhone == '') {
       Application.util.modal.toast('请把收货地址填写完整');
@@ -209,7 +213,7 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
           contactPhone: _contactPhone,
         );
       }
-      Application.util.modal.toast('添加成功');
+      Application.util.modal.toast(widget?.addressId == null ? '添加成功' : '编辑成功');
       Application.router.pop(context, params: true);
     } catch (err) {
       Application.util.modal.toast(err);

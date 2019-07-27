@@ -99,7 +99,7 @@ class _AddressPageState extends State<AddressPage> {
     );
     if (result != true) return;
     try {
-      Application.service.address.doAddressDelete(
+      await Application.service.address.doAddressDelete(
         addressId: addressItemModal?.id?.toString(),
       );
       Application.util.modal.toast('删除成功');
@@ -120,7 +120,7 @@ class _AddressPageState extends State<AddressPage> {
       return;
     }
     try {
-      Application.service.address.doAddressSetDefault(
+      await Application.service.address.doAddressSetDefault(
         addressId: addressItemModal?.id?.toString(),
       );
       Application.util.modal.toast('设置成功');

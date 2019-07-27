@@ -27,4 +27,7 @@ class User {
     return respBody;
   }
 
+  // 获取用户积分
+
+
 }

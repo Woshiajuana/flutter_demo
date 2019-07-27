@@ -27,8 +27,8 @@ class RouterUtil {
     navigatorRouter(context, new AddressPage());
   }
 
-  static pushConfirm (BuildContext context) {
-    navigatorRouter(context, new ConfirmPage());
+  static pushConfirm (BuildContext context, {int goodsId, String specs}) {
+    navigatorRouter(context, new ConfirmPage(goodsId: goodsId, specs: specs??''));
   }
 
   static pushList (BuildContext context) {
