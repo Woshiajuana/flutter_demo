@@ -1,8 +1,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressItem extends StatefulWidget {
+
+  const AddressItem({
+    this.data,
+    this.onDefault,
+    this.onSelect,
+    this.onDelete,
+  });
+
+  final AddressItemModal data;
+  final dynamic onDefault;
+  final dynamic onSelect;
+  final dynamic onDelete;
 
   @override
   _AddressItemState createState() => new _AddressItemState();
@@ -26,41 +39,49 @@ class _AddressItemState extends State<AddressItem> {
       ),
       child: new Column(
         children: <Widget>[
-          new Row(
-            children: <Widget>[
-              new Container(
-                child: new Text(
-                  '陈先生',
+          new FlatButton(
+            onPressed: () => widget?.onSelect(),
+            padding: const EdgeInsets.all(0),
+            child: new Column(
+              children: <Widget>[
+                new Row(
+                  children: <Widget>[
+                    new Container(
+                      child: new Text(
+                        widget?.data?.contactName ?? '',
+                        style: new TextStyle(
+                          color: Color(0xff333333),
+                          fontSize: 16.0,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    new Container(
+                      margin: const EdgeInsets.only(left: 10.0),
+                      child: new Text(
+                        widget?.data?.contactPhone ?? '',
+                        style: new TextStyle(
+                          color: Color(0xff333333),
+                          fontSize: 16.0,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  ],
+                ),
+                new Text(
+                  _formatAddress(),
                   style: new TextStyle(
-                    color: Color(0xff333333),
-                    fontSize: 16.0,
+                    color: Color(0xff999999),
+                    fontSize: 13.0,
                   ),
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              new Container(
-                margin: const EdgeInsets.only(left: 10.0),
-                child: new Text(
-                  '13127590698',
-                  style: new TextStyle(
-                    color: Color(0xff333333),
-                    fontSize: 16.0,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              )
-            ],
-          ),
-          new Text(
-            '欧佩克都撒扩大撒泼的拍摄看到是扩大到怕点卡商品的卡点卡商品的卡上的盘口打破时空的阿瑟东上的盘口打破时空的阿瑟东',
-            style: new TextStyle(
-              color: Color(0xff999999),
-              fontSize: 13.0,
+              ],
             ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
           ),
           new Container(
             margin: const EdgeInsets.only(top: 10.0),
@@ -80,13 +101,16 @@ class _AddressItemState extends State<AddressItem> {
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new Text(
-                          '设为默认',
-                          style: new TextStyle(
-                            color: Color(0xff333333),
-                            fontSize: 14.0,
+                        new InkWell(
+                          onTap: () => widget?.onDefault(),
+                          child: new Text(
+                            (widget?.data?.isDefault ?? '') == 'normal' ? '已是默认' : '设为默认',
+                            style: new TextStyle(
+                              color: (widget?.data?.isDefault ?? '') == 'normal' ? Color(0xff999999) : Color(0xff333333),
+                              fontSize: 14.0,
+                            ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -94,7 +118,7 @@ class _AddressItemState extends State<AddressItem> {
                 new Expanded(
                   flex: 1,
                   child: new InkWell(
-                    onTap: () => RouterUtil.pushAddressInfo(context),
+                    onTap: () => RouterUtil.pushAddressInfo(context, addressId: widget?.data?.id?.toString()),
                     child: new Container(
                       decoration: new BoxDecoration(
                           border: new Border(
@@ -121,18 +145,21 @@ class _AddressItemState extends State<AddressItem> {
                 ),
                 new Expanded(
                   flex: 1,
-                  child: new Container(
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Text(
-                          '删除地址',
-                          style: new TextStyle(
-                            color: Color(0xffef2c2c),
-                            fontSize: 14.0,
-                          ),
-                        )
-                      ],
+                  child: new InkWell(
+                    onTap: () => widget?.onDelete(),
+                    child: new Container(
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new Text(
+                            '删除地址',
+                            style: new TextStyle(
+                              color: Color(0xffef2c2c),
+                              fontSize: 14.0,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -143,4 +170,10 @@ class _AddressItemState extends State<AddressItem> {
       ),
     );
   }
+
+  String _formatAddress () {
+    if (widget.data == null) return '';
+    return '${widget.data.province}-${widget.data.city}-${widget.data.county}-${widget.data.contactAddress}';
+  }
+
 }

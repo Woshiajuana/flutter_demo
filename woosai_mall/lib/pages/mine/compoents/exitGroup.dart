@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/application.dart';
 import 'package:woosai_mall/components/confirmDialog.dart';
 

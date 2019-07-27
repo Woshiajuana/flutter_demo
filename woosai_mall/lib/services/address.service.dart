@@ -67,4 +67,22 @@ class Address {
     await Application.util.http.post(url, params: params);
   }
 
+  // 修改地址
+  Future doAddressDelete ({
+    String addressId,
+  }) async {
+    String url = Application.config.api.doAddressDelete;
+    Map params = {'addressId': addressId};
+    await Application.util.http.post(url, params: params);
+  }
+
+  // 设为默认地址
+  Future doAddressSetDefault ({
+    String addressId,
+  }) async {
+    String url = Application.config.api.doAddressSetDefault;
+    Map params = {'addressId': addressId};
+    await Application.util.http.post(url, params: params);
+  }
+
 }

@@ -4,6 +4,7 @@ import 'package:woosai_mall/pages/address/components/addressItem.dart';
 import 'package:woosai_mall/application.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/components/confirmDialog.dart';
 
 class AddressPage extends StatefulWidget {
 
@@ -47,15 +48,26 @@ class _AddressPageState extends State<AddressPage> {
         child: new RefreshIndicator(
           onRefresh: () => _handleRefresh(),
           child: new ListView(
-            children: <Widget>[
-              new AddressItem(),
-              new AddressItem(),
-              new AddressItem(),
-            ],
+            children: _widgetAddressGroup(),
           ),
         ),
       ),
     );
+  }
+
+  List<Widget> _widgetAddressGroup () {
+    List<Widget> data = [];
+    if (_arrData != null) {
+      _arrData.forEach((item) {
+        data.add(new AddressItem(
+          data: item,
+          onSelect: () => _handleSelect(item),
+          onDelete: () => _handleDelete(item),
+          onDefault: () => _handleDefault(item),
+        ));
+      });
+    }
+    return data;
   }
 
   Future _handleRefresh () async {
@@ -65,6 +77,49 @@ class _AddressPageState extends State<AddressPage> {
       Application.util.modal.toast(err);
     } finally {
       this.setState(() {});
+    }
+  }
+
+  Future _handleDelete (AddressItemModal addressItemModal) async {
+    var result = await showDialog(
+      context: context,
+      builder: (BuildContext buildContext) {
+        return new ConfirmDialog(
+          content: '您确定要删除该地址吗？',
+        );
+      },
+    );
+    if (result != true) return;
+    try {
+      Application.service.address.doAddressDelete(
+        addressId: addressItemModal?.id?.toString(),
+      );
+      Application.util.modal.toast('删除成功');
+    } catch (err) {
+      Application.util.modal.toast(err);
+    } finally {
+      _handleRefresh();
+    }
+  }
+
+  Future _handleSelect (AddressItemModal addressItemModal) async {
+    Application.router.pop(context, params: addressItemModal);
+  }
+
+  Future _handleDefault (AddressItemModal addressItemModal) async {
+    if (addressItemModal.isDefault == 'normal') {
+      Application.util.modal.toast('该地址已是默认地址');
+      return;
+    }
+    try {
+      Application.service.address.doAddressSetDefault(
+        addressId: addressItemModal?.id?.toString(),
+      );
+      Application.util.modal.toast('设置成功');
+    } catch (err) {
+      Application.util.modal.toast(err);
+    } finally {
+      _handleRefresh();
     }
   }
 }

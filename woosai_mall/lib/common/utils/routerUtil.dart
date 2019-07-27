@@ -19,8 +19,8 @@ class RouterUtil {
     Navigator.pushReplacementNamed(context, LoginPage.sName);
   }
 
-  static pushAddressInfo (BuildContext context) {
-    navigatorRouter(context, new AddressInfoPage());
+  static pushAddressInfo (BuildContext context, {addressId}) {
+    navigatorRouter(context, new AddressInfoPage(addressId: addressId));
   }
 
   static pushAddress (BuildContext context) {

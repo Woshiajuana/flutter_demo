@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/components/goodsItem.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
 import 'package:woosai_mall/application.dart';
 
