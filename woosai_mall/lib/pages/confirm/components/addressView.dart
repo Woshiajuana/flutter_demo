@@ -2,8 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/style/wowStyle.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressView extends StatefulWidget {
+
+  const AddressView({
+    Key key,
+    this.data,
+  }) : super(key: key);
+
+
+  final AddressItemModal data;
 
   @override
   _AddressViewState createState() => new _AddressViewState();

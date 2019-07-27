@@ -5,6 +5,7 @@ import 'package:woosai_mall/pages/confirm/components/goodsView.dart';
 import 'package:woosai_mall/pages/confirm/components/previewGroupView.dart';
 import 'package:woosai_mall/pages/confirm/components/operationGroupView.dart';
 import 'package:woosai_mall/models/goodsDetails.modal.dart';
+import 'package:woosai_mall/models/addressItem.model.dart';
 import 'package:woosai_mall/application.dart';
 
 class ConfirmPage extends StatefulWidget {
@@ -26,12 +27,14 @@ class ConfirmPage extends StatefulWidget {
 class _ConfirmPageState extends State<ConfirmPage> {
 
   GoodsDetailsModal _goodsDetailsModal;
+  AddressItemModal _addressItemModal;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _handleRefresh();
+    _reqGoodsDetails();
+    _reqAddressList();
   }
 
   @override
@@ -46,8 +49,11 @@ class _ConfirmPageState extends State<ConfirmPage> {
       body: new Container(
         child: new Column(
           children: <Widget>[
-            new AddressView(),
-            new GoodsView(),
+            new AddressView(data: _addressItemModal),
+            new GoodsView(
+              data: _goodsDetailsModal?.goodsInfo,
+              list: _goodsDetailsModal?.fileList,
+            ),
             new Expanded(
               flex: 1,
               child: new PreviewGroupView(),
@@ -59,9 +65,24 @@ class _ConfirmPageState extends State<ConfirmPage> {
     );
   }
 
-  Future<void>  _handleRefresh () async {
+  Future<void>  _reqGoodsDetails () async {
     try {
       _goodsDetailsModal = await Application.service.goods.reqGoodsDetails(goodsId: widget.goodsId);
+    } catch (err) {
+      Application.util.modal.toast(err);
+    } finally {
+      this.setState(() {});
+    }
+  }
+
+  Future _reqAddressList () async {
+    try {
+      List<AddressItemModal> _arrData = await Application.service.address.reqAddressList();
+      _arrData.forEach((item) {
+        if (item.isDefault == 'normal') {
+          _addressItemModal = item;
+        }
+      });
     } catch (err) {
       Application.util.modal.toast(err);
     } finally {

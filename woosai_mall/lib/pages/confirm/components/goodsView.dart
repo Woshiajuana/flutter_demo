@@ -1,7 +1,18 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/models/goodsItem.modal.dart';
 
 class GoodsView extends StatefulWidget {
+
+  const GoodsView({
+    Key key,
+    this.data,
+    this.list,
+  }) : super(key: key);
+
+
+  final GoodsItemModal data;
+  final List list;
 
   @override
   _GoodsViewState createState() => new _GoodsViewState();
@@ -31,7 +42,7 @@ class _GoodsViewState extends State<GoodsView> {
       child:new ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: new Image.network(
-          'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
+          _goodsImage(),
           fit: BoxFit.fill,
         ),
       ),
@@ -49,14 +60,14 @@ class _GoodsViewState extends State<GoodsView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             new Text(
-              '商品OK破开都怕死的',
+              widget?.data?.goodsName ?? '',
               style: new TextStyle(
                 color: Color(0xff666666),
                 fontSize: 14.0
               ),
             ),
             new Text(
-              '￥60.00',
+              _formatAmount(widget?.data?.goodsDiscountPrice ?? 0),
               style: new TextStyle(
                 color: Color(0xff999999),
               ),
@@ -65,5 +76,21 @@ class _GoodsViewState extends State<GoodsView> {
         ),
       ),
     );
+  }
+
+  String _goodsImage () {
+    if (widget.data == null) return '';
+    List list = [];
+    widget.list?.forEach((item) {
+      if (item['type'] == 'thumbnail') {
+        list = item['filePath'].split(',');
+      }
+    });
+    return list[0];
+  }
+
+  String _formatAmount (int data) {
+    double amount = data / 100;
+    return '￥' + amount?.toString() ?? '--';
   }
 }
