@@ -16,6 +16,14 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
   TextEditingController _contactPhoneContainer;
   TextEditingController _contactAddressContainer;
 
+  String _contactName;
+  String _contactPhone;
+  String _contactAddress;
+  String _area = '请选择收货地址';
+  String _province;
+  String _city;
+  String _county;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -54,18 +62,22 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
           _inputItem(
             labelText: '收货人姓名',
             container: _contactNameContainer,
+            onChanged: (text) => _contactName = text,
           ),
           _inputItem(
             labelText: '收货人手机',
             container: _contactPhoneContainer,
+            onChanged: (text) => _contactPhone = text,
           ),
           _inputItem(
             labelText: '收货地址',
-            valueText: '请选择收货地址',
+            valueText: _area,
+            onTap: () => _handleSelect(),
           ),
           _inputItem(
             labelText: '地址详情',
             container: _contactAddressContainer,
+            onChanged: (text) => _contactAddress = text,
           ),
         ],
       ),
@@ -76,6 +88,8 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
     String labelText,
     String valueText,
     TextEditingController container,
+    dynamic onChanged,
+    dynamic onTap,
   }) {
     return new Container(
       height: 50.0,
@@ -100,26 +114,26 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
           ),
           new Expanded(
             flex: 1,
-            child: container == null ? new Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                new Text(
-                  valueText,
-                  style: new TextStyle(
-                    color: Color(0xff333333),
-                    fontSize: 14.0,
-                  ),
-                )
-              ],
+            child: container == null ? new InkWell(
+              onTap: onTap,
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  new Text(
+                    valueText,
+                    style: new TextStyle(
+                      color: Color(0xff333333),
+                      fontSize: 14.0,
+                    ),
+                  )
+                ],
+              ),
             ) : new TextField(
+              onChanged: onChanged,
               controller: container,
               textAlign: TextAlign.right,
               decoration: new InputDecoration(
                 border: InputBorder.none,
-              ),
-              style: new TextStyle(
-                color: Color(0xff333333),
-                fontSize: 14.0,
               ),
             ),
           ),
@@ -131,19 +145,32 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
   Widget _buttonItem () {
     return new Container(
       height: 50.0,
+      width: MediaQuery.of(context).size.width,
       color: Color(0xffef2c2c),
-      child: new Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Text(
-            '确认提交',
-            style: new TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-            ),
+      child: new FlatButton(
+        onPressed: () => _handleSubmit(),
+        child: new Text(
+          '确认提交',
+          style: new TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
           ),
-        ],
+        ),
       ),
     );
+  }
+
+  void _handleSelect () async{
+    Result result = await CityPickers.showCityPicker(
+      context: context,
+    );
+    print(result);
+
+  }
+
+  void _handleSubmit () async {
+    print('_contactName => $_contactName');
+    print('_contactPhone => $_contactPhone');
+    print('_contactAddress => $_contactAddress');
   }
 }
