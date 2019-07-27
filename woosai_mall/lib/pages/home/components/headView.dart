@@ -18,6 +18,7 @@ class _HeadViewState extends State<HeadView> {
       height: 45.0,
       padding: new EdgeInsets.only(left: 5.0, top: 0, bottom: 0,right: 5.0),
       child: new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new Image.asset(
             WOWIcons.logo100,
@@ -26,32 +27,42 @@ class _HeadViewState extends State<HeadView> {
             fit: BoxFit.fill,
             color: Colors.white,
           ),
-          new Expanded(
-            flex: 1,
-            child: new Card(
-              elevation: 0,
-              shape: new RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-              child: new Padding(
-                padding: new EdgeInsets.only(top: 5.0, bottom: 5.0),
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    new Padding(
-                      padding: new EdgeInsets.only(right: 5.0, top: 0, left: 5.0),
-                      child: new Icon(WOWIcons.search, color: Colors.grey, size: 20.0,),
-                    ),
-                    new Expanded(
-                      child: new Text(
-                        '亲~点击窝可以更快找到心仪商品哦...',
-                        style: new TextStyle(fontSize: 12.0, color: Colors.black26),
-                      ),
-                    ),
-                  ],
-                ),
+          new Container(
+            margin: const EdgeInsets.only(left: 5.0),
+            child: new Text(
+              '哇噻商城',
+              style: new TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
               ),
             ),
           )
+//          new Expanded(
+//            flex: 1,
+//            child: new Card(
+//              elevation: 0,
+//              shape: new RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
+//              child: new Padding(
+//                padding: new EdgeInsets.only(top: 5.0, bottom: 5.0),
+//                child: new Row(
+//                  mainAxisAlignment: MainAxisAlignment.center,
+//                  crossAxisAlignment: CrossAxisAlignment.center,
+//                  children: <Widget>[
+//                    new Padding(
+//                      padding: new EdgeInsets.only(right: 5.0, top: 0, left: 5.0),
+//                      child: new Icon(WOWIcons.search, color: Colors.grey, size: 20.0,),
+//                    ),
+//                    new Expanded(
+//                      child: new Text(
+//                        '亲~点击窝可以更快找到心仪商品哦...',
+//                        style: new TextStyle(fontSize: 12.0, color: Colors.black26),
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//              ),
+//            ),
+//          )
         ],
       ),
     );
