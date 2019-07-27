@@ -99,6 +99,10 @@ class Router {
     return Navigator.pushReplacementNamed(context, routeName);
   }
 
+  pop (BuildContext context, {params}) {
+    return Navigator.of(context).pop(params);
+  }
+
   // 修改路由动画
   static navigatorRouter(BuildContext context, Widget widget) {
     return Navigator.push(context, new CupertinoPageRoute(builder: (context) => widget));

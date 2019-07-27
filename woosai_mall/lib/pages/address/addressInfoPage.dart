@@ -6,6 +6,10 @@ import 'package:city_pickers/city_pickers.dart';
 
 class AddressInfoPage extends StatefulWidget {
 
+  const AddressInfoPage ({Key key, this.addressId}) : super(key: key);
+
+  final String addressId;
+
   @override
   _AddressInfoPageState createState() => new _AddressInfoPageState();
 }
@@ -16,21 +20,21 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
   TextEditingController _contactPhoneContainer;
   TextEditingController _contactAddressContainer;
 
-  String _contactName;
-  String _contactPhone;
-  String _contactAddress;
+  String _contactName = '测试';
+  String _contactPhone = '13127556666';
+  String _contactAddress = '测测试测试测试测试测试测试测试试';
   String _area = '请选择收货地址';
-  String _province;
-  String _city;
-  String _county;
+  String _province = '上海市';
+  String _city = '上海市';
+  String _county = '浦东新区';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _contactNameContainer = new TextEditingController();
-    _contactPhoneContainer = new TextEditingController();
-    _contactAddressContainer = new TextEditingController();
+    _contactNameContainer = new TextEditingController(text: _contactName);
+    _contactPhoneContainer = new TextEditingController(text: _contactPhone);
+    _contactAddressContainer = new TextEditingController(text: _contactAddress);
   }
 
   @override
@@ -164,13 +168,48 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
     Result result = await CityPickers.showCityPicker(
       context: context,
     );
-    print(result);
-
+    this.setState(() {
+      _area = '${result.provinceName}-${result.cityName}-${result.areaName}';
+      _province = result.provinceName;
+      _city = result.cityName;
+      _county = result.areaName;
+    });
   }
 
   void _handleSubmit () async {
     print('_contactName => $_contactName');
     print('_contactPhone => $_contactPhone');
     print('_contactAddress => $_contactAddress');
+    if (_contactName == '' || _contactAddress == '' || _city == ''
+        || _county == '' || _province == '' || _contactPhone == '') {
+      Application.util.modal.toast('请把收货地址填写完整');
+      return;
+    }
+    try {
+      if (widget.addressId == null) {
+        await Application.service.address.doAddressAdd(
+          contactName: _contactName,
+          contactAddress: _contactAddress,
+          city: _city,
+          county: _county,
+          province: _province,
+          contactPhone: _contactPhone,
+        );
+      } else {
+        await Application.service.address.doAddressUpdate(
+          addressId: widget.addressId,
+          contactName: _contactName,
+          contactAddress: _contactAddress,
+          city: _city,
+          county: _county,
+          province: _province,
+          contactPhone: _contactPhone,
+        );
+      }
+      Application.util.modal.toast('添加成功');
+      Application.router.pop(context, params: true);
+    } catch (err) {
+      Application.util.modal.toast(err);
+    }
   }
 }
