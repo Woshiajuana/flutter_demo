@@ -28,8 +28,14 @@ class _BaseInfoViewState extends State<BaseInfoView> {
           _amountSection(),
           _integralSection(),
           _infoTextSection(),
-          _cellTextSection(),
-          _cellTextSection(),
+          _cellTextSection(
+            labelText: '抢购时间',
+            valueText: _formatTime(),
+          ),
+          _cellTextSection(
+            labelText: '库存',
+            valueText: widget?.data?.goodsStockNum?.toString() ?? '0',
+          ),
         ],
       ),
     );
@@ -156,7 +162,7 @@ class _BaseInfoViewState extends State<BaseInfoView> {
     );
   }
 
-  Widget _cellTextSection () {
+  Widget _cellTextSection ({String labelText, String valueText}) {
     return new Container(
       height: 40.0,
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
@@ -172,7 +178,7 @@ class _BaseInfoViewState extends State<BaseInfoView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           new Text(
-            '抢购时间',
+            labelText,
             style: new TextStyle(
               color: Color(0xff666666),
               fontSize: 12.0,
@@ -181,7 +187,7 @@ class _BaseInfoViewState extends State<BaseInfoView> {
             overflow: TextOverflow.ellipsis,
           ),
           new Text(
-            '2019-06-26 12:12:12 — 2019-06-26 12:12:12',
+            valueText,
             style: new TextStyle(
               color: Color(0xffef2c2c),
               fontSize: 12.0,
@@ -197,5 +203,14 @@ class _BaseInfoViewState extends State<BaseInfoView> {
   String _formatAmount (int data) {
     double amount = data / 100;
     return amount?.toString() ?? '--';
+  }
+
+  String _formatTime () {
+    var startTime = widget?.data?.startTime;
+    var endTime = widget?.data?.endTime;
+    var now = new DateTime.now();
+    var a=now.millisecondsSinceEpoch;  //时间戳
+    print(DateTime.fromMillisecondsSinceEpoch(a));
+    return '';
   }
 }

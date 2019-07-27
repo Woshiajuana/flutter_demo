@@ -107,7 +107,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
   Widget _widgetGoodsItem (index) {
     GoodsItemModal goodsItemModal = _arrData[index];
     return new InkWell(
-      onTap: () => RouterUtil.pushDetails(context),
+      onTap: () => RouterUtil.pushDetails(context, goodsId: goodsItemModal.id),
       child: new Container(
         decoration: new BoxDecoration(
           color: Colors.white,

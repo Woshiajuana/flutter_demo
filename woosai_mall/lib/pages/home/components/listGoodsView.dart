@@ -49,7 +49,6 @@ class _ListGoodsViewState extends State<ListGoodsView> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       new GestureDetector(
-//                        onTap: () => RouterUtil.pushList(context),
                         onTap: () => Application.router.push(context, 'list'),
                         child: new Text(
                           '更多>>',
