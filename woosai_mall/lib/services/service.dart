@@ -1,6 +1,7 @@
 
 import 'package:woosai_mall/services/user.service.dart';
 import 'package:woosai_mall/services/goods.service.dart';
+import 'package:woosai_mall/services/address.service.dart';
 
 class Service {
 
@@ -18,6 +19,10 @@ class Service {
 
   Goods get goods {
     return new Goods();
+  }
+
+  Address get address {
+    return new Address();
   }
 
 }

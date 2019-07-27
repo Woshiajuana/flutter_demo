@@ -50,4 +50,12 @@ class Store {
     await _sharedPreferences.remove(key);
   }
 
+  // 删除
+  Future clear () async {
+    if (_sharedPreferences == null) {
+      await _init();
+    }
+    await _sharedPreferences.clear();
+  }
+
 }

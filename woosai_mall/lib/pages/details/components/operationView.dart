@@ -1,8 +1,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/models/goodsItem.modal.dart';
 
 class OperationView extends StatefulWidget {
+
+  const OperationView({
+    Key key,
+    this.data,
+    this.customerPhone,
+  }) : super(key: key);
+
+  final GoodsItemModal data;
+  final String customerPhone;
+
 
   @override
   _OperationViewState createState() => new _OperationViewState();
@@ -39,9 +50,9 @@ class _OperationViewState extends State<OperationView> {
           new Expanded(
             child: new Container(
               height: 50.0,
-              color: Color(0xffef2c2c),
+              color: (widget?.data?.goodsStockNum ?? -1) <= 0 ? Color(0xff999999) : Color(0xffef2c2c),
               child: new FlatButton(
-                onPressed: () {},
+                onPressed: () => RouterUtil.pushConfirm(context),
                 child: new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

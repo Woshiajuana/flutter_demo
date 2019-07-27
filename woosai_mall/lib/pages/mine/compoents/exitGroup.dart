@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/utils/routerUtil.dart';
+import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/components/confirmDialog.dart';
 
 class ExitGroup extends StatefulWidget {
 
@@ -13,7 +15,7 @@ class _ExitGroupState extends State<ExitGroup> {
   @override
   Widget build(BuildContext context) {
     return new InkWell(
-      onTap: () => RouterUtil.pushLogin(context),
+      onTap: () => _handleExitOut(),
       child: new Container(
         margin: const EdgeInsets.only(top: 50.0),
         height: 45.0,
@@ -45,4 +47,24 @@ class _ExitGroupState extends State<ExitGroup> {
       ),
     );
   }
+
+  void _handleExitOut () async {
+    var result = await showDialog(
+      context: context,
+      builder: (BuildContext buildContext) {
+        return new ConfirmDialog(
+          content: '您确定要退出此账号吗？',
+        );
+      },
+    );
+    if (result != true) return;
+    try {
+      await Application.util.store.clear();
+    } catch (err) {
+
+    } finally {
+      Application.router.replace(context, 'login');
+    }
+  }
+
 }

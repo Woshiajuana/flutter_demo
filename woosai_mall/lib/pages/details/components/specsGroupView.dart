@@ -7,10 +7,11 @@ class SpecsGroupView extends StatefulWidget {
   const SpecsGroupView({
     Key key,
     this.data,
-
+    this.onSelect,
   }) : super(key: key);
 
   final GoodsItemModal data;
+  final onSelect;
 
   @override
   _SpecsGroupViewState createState() => new _SpecsGroupViewState();
@@ -75,6 +76,7 @@ class _SpecsGroupViewState extends State<SpecsGroupView> {
     stringList.forEach((item) {
       list.add(_specsButtonSection(text: item ?? '', index: list.length));
     });
+    widget?.onSelect(stringList[_index]);
     return list;
   }
 
@@ -90,7 +92,10 @@ class _SpecsGroupViewState extends State<SpecsGroupView> {
       ),
       margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
       child: new FlatButton(
-        onPressed: () {this.setState(() { _index = index; });},
+        onPressed: () {
+          this.setState(() { _index = index; });
+          widget?.onSelect(text);
+        },
         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
         child: new Text(
           text,

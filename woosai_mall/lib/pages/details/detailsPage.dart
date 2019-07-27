@@ -26,6 +26,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   GoodsDetailsModal _goodsDetailsModal;
   bool _isLoading;
+  String _specs;
 
   @override
   void initState() {
@@ -54,12 +55,12 @@ class _DetailsPageState extends State<DetailsPage> {
                     children: <Widget>[
                       new CarouselView(data: _goodsDetailsModal?.fileList),
                       new BaseInfoView(data: _goodsDetailsModal?.goodsInfo),
-                      new SpecsGroupView(data: _goodsDetailsModal?.goodsInfo),
+                      new SpecsGroupView(data: _goodsDetailsModal?.goodsInfo, onSelect: (text) => _specs = text,),
                       new DetailsGroupView(data: _goodsDetailsModal?.fileList),
                     ],
                   ),
                 ),
-                new OperationView(),
+                new OperationView(data: _goodsDetailsModal?.goodsInfo, customerPhone: _goodsDetailsModal?.customerPhone),
               ],
             ),
           ),

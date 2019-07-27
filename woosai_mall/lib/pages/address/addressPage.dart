@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/address/components/addressItem.dart';
+import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressPage extends StatefulWidget {
 
@@ -9,6 +11,13 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _req
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,5 +49,13 @@ class _AddressPageState extends State<AddressPage> {
         ),
       ),
     );
+  }
+
+  void _req () async {
+    try {
+
+    } catch (e) {
+
+    }
   }
 }
