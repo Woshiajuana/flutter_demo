@@ -7,6 +7,7 @@ class SpecsGroupView extends StatefulWidget {
   const SpecsGroupView({
     Key key,
     this.data,
+
   }) : super(key: key);
 
   final GoodsItemModal data;
@@ -16,6 +17,8 @@ class SpecsGroupView extends StatefulWidget {
 }
 
 class _SpecsGroupViewState extends State<SpecsGroupView> {
+
+  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,34 +59,43 @@ class _SpecsGroupViewState extends State<SpecsGroupView> {
           ),
           new Container(
             child: new Wrap(
-              children: <Widget>[
-                _specsButtonSection(),
-                _specsButtonSection(),
-                _specsButtonSection(),
-                _specsButtonSection(),
-              ],
+              children: _widgetSpecsGroup(),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget _specsButtonSection () {
+  List<Widget> _widgetSpecsGroup () {
+    List<Widget> list = [];
+    String goodsNorms = widget?.data?.goodsNorms;
+    if (goodsNorms == null) return list;
+    List<String> stringList = goodsNorms.split(',');
+    stringList.forEach((item) {
+      list.add(_specsButtonSection(text: item ?? '', index: list.length));
+    });
+    return list;
+  }
+
+  Widget _specsButtonSection ({String text = '', int index}) {
     return new Container(
       height: 30.0,
-      margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
-      child: new OutlineButton(
-        onPressed: null,
-        borderSide: new BorderSide(
-          color: Color(0xff999999),
+      decoration: new BoxDecoration(
+        borderRadius: BorderRadius.circular(5.0),
+        border: new Border.all(
+          color: index == _index ? Color(0xffef2c2c) : Color(0xffdddddd),
           width: 0.5,
         ),
+      ),
+      margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
+      child: new FlatButton(
+        onPressed: () {this.setState(() { _index = index; });},
         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
         child: new Text(
-          '规格',
+          text,
           style: new TextStyle(
-            color: Color(0xff999999),
+            color: index == _index ? Color(0xffef2c2c) : Color(0xffdddddd),
             fontSize: 12.0,
           ),
         ),

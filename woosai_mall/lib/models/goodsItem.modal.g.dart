@@ -16,6 +16,7 @@ GoodsItemModal _$GoodsItemModalFromJson(Map<String, dynamic> json) {
       json['goodsDiscountPrice'] as int,
       json['discountPoints'] as int,
       json['goodsBuyArea'] as String,
+      json['goodsNorms'] as String,
       json['startTime'] as int,
       json['endTime'] as int,
       json['goodsStockNum'] as int);
@@ -31,6 +32,7 @@ Map<String, dynamic> _$GoodsItemModalToJson(GoodsItemModal instance) =>
       'goodsDiscountPrice': instance.goodsDiscountPrice,
       'discountPoints': instance.discountPoints,
       'goodsBuyArea': instance.goodsBuyArea,
+      'goodsNorms': instance.goodsNorms,
       'startTime': instance.startTime,
       'endTime': instance.endTime,
       'goodsStockNum': instance.goodsStockNum
