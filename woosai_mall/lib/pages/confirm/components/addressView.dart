@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/common/style/wowStyle.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressView extends StatefulWidget {
@@ -9,10 +8,12 @@ class AddressView extends StatefulWidget {
   const AddressView({
     Key key,
     this.data,
+    this.onTap,
   }) : super(key: key);
 
 
   final AddressItemModal data;
+  final dynamic onTap;
 
   @override
   _AddressViewState createState() => new _AddressViewState();
@@ -27,7 +28,7 @@ class _AddressViewState extends State<AddressView> {
       color: Colors.white,
       padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 12.0, bottom: 12.0),
       child: new InkWell(
-        onTap: () => RouterUtil.pushAddress(context),
+        onTap: () => widget?.onTap(),
         child: new Row(
           children: <Widget>[
             new Image.asset(
@@ -38,13 +39,21 @@ class _AddressViewState extends State<AddressView> {
             ),
             new Expanded(
               flex: 1,
-              child: new Container(
+              child: widget?.data == null ? new Container(
+                child: new Text(
+                  '请先选择收货地址',
+                  style: new TextStyle(
+                    color: Color(0xff333333),
+                    fontSize: 16.0,
+                  ),
+                ),
+              ) : new Container(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: new Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     new Text(
-                      '陈先生 13127590699',
+                      '${widget.data.contactName} ${widget.data.contactPhone}',
                       style: new TextStyle(
                         color: Color(0xff333333),
                         fontSize: 16.0,
@@ -53,7 +62,7 @@ class _AddressViewState extends State<AddressView> {
                       overflow: TextOverflow.ellipsis,
                     ),
                     new Text(
-                      '上海市 上海市 浦东新区 峨峨眉路余杭路荣德大夏眉路余杭路荣德大夏',
+                      '${widget.data.province}-${widget.data.city}-${widget.data.county}-${widget.data.contactAddress}',
                       style: new TextStyle(
                         color: Color(0xff999999),
                         fontSize: 14.0,

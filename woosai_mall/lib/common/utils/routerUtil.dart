@@ -24,19 +24,19 @@ class RouterUtil {
   }
 
   static pushAddress (BuildContext context) {
-    navigatorRouter(context, new AddressPage());
+    return navigatorRouter(context, new AddressPage());
   }
 
   static pushConfirm (BuildContext context, {int goodsId, String specs}) {
-    navigatorRouter(context, new ConfirmPage(goodsId: goodsId, specs: specs??''));
+    return navigatorRouter(context, new ConfirmPage(goodsId: goodsId, specs: specs??''));
   }
 
   static pushList (BuildContext context) {
-    navigatorRouter(context, new ListPage());
+    return navigatorRouter(context, new ListPage());
   }
 
   static pushDetails (BuildContext context, { goodsId }) {
-    navigatorRouter(context, new DetailsPage(goodsId: goodsId));
+    return navigatorRouter(context, new DetailsPage(goodsId: goodsId));
   }
 
   // 修改路由动画

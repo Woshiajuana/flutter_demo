@@ -4,6 +4,7 @@ import 'package:woosai_mall/pages/confirm/components/addressView.dart';
 import 'package:woosai_mall/pages/confirm/components/goodsView.dart';
 import 'package:woosai_mall/pages/confirm/components/previewGroupView.dart';
 import 'package:woosai_mall/pages/confirm/components/operationGroupView.dart';
+import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsDetails.modal.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 import 'package:woosai_mall/application.dart';
@@ -49,7 +50,10 @@ class _ConfirmPageState extends State<ConfirmPage> {
       body: new Container(
         child: new Column(
           children: <Widget>[
-            new AddressView(data: _addressItemModal),
+            new AddressView(
+              data: _addressItemModal,
+              onTap: () => _handleAddress(),
+            ),
             new GoodsView(
               data: _goodsDetailsModal?.goodsInfo,
               list: _goodsDetailsModal?.fileList,
@@ -63,6 +67,12 @@ class _ConfirmPageState extends State<ConfirmPage> {
         ),
       ),
     );
+  }
+
+  Future _handleAddress () async {
+    AddressItemModal result = await RouterUtil.pushAddress(context);
+    if (result == null) return;
+    this.setState(() { _addressItemModal = result; });
   }
 
   Future<void>  _reqGoodsDetails () async {
