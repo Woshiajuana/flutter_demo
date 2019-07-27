@@ -3,11 +3,28 @@ import 'package:flutter/material.dart';
 
 class DetailsGroupView extends StatefulWidget {
 
+  const DetailsGroupView({
+    Key key,
+    this.data,
+  }) : super(key: key);
+
+  final List data;
+
   @override
   _DetailsGroupViewState createState() => new _DetailsGroupViewState();
 }
 
 class _DetailsGroupViewState extends State<DetailsGroupView> {
+
+  // 声明一个list 存放image
+  List<String> imageList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _formatData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +32,7 @@ class _DetailsGroupViewState extends State<DetailsGroupView> {
     return new Container(
       margin: const EdgeInsets.only(top: 10.0),
       child: new Column(
-        children: <Widget>[
-          _titleSection(),
-          _imageGroupSection(),
-        ],
+        children: _imageGroupSection(),
       ),
     );
   }
@@ -54,47 +68,28 @@ class _DetailsGroupViewState extends State<DetailsGroupView> {
     );
   }
 
-  Widget _imageGroupSection () {
-    return new Container(
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            height: 375.0,
-            child: Image.network(
-              'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-              fit: BoxFit.fill,
-            ),
-          ),
-          new Container(
-            height: 375.0,
-            child: Image.network(
-              'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-              fit: BoxFit.fill,
-            ),
-          ),
-          new Container(
-            height: 375.0,
-            child: Image.network(
-              'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-              fit: BoxFit.fill,
-            ),
-          ),
-          new Container(
-            height: 375.0,
-            child: Image.network(
-              'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-              fit: BoxFit.fill,
-            ),
-          ),
-          new Container(
-            height: 375.0,
-            child: Image.network(
-              'http://mall-h5.dev.ptjxd.com/assets/images/index-banner.jpg',
-              fit: BoxFit.fill,
-            ),
-          ),
-        ],
-      ),
-    );
+  void _formatData () {
+    if (!mounted) return;
+    widget.data?.forEach((item) {
+      if (item['type'] == 'details') {
+        imageList = item['filePath'].split(',');
+      }
+    });
+    this.setState((){});
+  }
+
+  List<Widget> _imageGroupSection () {
+    List<Widget> list = [
+      _titleSection(),
+    ];
+    imageList.forEach((item) {
+      list.add(new Container(
+        child: Image.network(
+          item,
+          fit: BoxFit.fill,
+        ),
+      ));
+    });
+    return list;
   }
 }

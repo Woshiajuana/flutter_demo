@@ -28,10 +28,10 @@ class _BaseInfoViewState extends State<BaseInfoView> {
           _amountSection(),
           _integralSection(),
           _infoTextSection(),
-          _cellTextSection(
+          widget?.data?.goodsBuyArea == '2' ? _cellTextSection(
             labelText: '抢购时间',
             valueText: _formatTime(),
-          ),
+          ) : new Container(),
           _cellTextSection(
             labelText: '库存',
             valueText: widget?.data?.goodsStockNum?.toString() ?? '0',
@@ -208,9 +208,9 @@ class _BaseInfoViewState extends State<BaseInfoView> {
   String _formatTime () {
     var startTime = widget?.data?.startTime;
     var endTime = widget?.data?.endTime;
-    var now = new DateTime.now();
-    var a=now.millisecondsSinceEpoch;  //时间戳
-    print(DateTime.fromMillisecondsSinceEpoch(a));
-    return '';
+    if (startTime == null || endTime == null) return '';
+    var strStartTime = DateTime.fromMillisecondsSinceEpoch(startTime).toString();
+    var strEndTime = DateTime.fromMillisecondsSinceEpoch(endTime).toString();
+    return '${strStartTime.substring(0, strStartTime.length - 4)} — ${strEndTime.substring(0, strEndTime.length - 4)}';
   }
 }

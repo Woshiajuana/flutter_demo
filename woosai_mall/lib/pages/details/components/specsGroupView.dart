@@ -1,7 +1,15 @@
 
 import 'package:flutter/material.dart';
+import 'package:woosai_mall/models/goodsItem.modal.dart';
 
 class SpecsGroupView extends StatefulWidget {
+
+  const SpecsGroupView({
+    Key key,
+    this.data,
+  }) : super(key: key);
+
+  final GoodsItemModal data;
 
   @override
   _SpecsGroupViewState createState() => new _SpecsGroupViewState();

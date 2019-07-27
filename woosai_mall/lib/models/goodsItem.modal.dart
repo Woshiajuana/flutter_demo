@@ -16,6 +16,7 @@ class GoodsItemModal extends Object {
       this.goodsDiscountPrice,
       this.discountPoints,
       this.goodsBuyArea,
+      this.goodsNorms,
       this.startTime,
       this.endTime,
       this.goodsStockNum,
@@ -44,6 +45,9 @@ class GoodsItemModal extends Object {
 
   @JsonKey(name: 'goodsBuyArea')
   String goodsBuyArea;
+
+  @JsonKey(name: 'goodsNorms')
+  String goodsNorms;
 
   @JsonKey(name: 'startTime')
   int startTime;

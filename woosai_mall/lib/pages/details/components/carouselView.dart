@@ -24,7 +24,6 @@ class _CarouselViewState extends State<CarouselView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     _formatData();
   }
 
@@ -55,7 +54,6 @@ class _CarouselViewState extends State<CarouselView> {
   }
 
   void _formatData () {
-    print('11111111111111111111111111111111111111111111111');
     List<String> arrImageSrc = [];
     if (!mounted) return;
     widget.data?.forEach((item) {
@@ -63,7 +61,6 @@ class _CarouselViewState extends State<CarouselView> {
         arrImageSrc = item['filePath'].split(',');
       }
     });
-    print('arrImageSrc => $arrImageSrc');
     arrImageSrc.forEach((item) {
       imageList.add(Image.network(
         item,
