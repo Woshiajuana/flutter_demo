@@ -37,7 +37,7 @@ class _AddressPageState extends State<AddressPage> {
             margin: const EdgeInsets.only(right: 10.0),
             child: new FlatButton(
               padding: const EdgeInsets.all(0),
-              onPressed: () => RouterUtil.pushAddressInfo(context),
+              onPressed: () => _handleJump(),
               child: new Icon(Icons.add, color: Colors.white,),
             ),
           ),
@@ -64,10 +64,18 @@ class _AddressPageState extends State<AddressPage> {
           onSelect: () => _handleSelect(item),
           onDelete: () => _handleDelete(item),
           onDefault: () => _handleDefault(item),
+          onEdit: () => _handleJump(item: item),
         ));
       });
     }
     return data;
+  }
+
+  Future _handleJump ({AddressItemModal item}) async {
+    var result = await RouterUtil.pushAddressInfo(context, addressId: item?.id?.toString());
+    if (result == true) {
+      _handleRefresh();
+    }
   }
 
   Future _handleRefresh () async {

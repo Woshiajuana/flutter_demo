@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/application.dart';
 import 'package:city_pickers/city_pickers.dart';
-
+import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressInfoPage extends StatefulWidget {
 
@@ -32,9 +32,12 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _contactNameContainer = new TextEditingController(text: _contactName);
-    _contactPhoneContainer = new TextEditingController(text: _contactPhone);
-    _contactAddressContainer = new TextEditingController(text: _contactAddress);
+    if (widget?.addressId != null) _reqAddressDetails();
+    else {10
+      _contactNameContainer = new TextEditingController(text: _contactName);
+      _contactPhoneContainer = new TextEditingController(text: _contactPhone);
+      _contactAddressContainer = new TextEditingController(text: _contactAddress);
+    }
   }
 
   @override
@@ -210,6 +213,29 @@ class _AddressInfoPageState extends State<AddressInfoPage> {
       Application.router.pop(context, params: true);
     } catch (err) {
       Application.util.modal.toast(err);
+    }
+  }
+
+  void _reqAddressDetails () async {
+    if (widget?.addressId == null) return;
+    try {
+      AddressItemModal addressItemModal = await Application.service.address.reqAddressDetails(
+        addressId: widget?.addressId,
+      );
+      _area = '${addressItemModal.province}-${addressItemModal.city}-${addressItemModal.county}';
+      _province = addressItemModal.province;
+      _city = addressItemModal.city;
+      _county = addressItemModal.county;
+      _contactName = addressItemModal.contactName;
+      _contactPhone = addressItemModal.contactPhone;
+      _contactAddress = addressItemModal.contactAddress;
+      _contactNameContainer.text = _contactName;
+      _contactPhoneContainer.text = _contactPhone;
+      _contactAddressContainer.text = _contactAddress;
+    } catch (err) {
+      Application.util.modal.toast(err);
+    } finally {
+      this.setState(() {});
     }
   }
 }

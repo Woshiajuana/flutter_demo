@@ -20,7 +20,7 @@ class RouterUtil {
   }
 
   static pushAddressInfo (BuildContext context, {addressId}) {
-    navigatorRouter(context, new AddressInfoPage(addressId: addressId));
+    return navigatorRouter(context, new AddressInfoPage(addressId: addressId));
   }
 
   static pushAddress (BuildContext context) {

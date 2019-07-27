@@ -10,12 +10,14 @@ class AddressItem extends StatefulWidget {
     this.onDefault,
     this.onSelect,
     this.onDelete,
+    this.onEdit,
   });
 
   final AddressItemModal data;
   final dynamic onDefault;
   final dynamic onSelect;
   final dynamic onDelete;
+  final dynamic onEdit;
 
   @override
   _AddressItemState createState() => new _AddressItemState();
@@ -118,7 +120,7 @@ class _AddressItemState extends State<AddressItem> {
                 new Expanded(
                   flex: 1,
                   child: new InkWell(
-                    onTap: () => RouterUtil.pushAddressInfo(context, addressId: widget?.data?.id?.toString()),
+                    onTap: () => widget?.onEdit(),
                     child: new Container(
                       decoration: new BoxDecoration(
                           border: new Border(

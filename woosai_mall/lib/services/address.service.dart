@@ -85,4 +85,14 @@ class Address {
     await Application.util.http.post(url, params: params);
   }
 
+  // 查询信息
+  Future reqAddressDetails ({
+    String addressId,
+  }) async {
+    String url = Application.config.api.reqAddressDetails;
+    Map params = {'addressId': addressId};
+    AddressItemModal addressItemModal = await Application.util.http.post(url, params: params);
+    return addressItemModal;
+  }
+
 }
