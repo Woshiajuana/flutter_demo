@@ -6,7 +6,6 @@ import 'package:woosai_mall/models/goodsList.modal.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
 import 'package:woosai_mall/components/wowView.dart';
 
-
 class ListPage extends StatefulWidget {
 
   @override
@@ -141,7 +140,6 @@ class _ListPageState extends State<ListPage> {
     try {
       GoodsListModal _goodsListModal = await Application.service.goods.reqGoodsList(
         pageNum: _pageNum,
-        pageSize: 8,
       );
       if (_pageNum == 1) {
         _arrData = _goodsListModal?.list ?? [];

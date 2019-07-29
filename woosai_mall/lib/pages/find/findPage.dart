@@ -85,7 +85,6 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
     try {
       GoodsListModal _goodsListModal = await Application.service.goods.reqGoodsList(
         pageNum: _pageNum,
-        pageSize: 8,
       );
       if (_pageNum == 1) {
         _arrData = _goodsListModal?.list ?? [];

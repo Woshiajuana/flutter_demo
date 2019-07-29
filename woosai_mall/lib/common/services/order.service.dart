@@ -14,9 +14,10 @@ class Order {
   Order._internal();
 
   // 获取订单列表
-  Future reqOrderList () async {
+  Future reqOrderList ({int pageSize = 10, int pageNum = 1}) async {
     String url = Application.config.api.reqOrderList;
-    var respBody = await Application.util.http.post(url);
+    Map params = {'pageSize': pageSize, 'pageNum': pageNum};
+    var respBody = await Application.util.http.post(url, params: params);
     OrderListModal orderListModal = OrderListModal.fromJson(respBody);
     return orderListModal;
   }
