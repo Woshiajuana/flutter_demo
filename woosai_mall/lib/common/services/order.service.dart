@@ -23,9 +23,9 @@ class Order {
   }
 
   // 订单详情
-  Future reqOrderDetails ({orderId}) async {
+  Future reqOrderDetails ({orderNo}) async {
     String url = Application.config.api.reqOrderDetails;
-    var respBody = await Application.util.http.post(url, params: {'orderId': orderId});
+    var respBody = await Application.util.http.post(url, params: {'orderNo': orderNo});
     OrderItemModal orderItemModal = OrderItemModal.fromJson(respBody);
     return orderItemModal;
   }

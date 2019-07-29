@@ -20,6 +20,7 @@ class OrderItemModal extends Object {
       this.startTime,
       this.endTime,
       this.goodsStockNum,
+      this.tradeBuyNum,
   );
 
   @JsonKey(name: 'id')
@@ -62,10 +63,13 @@ class OrderItemModal extends Object {
   int tradeAmt;
 
   @JsonKey(name: 'orderNo')
-  int orderNo;
+  String orderNo;
 
   @JsonKey(name: 'orderStatus')
   String orderStatus;
+
+  @JsonKey(name: 'tradeBuyNum')
+  int tradeBuyNum;
 
   //不同的类使用不同的mixin即可
   factory OrderItemModal.fromJson(Map<String, dynamic> json) => _$OrderItemModalFromJson(json);

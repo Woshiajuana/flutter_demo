@@ -10,6 +10,7 @@ import 'package:woosai_mall/pages/confirm/confirmPage.dart';
 import 'package:woosai_mall/pages/address/addressPage.dart';
 import 'package:woosai_mall/pages/address/addressInfoPage.dart';
 import 'package:woosai_mall/pages/order/orderPage.dart';
+import 'package:woosai_mall/pages/order/orderDetailsPage.dart';
 
 class Router {
 
@@ -44,6 +45,12 @@ class Router {
       'route': (_) => new OrderPage(),
       'handle': (params) {
         return new OrderPage();
+      }
+    },
+    'orderDetails': {
+      'route': (_) => new OrderDetailsPage(),
+      'handle': (params) {
+        return new OrderDetailsPage(orderNo: params['orderNo'],);
       }
     },
     'address': {

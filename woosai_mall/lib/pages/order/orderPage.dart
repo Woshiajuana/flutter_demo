@@ -18,6 +18,13 @@ class OrderPageState extends State<OrderPage> {
   int _pageNum = 1;
   int _lastPage;
   bool _isLoading;
+  Map _orderStatus = {
+    '1': '待支付',
+    '2': '订单关闭',
+    '3': '待发货',
+    '4': '支付失败',
+    '5': '已发货',
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +167,7 @@ class OrderPageState extends State<OrderPage> {
       color: Color(0xfff2f2f2),
       child: new Column(
         children: <Widget>[
-          _widgetOrderGoods(),
+          _widgetOrderGoods(orderItemModal),
           new Container(
             padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
             decoration: new BoxDecoration(
@@ -175,27 +182,27 @@ class OrderPageState extends State<OrderPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 new Text(
-                  '待支付',
+                  _orderStatus[orderItemModal?.orderStatus ?? '1'],
                   style: new TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 13.0,
                     color: Color(0xff333333),
                   ),
                 ),
                 new Container(
-                  height: 40.0,
+                  height: 30.0,
                   decoration: new BoxDecoration(
                     border: Border.all(
-                      color: Color(0xff999999),
+                      color: Color(0xff333333),
                       width: 0.5,
                     ),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: new FlatButton(
-                    onPressed: () => {},
+                    onPressed: () => Application.router.push(context, 'orderDetails', params: {'orderNo': orderItemModal?.orderNo}),
                     child: new Text(
                       '查看详情',
                       style: new TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 13.0,
                         color: Color(0xff333333),
                       ),
                     ),
@@ -209,7 +216,7 @@ class OrderPageState extends State<OrderPage> {
     );
   }
 
-  Widget _widgetOrderGoods () {
+  Widget _widgetOrderGoods (OrderItemModal orderItemModal) {
     return new Container(
       padding: const EdgeInsets.only(bottom: 16.0, top: 16.0),
       child: new Row(
@@ -227,7 +234,7 @@ class OrderPageState extends State<OrderPage> {
                 width: 80.0,
                 height: 80.0,
                 placeholder: Application.config.style.srcGoodsNull,
-                image: 'https://ss0.baidu.com/73F1bjeh1BF3odCf/it/u=2970307425,3387989531&fm=85',
+                image: _goodsImage(orderItemModal),
                 fit: BoxFit.fill,
               ),
             ),
@@ -242,7 +249,7 @@ class OrderPageState extends State<OrderPage> {
                 children: <Widget>[
                   new Container(
                     child: new Text(
-                      '测试商品',
+                      orderItemModal?.goodsName ?? '',
                       style: new TextStyle(
                         fontSize: 16.0,
                         color: Color(0xff333333),
@@ -253,7 +260,7 @@ class OrderPageState extends State<OrderPage> {
                   new Row(
                     children: <Widget>[
                       new Text(
-                        '￥1111',
+                        '${_formatAmount(orderItemModal?.goodsDiscountPrice ?? 0)} * ${orderItemModal?.tradeBuyNum}',
                         style: new TextStyle(
                           fontSize: 13.0,
                           color: Color(0xff999999),
@@ -261,14 +268,14 @@ class OrderPageState extends State<OrderPage> {
                       ),
                       new Expanded(flex: 1, child: new Container()),
                       new Text(
-                        '￥1111',
+                        '合计：',
                         style: new TextStyle(
                           fontSize: 13.0,
                           color: Color(0xff999999),
                         ),
                       ),
                       new Text(
-                        '￥1111',
+                        _formatAmount(orderItemModal?.tradeAmt ?? 0),
                         style: new TextStyle(
                           fontSize: 13.0,
                           color: Color(0xff333333),
@@ -285,7 +292,14 @@ class OrderPageState extends State<OrderPage> {
     );
   }
 
+  String _goodsImage (OrderItemModal orderItemModal) {
+    String thumbnailPath = orderItemModal?.thumbnailPath ?? '';
+    return thumbnailPath.split(',')[0];
+  }
 
-
+  String _formatAmount (int data) {
+    double amount = data / 100;
+    return '￥' + amount?.toString() ?? '--';
+  }
 
 }

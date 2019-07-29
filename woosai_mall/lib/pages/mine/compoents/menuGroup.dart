@@ -33,7 +33,7 @@ class _MenuGroupState extends State<MenuGroup> {
             onPressed: () => Application.router.push(context, 'order'),
           ),
           _menuItem(
-            icon: Icons.add_location,
+            icon: Icons.location_on,
             labelText: '收货地址',
             onPressed: () => Application.router.push(context, 'address', params: {'from': 'mine'}),
           ),

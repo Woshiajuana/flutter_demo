@@ -19,9 +19,10 @@ OrderItemModal _$OrderItemModalFromJson(Map<String, dynamic> json) {
       json['goodsNorms'] as String,
       json['startTime'] as int,
       json['endTime'] as int,
-      json['goodsStockNum'] as int)
+      json['goodsStockNum'] as int,
+      json['tradeBuyNum'] as int)
     ..tradeAmt = json['tradeAmt'] as int
-    ..orderNo = json['orderNo'] as int
+    ..orderNo = json['orderNo'] as String
     ..orderStatus = json['orderStatus'] as String;
 }
 
@@ -41,5 +42,6 @@ Map<String, dynamic> _$OrderItemModalToJson(OrderItemModal instance) =>
       'goodsStockNum': instance.goodsStockNum,
       'tradeAmt': instance.tradeAmt,
       'orderNo': instance.orderNo,
-      'orderStatus': instance.orderStatus
+      'orderStatus': instance.orderStatus,
+      'tradeBuyNum': instance.tradeBuyNum
     };
