@@ -14,7 +14,6 @@ class MinePage extends StatefulWidget {
 
 class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin {
 
-
   @override
   bool get wantKeepAlive => true; // 要点2
 
@@ -29,13 +28,11 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
         ),
         body: new Container(
           color: Color(0xfff2f2f2),
-          child: new ListView(
+          child: new Column(
             children: <Widget>[
               new UserGroup(store: store),
               new MenuGroup(),
-              new MenuGroup(),
-              new MenuGroup(),
-              new MenuGroup(),
+              new Expanded(flex: 1, child: new Container(),),
               new ExitGroup(),
             ],
           ),

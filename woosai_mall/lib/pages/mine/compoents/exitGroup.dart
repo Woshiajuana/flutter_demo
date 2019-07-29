@@ -13,35 +13,22 @@ class _ExitGroupState extends State<ExitGroup> {
 
   @override
   Widget build(BuildContext context) {
-    return new InkWell(
-      onTap: () => _handleExitOut(),
-      child: new Container(
-        margin: const EdgeInsets.only(top: 50.0),
-        height: 45.0,
-        decoration: new BoxDecoration(
-          color: Colors.white,
-          border: new Border(
-            top: new BorderSide(
-              color: Color(0xffdddddd),
-              width: 0.5,
-            ),
-            bottom: new BorderSide(
-              color: Color(0xffdddddd),
-              width: 0.5,
-            ),
+    return new Container(
+      margin: const EdgeInsets.only(bottom: 50.0),
+      width: 180.0,
+      height: 44.0,
+      decoration: new BoxDecoration(
+        color: Color(0xffef2c2c),
+        borderRadius: BorderRadius.circular(22.0),
+      ),
+      child: new FlatButton(
+        onPressed: () => _handleExitOut(),
+        child: new Text(
+          '安全退出',
+          style: new TextStyle(
+            color: Colors.white,
+            fontSize: 14.0,
           ),
-        ),
-        child: new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              '安全退出',
-              style: new TextStyle(
-                color: Color(0xffef2c2c),
-                fontSize: 14.0,
-              ),
-            ),
-          ],
         ),
       ),
     );

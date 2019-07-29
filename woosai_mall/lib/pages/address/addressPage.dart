@@ -8,6 +8,13 @@ import 'package:woosai_mall/components/confirmDialog.dart';
 
 class AddressPage extends StatefulWidget {
 
+  const AddressPage({
+    Key key,
+    this.from,
+  }) : super(key: key);
+
+  final String from;
+
   @override
   _AddressPageState createState() => new _AddressPageState();
 }
@@ -111,7 +118,9 @@ class _AddressPageState extends State<AddressPage> {
   }
 
   Future _handleSelect (AddressItemModal addressItemModal) async {
-    Application.router.pop(context, params: addressItemModal);
+    if (widget.from == 'confirm') {
+      Application.router.pop(context, params: addressItemModal);
+    }
   }
 
   Future _handleDefault (AddressItemModal addressItemModal) async {

@@ -23,8 +23,8 @@ class RouterUtil {
     return navigatorRouter(context, new AddressInfoPage(addressId: addressId));
   }
 
-  static pushAddress (BuildContext context) {
-    return navigatorRouter(context, new AddressPage());
+  static pushAddress (BuildContext context, {String from}) {
+    return navigatorRouter(context, new AddressPage(from: from));
   }
 
   static pushConfirm (BuildContext context, {int goodsId, String specs}) {

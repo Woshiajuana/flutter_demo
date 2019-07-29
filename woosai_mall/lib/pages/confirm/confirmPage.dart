@@ -70,7 +70,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
   }
 
   Future _handleAddress () async {
-    AddressItemModal result = await RouterUtil.pushAddress(context);
+    AddressItemModal result = await RouterUtil.pushAddress(context, from: 'confirm');
     if (result == null) return;
     this.setState(() { _addressItemModal = result; });
   }
