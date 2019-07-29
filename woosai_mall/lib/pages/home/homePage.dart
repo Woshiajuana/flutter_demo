@@ -84,10 +84,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
       print('err=>$err');
       Application.util.modal.toast(err);
     } finally {
-      new Future.delayed(const Duration(seconds: 1), () {
-        if (!mounted) return;
-        this.setState(() { _isLoading = false; });
-      });
+      this.setState(() { _isLoading = false; });
     }
   }
 

@@ -96,10 +96,7 @@ class _FindPageState extends State<FindPage> with AutomaticKeepAliveClientMixin 
     } catch (err) {
       Application.util.modal.toast(err);
     } finally {
-      new Future.delayed(const Duration(seconds: 1), () {
-        if (!mounted) return;
-        this.setState(() { _isLoading = false; });
-      });
+      this.setState(() { _isLoading = false; });
     }
   }
 
