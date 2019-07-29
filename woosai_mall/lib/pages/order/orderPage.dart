@@ -29,6 +29,12 @@ class OrderPageState extends State<OrderPage> {
     super.initState();
   }
 
+  Widget _widgetOrderCellItem () {
+    return new Container(
+      
+    );
+  }
+
 
 
 
