@@ -2,6 +2,7 @@
 import 'package:woosai_mall/common/services/user.service.dart';
 import 'package:woosai_mall/common/services/goods.service.dart';
 import 'package:woosai_mall/common/services/address.service.dart';
+import 'package:woosai_mall/common/services/order.service.dart';
 
 class Service {
 
@@ -23,6 +24,10 @@ class Service {
 
   Address get address {
     return new Address();
+  }
+
+  Order get order {
+    return new Order();
   }
 
 }
