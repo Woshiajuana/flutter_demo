@@ -1,5 +1,5 @@
 
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 
 class Address {

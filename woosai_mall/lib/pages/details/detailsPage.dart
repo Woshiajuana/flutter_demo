@@ -6,7 +6,7 @@ import 'package:woosai_mall/pages/details/components/baseInfoView.dart';
 import 'package:woosai_mall/pages/details/components/specsGroupView.dart';
 import 'package:woosai_mall/pages/details/components/detailsGroupView.dart';
 import 'package:woosai_mall/models/goodsDetails.modal.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 import 'package:woosai_mall/components/wowView.dart';
 
 class DetailsPage extends StatefulWidget {

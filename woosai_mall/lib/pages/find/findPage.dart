@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 import 'package:woosai_mall/models/goodsList.modal.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
 import 'package:woosai_mall/components/wowView.dart';

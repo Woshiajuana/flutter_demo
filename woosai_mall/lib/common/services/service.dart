@@ -1,7 +1,7 @@
 
-import 'package:woosai_mall/services/user.service.dart';
-import 'package:woosai_mall/services/goods.service.dart';
-import 'package:woosai_mall/services/address.service.dart';
+import 'package:woosai_mall/common/services/user.service.dart';
+import 'package:woosai_mall/common/services/goods.service.dart';
+import 'package:woosai_mall/common/services/address.service.dart';
 
 class Service {
 

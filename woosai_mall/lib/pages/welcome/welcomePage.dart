@@ -5,7 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/models/userInfo.model.dart';
 import 'package:woosai_mall/redux/app.redux.dart';
 import 'package:woosai_mall/redux/userInfo.redux.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 
 class WelcomePage extends StatefulWidget {
 

@@ -1,10 +1,10 @@
 
-import 'package:woosai_mall/utils/print.util.dart';
-import 'package:woosai_mall/utils/http.util.dart';
-import 'package:woosai_mall/utils/store.util.dart';
-import 'package:woosai_mall/utils/verify.util.dart';
-import 'package:woosai_mall/utils/modal.util.dart';
-import 'package:woosai_mall/utils/loading.util.dart';
+import 'package:woosai_mall/common/utils/print.util.dart';
+import 'package:woosai_mall/common/utils/http.util.dart';
+import 'package:woosai_mall/common/utils/store.util.dart';
+import 'package:woosai_mall/common/utils/verify.util.dart';
+import 'package:woosai_mall/common/utils/modal.util.dart';
+import 'package:woosai_mall/common/utils/loading.util.dart';
 
 class Util {
 

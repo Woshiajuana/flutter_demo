@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 
 class MenuGroup extends StatefulWidget {
 

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/address/components/addressItem.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 import 'package:woosai_mall/components/confirmDialog.dart';
 

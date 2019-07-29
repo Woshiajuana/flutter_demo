@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/config/config.dart';
-import 'package:woosai_mall/router/router.dart';
-import 'package:woosai_mall/utils/util.dart';
-import 'package:woosai_mall/services/service.dart';
+import 'package:woosai_mall/common/config/config.dart';
+import 'package:woosai_mall/common/router/router.dart';
+import 'package:woosai_mall/common/utils/util.dart';
+import 'package:woosai_mall/common/services/service.dart';
 
 
 class Application {

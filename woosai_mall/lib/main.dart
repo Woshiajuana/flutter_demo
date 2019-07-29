@@ -6,7 +6,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:woosai_mall/models/userInfo.model.dart';
 import 'package:woosai_mall/redux/app.redux.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 
 void main() {
   if (Platform.isAndroid) {
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 
   // 判断
   void _test() {
-    print('Application.router.routes => ${Application.router.routes == Application.router.routes}');
+    print('Application.common.router.routes => ${Application.router.routes == Application.router.routes}');
   }
 
   // This widget is the root of your application.

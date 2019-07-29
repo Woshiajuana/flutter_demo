@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:woosai_mall/pages/home/homePage.dart';
 import 'package:woosai_mall/pages/find/findPage.dart';
 import 'package:woosai_mall/pages/mine/minePage.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 
 class AppPage extends StatefulWidget {
 

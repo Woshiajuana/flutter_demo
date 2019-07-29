@@ -6,7 +6,7 @@ import 'package:woosai_mall/pages/confirm/components/previewGroupView.dart';
 import 'package:woosai_mall/pages/confirm/components/operationGroupView.dart';
 import 'package:woosai_mall/models/goodsDetails.modal.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 
 class ConfirmPage extends StatefulWidget {
 

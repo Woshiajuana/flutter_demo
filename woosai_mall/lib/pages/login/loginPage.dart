@@ -8,7 +8,7 @@ import 'package:woosai_mall/pages/login/components/buttonGroup.dart';
 import 'package:woosai_mall/models/userInfo.model.dart';
 import 'package:woosai_mall/redux/app.redux.dart';
 import 'package:woosai_mall/redux/userInfo.redux.dart';
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 
 class LoginPage extends StatefulWidget {
 

@@ -1,5 +1,5 @@
 
-import 'package:woosai_mall/application.dart';
+import 'package:woosai_mall/common/application.dart';
 import 'package:woosai_mall/models/hotRecommend.model.dart';
 import 'package:woosai_mall/models/goodsList.modal.dart';
 import 'package:woosai_mall/models/goodsDetails.modal.dart';

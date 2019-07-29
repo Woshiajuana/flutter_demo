@@ -1,8 +1,8 @@
 
-import 'package:woosai_mall/config/env.config.dart';
-import 'package:woosai_mall/config/api.config.dart';
-import 'package:woosai_mall/config/style.config.dart';
-import 'package:woosai_mall/config/store.config.dart';
+import 'package:woosai_mall/common/config/env.config.dart';
+import 'package:woosai_mall/common/config/api.config.dart';
+import 'package:woosai_mall/common/config/style.config.dart';
+import 'package:woosai_mall/common/config/store.config.dart';
 
 class Config {
 
