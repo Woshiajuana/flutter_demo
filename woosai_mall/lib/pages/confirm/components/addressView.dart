@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/style/wowStyle.dart';
+import 'package:woosai_mall/common/application.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
 
 class AddressView extends StatefulWidget {
@@ -32,7 +32,7 @@ class _AddressViewState extends State<AddressView> {
         child: new Row(
           children: <Widget>[
             new Image.asset(
-              WOWIcons.address,
+              Application.config.style.srcAddress,
               width: 18.0,
               height: 22.0,
               color: Color(0xffef2c2c),

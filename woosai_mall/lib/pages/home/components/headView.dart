@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/style/wowStyle.dart';
+import 'package:woosai_mall/common/application.dart';
 
 
 class HeadView extends StatefulWidget {
@@ -21,7 +21,7 @@ class _HeadViewState extends State<HeadView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new Image.asset(
-            WOWIcons.logo100,
+            Application.config.style.srcLogo,
             width: 36.0,
             height: 36.0,
             fit: BoxFit.fill,

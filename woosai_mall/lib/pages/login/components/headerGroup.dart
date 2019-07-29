@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/style/wowStyle.dart';
+import 'package:woosai_mall/common/application.dart';
 
 class HeaderGroup extends StatefulWidget {
   
@@ -21,7 +21,7 @@ class _HeaderGroupState extends State<HeaderGroup> {
         children: <Widget>[
           new Container(
             child: new Image.asset(
-              WOWIcons.logo100,
+              Application.config.style.srcLogo,
               width: 100.0,
               height: 100.0,
               fit: BoxFit.fill,
