@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:woosai_mall/pages/address/components/addressItem.dart';
 import 'package:woosai_mall/application.dart';
 import 'package:woosai_mall/models/addressItem.model.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/components/confirmDialog.dart';
 
 class AddressPage extends StatefulWidget {
@@ -79,7 +78,7 @@ class _AddressPageState extends State<AddressPage> {
   }
 
   Future _handleJump ({AddressItemModal item}) async {
-    var result = await RouterUtil.pushAddressInfo(context, addressId: item?.id?.toString());
+    var result = await Application.router.push(context, 'addressInfo', params: {'addressId': item?.id?.toString()});
     if (result == true) {
       _handleRefresh();
     }

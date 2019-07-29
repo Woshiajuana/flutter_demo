@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/application.dart';
 
 class MenuGroup extends StatefulWidget {
@@ -31,12 +30,12 @@ class _MenuGroupState extends State<MenuGroup> {
           _menuItem(
             icon: Icons.assignment,
             labelText: '我的订单',
-            onPressed: () => RouterUtil.pushAddress(context),
+            onPressed: () => Application.router.push(context, 'address', params: {'from': 'mine'}),
           ),
           _menuItem(
             icon: Icons.add_location,
             labelText: '收货地址',
-            onPressed: () => RouterUtil.pushAddress(context, from: 'mine'),
+            onPressed: () => Application.router.push(context, 'address', params: {'from': 'mine'}),
           ),
         ],
       ),

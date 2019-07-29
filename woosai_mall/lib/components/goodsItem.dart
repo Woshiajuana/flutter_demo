@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
 import 'package:woosai_mall/application.dart';
 
@@ -20,7 +19,7 @@ class _GoodsItemState extends State<GoodsItem> {
   @override
   Widget build(BuildContext context) {
     return new InkWell(
-      onTap: () => RouterUtil.pushDetails(context, goodsId: widget.data?.id),
+      onTap: () => Application.router.push(context, 'details', params: {'goodsId': widget.data?.id}),
       child: new Container(
         color: Color(0xfff7f7f7),
         margin: const EdgeInsets.only(bottom: 10.0),

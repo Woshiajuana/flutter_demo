@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:woosai_mall/common/utils/routerUtil.dart';
 import 'package:woosai_mall/models/goodsItem.modal.dart';
 import 'package:woosai_mall/application.dart';
 
@@ -71,7 +70,7 @@ class _HotGoodsViewState extends State<HotGoodsView> {
     return new Container(
       width: 164.0,
       child: new InkWell(
-        onTap: () => RouterUtil.pushDetails(context, goodsId: goodsItemModal?.id),
+        onTap: () => Application.router.push(context, 'details', params: {'goodsId': goodsItemModal?.id}),
         child: new Container(
           height: 120.0,
           decoration: new BoxDecoration(

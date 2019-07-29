@@ -42,19 +42,19 @@ class Router {
     'address': {
       'route': (_) => new AddressPage(),
       'handle': (params) {
-        return new AddressPage();
+        return new AddressPage(from: params['from']);
       }
     },
     'addressInfo': {
       'route': (_) => new AddressInfoPage(),
       'handle': (params) {
-        return new AddressInfoPage();
+        return new AddressInfoPage(addressId: params['addressId']);
       }
     },
     'confirm': {
       'route': (_) => new ConfirmPage(),
       'handle': (params) {
-        return new ConfirmPage();
+        return new ConfirmPage(specs: params['specs'], goodsId: params['goodsId'],);
       }
     },
     'list': {
@@ -66,7 +66,7 @@ class Router {
     'details': {
       'route': (_) => new DetailsPage(),
       'handle': (params) {
-        return new DetailsPage();
+        return new DetailsPage(goodsId: params['goodsId'],);
       }
     },
   };
@@ -82,17 +82,8 @@ class Router {
     return _routes;
   }
 
-  static Widget routerWidget (String routeName, {Map params}) {
-    if (routeName == 'list') {
-      return new ListPage();
-    }
-    return null;
-  }
-
-  push (BuildContext context, routeName, { params }) {
-
-//    return navigatorRouter(context, config[routeName]['handle']());
-    return navigatorRouter(context, routerWidget(routeName));
+  push (BuildContext context, routeName, {params}) {
+    return navigatorRouter(context, config[routeName]['handle'](params));
   }
 
   replace (BuildContext context, String routeName) {
