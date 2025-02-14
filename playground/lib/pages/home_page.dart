@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PageRoute {
-  PageRoute({required this.title, this.subtitle});
+class RouteMeta {
+  RouteMeta({required this.title, this.subtitle});
 
   String title;
   String? subtitle;
@@ -10,9 +10,9 @@ class PageRoute {
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final List<PageRoute> _routes = [
-    PageRoute(title: '手写签名', subtitle: 'canvas 绘制，转换图片知识点'),
-    PageRoute(title: '十字架布局', subtitle: '需要自定义布局策略的场景'),
+  final List<RouteMeta> _routes = [
+    RouteMeta(title: '手写签名', subtitle: 'canvas 绘制，转换图片知识点'),
+    RouteMeta(title: '十字架布局', subtitle: '需要自定义布局策略的场景'),
   ];
 
   @override
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildItem({
-    required PageRoute route,
+    required RouteMeta route,
   }) {
     return ListTile(
       onTap: () => {

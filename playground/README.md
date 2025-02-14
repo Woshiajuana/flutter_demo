@@ -4,9 +4,28 @@
 
 ## 常用依赖
 
+### 平台的图标生成和替换
+
+flutter_launcher_icons
+
+[官方文档](https://pub.dev/packages/flutter_launcher_icons)
+
+```bash
+# 安装
+flutter pub add dev:flutter_launcher_icons
+
+# 生成配置文件
+dart run flutter_launcher_icons:generate
+
+# 运行
+dart run flutter_launcher_icons
+```
+
 ### json 序列化、反序列化
 
-[官方文档](https://pub-web.flutter-io.cn/packages/json_serializable)
+json_serializable
+
+[官方文档](https://pub.dev/packages/json_serializable)
 
 - 安装依赖
 
@@ -18,11 +37,33 @@ flutter pub add json_annotation dev:build_runner dev:json_serializable
 
 ```bash
 flutter pub run build_runner build --delete-conflicting-outputs
-
 # 后面的--delete-conflicting-outputs是可选的，作用是：
 # 自动删除任何现存的，与即将生成的输出文件冲突的文件，然后继续构建过程。
 # 这样可以清理由于老版本或不同构建配置造成的遗留文件
+
+flutter packages pub run build_runner watch
+# 监听生成
 ```
+
+### EventBus
+
+event_bus
+
+[官方文档](https://pub.dev/packages/event_bus)
+
+### 数据本地持久化
+
+shared_preferences
+
+[官方文档](https://pub.dev/packages/shared_preferences)
+
+使用场景：轻量级数据，简单键值对，不频繁读写的存储场景
+
+### 图片缓存
+
+cached_network_image
+
+[官方文档](https://pub.dev/packages/cached_network_image)
 
 ## 命令行
 
