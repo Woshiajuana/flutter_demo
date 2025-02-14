@@ -2,6 +2,28 @@
 
 演练场
 
+## 常用依赖
+
+### json 序列化、反序列化
+
+[官方文档](https://pub-web.flutter-io.cn/packages/json_serializable)
+
+- 安装依赖
+
+```bash
+flutter pub add json_annotation dev:build_runner dev:json_serializable
+```
+
+- 执行命令
+
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# 后面的--delete-conflicting-outputs是可选的，作用是：
+# 自动删除任何现存的，与即将生成的输出文件冲突的文件，然后继续构建过程。
+# 这样可以清理由于老版本或不同构建配置造成的遗留文件
+```
+
 ## 命令行
 
 ### 创建项目
