@@ -2,6 +2,14 @@
 
 演练场
 
+## 插件工具
+
+### IconfontIcon.dart 文件自动生成
+
+```js
+javascript:function download(filename, text) {  var element = document.createElement('a');  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));  element.setAttribute('download', filename);  element.style.display = 'none';  document.body.appendChild(element);  element.click();  document.body.removeChild(element);}function toHump(name) {name = name.replace(/\s+/g,"-");    return name.replace(/\-(\w)/g, function(all, letter){        return letter.toUpperCase();    });}function getFlutterClass(){var str = "import 'package:flutter/widgets.dart';\r\n\r\n";str += "class IconfontIcons {\r\n";var arr = document.querySelectorAll(".icon-item");for (var i = arr.length - 1; i >= 0; i--) {var item = arr[i];var item_name = toHump(item.querySelectorAll(".icon-code")[1].textContent);var item_code = item.querySelectorAll(".icon-code")[0].textContent.replace(/\&\#/g,%220%22);item_code%20=%20item_code.replace(/\;/g,%22%22);str%20+=%20%22%20%20%20%20static%20const%20IconData%20%22+item_name+%22%20=%20IconData(%22+item_code+%22,fontFamily:'Iconfont');%22;str%20+=%20%22\r\n%22;}str%20+=%20%22}%22;return%20str;}%20%20download(%22icon_font_icons.dart%22,getFlutterClass());
+```
+
 ## 常用依赖
 
 ### 平台的图标生成和替换
@@ -64,6 +72,12 @@ shared_preferences
 cached_network_image
 
 [官方文档](https://pub.dev/packages/cached_network_image)
+
+### 跳转到手机浏览器
+
+url_launcher
+
+[官方文档](https://pub.dev/packages/url_launcher)
 
 ## 命令行
 
