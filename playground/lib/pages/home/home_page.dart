@@ -7,13 +7,13 @@ class RouteMeta {
   String? subtitle;
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+final List<RouteMeta> _routes = [
+  RouteMeta(title: '手写签名', subtitle: 'canvas 绘制，转换图片知识点'),
+  RouteMeta(title: '十字架布局', subtitle: '需要自定义布局策略的场景'),
+];
 
-  final List<RouteMeta> _routes = [
-    RouteMeta(title: '手写签名', subtitle: 'canvas 绘制，转换图片知识点'),
-    RouteMeta(title: '十字架布局', subtitle: '需要自定义布局策略的场景'),
-  ];
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
