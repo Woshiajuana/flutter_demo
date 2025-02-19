@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:playground/common/configs/case_config.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    print('Home Page initState');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('Home Page Build');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('演练场'),
