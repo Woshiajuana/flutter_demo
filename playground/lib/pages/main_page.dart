@@ -11,7 +11,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   late PageController _pageController;
-  var _current = 0;
+  var _current = 1;
 
   @override
   void initState() {
