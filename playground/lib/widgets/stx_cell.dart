@@ -42,21 +42,13 @@ class StxCell extends StatelessWidget {
     List<Widget> children = <Widget>[];
 
     if (leading != null) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.only(right: 16),
-          child: leading!,
-        ),
-      );
+      children.add(leading!);
+      children.add(const SizedBox(width: 10));
     }
 
     if (icon != null) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.only(right: 16),
-          child: icon!,
-        ),
-      );
+      children.add(icon!);
+      children.add(const SizedBox(width: 16));
     }
 
     Widget? caption;
@@ -72,9 +64,10 @@ class StxCell extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           caption!,
+          const SizedBox(height: 1),
           Text(
             description!,
-            style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+            style: TextStyle(fontSize: 13, color: Colors.grey[500]),
           ),
         ],
       );
@@ -93,17 +86,16 @@ class StxCell extends StatelessWidget {
     }
 
     if (trailing != null) {
+      children.add(const SizedBox(width: 10));
       children.add(trailing!);
     }
 
     if (showArrow) {
+      children.add(const SizedBox(width: 10));
       children.add(
-        const Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Icon(
-            Icons.arrow_forward_ios,
-            size: 16,
-          ),
+        const Icon(
+          Icons.arrow_forward_ios,
+          size: 16,
         ),
       );
     }

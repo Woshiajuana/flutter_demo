@@ -15,6 +15,11 @@ class CaseItem {
 class CaseConfig {
   static List<CaseItem> data = [
     CaseItem(
+      path: RoutePath.cell,
+      title: 'Cell 单元格',
+      subtitle: '单元格为列表中的单个展示项',
+    ),
+    CaseItem(
       path: RoutePath.signature,
       title: '手写签名',
       subtitle: 'canvas 绘制，转换图片知识点',

@@ -14,9 +14,12 @@ class RoutePath {
   /// 404
   static const notFound = '/404';
 
+  /// cell
+  static const cell = '/demos/cell';
+
   /// 手写签名
-  static const signature = '/signature';
+  static const signature = '/demos/signature';
 
   /// 十字架布局
-  static const crossFlow = '/cross-flow';
+  static const crossFlow = '/demos/cross-flow';
 }
