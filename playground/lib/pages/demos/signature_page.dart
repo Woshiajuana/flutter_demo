@@ -8,6 +8,10 @@ class SignaturePage extends StatefulWidget {
 }
 
 class _SignaturePageState extends State<SignaturePage> {
+  void _handleSignature() {
+    //
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +19,14 @@ class _SignaturePageState extends State<SignaturePage> {
         title: const Text('手写签名'),
       ),
       body: Center(
-        child: Container(),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: _handleSignature,
+              child: const Text('点我签名'),
+            ),
+          ],
+        ),
       ),
     );
   }
