@@ -41,6 +41,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  # 状态管理库 
+  # https://pub.dev/packages/provider
+  provider: ^6.1.2
+  # 数据本地持久化
+  # https://pub.dev/packages/shared_preferences
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
