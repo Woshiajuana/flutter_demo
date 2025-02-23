@@ -3,8 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageUtil {
   StorageUtil._();
-  static final StorageUtil _instance = StorageUtil._();
-  factory StorageUtil() => _instance;
+  static StorageUtil? _instance;
+  factory StorageUtil() {
+    _instance ??= StorageUtil._();
+    return _instance!;
+  }
 
   late SharedPreferences _sp;
   Future<void> ensureInitialized() async {
