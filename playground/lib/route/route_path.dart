@@ -11,6 +11,15 @@ class RoutePath {
   /// 我的页面
   static const mine = '/mine';
 
+  /// 设置页面
+  static const setting = '/setting';
+
+  /// 语言设置
+  static const settingLocale = '/setting/locale';
+
+  /// 主题设置
+  static const settingTheme = '/setting/theme';
+
   /// 404
   static const notFound = '/404';
 

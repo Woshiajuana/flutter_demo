@@ -1,5 +1,9 @@
 {
-    "appTitle": "DaySnap",
+    "appTitle": "Playground",
+    "test": "Test",
+
+    "mainTabbarHome": "Home",
+    "mainTabbarMine": "Mine",
    
     "end": "end"
 }

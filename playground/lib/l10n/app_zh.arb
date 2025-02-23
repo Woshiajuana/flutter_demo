@@ -1,5 +1,9 @@
 {
-    "appTitle": "DaySnap",
+    "appTitle": "演练场",
+    "test": "测试",
+
+    "mainTabbarHome": "首页",
+    "mainTabbarMine": "我的",
     
     "end": "end"
 }

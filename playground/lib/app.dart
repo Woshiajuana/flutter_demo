@@ -23,7 +23,9 @@ class App extends StatelessWidget {
             debugShowCheckedModeBanner: false,
 
             // 标题
-            title: '演练场',
+            onGenerateTitle: (context) {
+              return AppLocalizations.of(context).appTitle;
+            },
 
             // 主题
             theme: ThemeData(
