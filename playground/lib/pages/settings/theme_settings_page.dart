@@ -25,7 +25,7 @@ class ThemeSettingsPage extends StatelessWidget {
                   label: '跟随系统',
                   description: '开启后，将跟随系统打开或关闭深色模式',
                   trailing: Switch(
-                    value: themeState.isSystem,
+                    value: themeState.isFollowSystem,
                     onChanged: (v) {
                       //
                     },
@@ -34,22 +34,27 @@ class ThemeSettingsPage extends StatelessWidget {
               ],
             ),
             Visibility(
-              visible: !themeState.isSystem,
+              visible: !themeState.isFollowSystem,
               child: StxCellGroup(
                 title: '手动选择',
                 children: [
                   StxCell(
                     onTap: () {
-                      //
+                      themeState.changeThemeMode('light');
                     },
                     label: '普通模式',
+                    trailing: themeState.themeModeName == 'light'
+                        ? const Icon(Icons.check)
+                        : null,
                   ),
                   StxCell(
                     onTap: () {
-                      //
+                      themeState.changeThemeMode('dart');
                     },
                     label: '深色模式',
-                    trailing: const Icon(Icons.check),
+                    trailing: themeState.themeModeName == 'dart'
+                        ? const Icon(Icons.check)
+                        : null,
                   ),
                 ],
               ),

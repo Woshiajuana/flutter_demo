@@ -22,7 +22,7 @@ class ThemeState with ChangeNotifier {
     }
   }
 
-  bool get isSystem {
+  bool get isFollowSystem {
     return themeMode == ThemeMode.system;
   }
 
