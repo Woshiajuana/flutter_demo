@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:playground/state/index.dart';
 import 'package:playground/utils/extensions/l10n_extension.dart';
+import 'package:playground/utils/index.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,54 @@ class ThemeSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeState = context.watch<ThemeState>();
+    var themeMode = themeState.themeMode;
+
+    List<Widget> children = [
+      StxCellGroup(
+        children: [
+          StxCell(
+            label: context.l10n.themeSettingsAuto,
+            description: context.l10n.themeSettingsAutoDescription,
+            trailing: Switch(
+              value: themeState.isFollowSystem,
+              onChanged: (v) {
+                if (v) {
+                  themeState.changeThemeMode(ThemeMode.system);
+                } else {
+                  themeState.changeThemeMode(
+                    Helper.isDarkMode(context)
+                        ? ThemeMode.dark
+                        : ThemeMode.light,
+                  );
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    ];
+
+    if (!themeState.isFollowSystem) {
+      children.add(
+        StxCellGroup(
+          title: context.l10n.themeSettingsCustom,
+          children: [
+            StxCell(
+              onTap: () => themeState.changeThemeMode(ThemeMode.light),
+              label: context.l10n.themeSettingsLight,
+              trailing:
+                  themeMode == ThemeMode.light ? const Icon(Icons.check) : null,
+            ),
+            StxCell(
+              onTap: () => themeState.changeThemeMode(ThemeMode.dark),
+              label: context.l10n.themeSettingsDark,
+              trailing:
+                  themeMode == ThemeMode.dark ? const Icon(Icons.check) : null,
+            ),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -18,48 +67,7 @@ class ThemeSettingsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            StxCellGroup(
-              children: [
-                StxCell(
-                  label: '跟随系统',
-                  description: '开启后，将跟随系统打开或关闭深色模式',
-                  trailing: Switch(
-                    value: themeState.isFollowSystem,
-                    onChanged: (v) {
-                      //
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Visibility(
-              visible: !themeState.isFollowSystem,
-              child: StxCellGroup(
-                title: '手动选择',
-                children: [
-                  StxCell(
-                    onTap: () {
-                      themeState.changeThemeMode('light');
-                    },
-                    label: '普通模式',
-                    trailing: themeState.themeModeName == 'light'
-                        ? const Icon(Icons.check)
-                        : null,
-                  ),
-                  StxCell(
-                    onTap: () {
-                      themeState.changeThemeMode('dart');
-                    },
-                    label: '深色模式',
-                    trailing: themeState.themeModeName == 'dart'
-                        ? const Icon(Icons.check)
-                        : null,
-                  ),
-                ],
-              ),
-            ),
-          ],
+          children: children,
         ),
       ),
     );

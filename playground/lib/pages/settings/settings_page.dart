@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:playground/config/index.dart';
+import 'package:playground/state/index.dart';
 import 'package:playground/utils/extensions/l10n_extension.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -28,13 +30,19 @@ class SettingsPage extends StatelessWidget {
                   value: '跟随系统',
                   showArrow: true,
                 ),
-                StxCell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(RouteNames.settingsTheme);
+                Consumer<ThemeState>(
+                  builder: (context, themeState, __) {
+                    var themeModeName = themeState.getThemeModeName(context);
+                    return StxCell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(RouteNames.settingsTheme);
+                      },
+                      label: context.l10n.settingsTheme,
+                      value: themeModeName,
+                      showArrow: true,
+                    );
                   },
-                  label: context.l10n.settingsTheme,
-                  value: '跟随系统',
-                  showArrow: true,
                 ),
               ],
             )
