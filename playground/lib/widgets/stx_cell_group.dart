@@ -24,7 +24,7 @@ class StxCellGroup extends StatelessWidget {
             height: 0,
             thickness: 0.3,
             indent: 16,
-            endIndent: 16,
+            // endIndent: 16,
           ),
         );
       }

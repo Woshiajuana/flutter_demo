@@ -20,13 +20,9 @@ class ThemeSettingsPage extends StatelessWidget {
                 StxCell(
                   label: '跟随系统',
                   description: '开启后，将跟随系统打开或关闭深色模式',
-                  trailing: SizedBox(
-                    width: 10,
-                    height: 10,
-                    child: Switch(
-                      value: true,
-                      onChanged: (v) {},
-                    ),
+                  trailing: Switch(
+                    value: true,
+                    onChanged: (v) {},
                   ),
                 ),
               ],
