@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playground/pages/home/home_page.dart';
 import 'package:playground/pages/mine/mine_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -31,8 +30,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
-
     return Scaffold(
       body: PageView(
         controller: _pageController,

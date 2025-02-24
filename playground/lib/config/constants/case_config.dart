@@ -15,17 +15,17 @@ class CaseItem {
 class CaseConfig {
   static List<CaseItem> data = [
     CaseItem(
-      path: RoutePath.cell,
+      path: RouteNames.cell,
       title: 'Cell 单元格',
       subtitle: '单元格为列表中的单个展示项',
     ),
     CaseItem(
-      path: RoutePath.signature,
+      path: RouteNames.signature,
       title: '手写签名',
       subtitle: 'canvas 绘制，转换图片知识点',
     ),
     CaseItem(
-      path: RoutePath.crossFlow,
+      path: RouteNames.crossFlow,
       title: '十字架布局',
       subtitle: '需要自定义布局策略的场景',
     ),

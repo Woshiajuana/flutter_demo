@@ -1,6 +1,6 @@
-class RoutePath {
+class RouteNames {
   /// 根路径
-  static const root = main;
+  static const root = settings;
 
   /// tab页
   static const main = '/';
@@ -12,13 +12,13 @@ class RoutePath {
   static const mine = '/mine';
 
   /// 设置页面
-  static const setting = '/setting';
+  static const settings = '/settings';
 
   /// 语言设置
-  static const settingLocale = '/setting/locale';
+  static const settingsLanguage = '/settings/language';
 
   /// 主题设置
-  static const settingTheme = '/setting/theme';
+  static const settingsTheme = '/settings/theme';
 
   /// 404
   static const notFound = '/404';

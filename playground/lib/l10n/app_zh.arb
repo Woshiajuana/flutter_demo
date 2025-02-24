@@ -4,6 +4,19 @@
 
     "mainTabbarHome": "首页",
     "mainTabbarMine": "我的",
+
+    "settingsTitle": "设置",
+    "settingsDisplay": "界面和显示",
+    "settingsLanguage": "语言设置",
+    "settingsTheme": "主题设置",
+
+    "localeSettingsTitle": "语言设置",
+    "localeSettingsAuto": "跟随系统",
+
+    "themeSettingsTitle": "主题设置",
+    "themeSettingsAuto": "跟随系统",
+    "themeSettingsLight": "亮色模式",
+    "themeSettingsDark": "深色模式",
     
     "end": "end"
 }

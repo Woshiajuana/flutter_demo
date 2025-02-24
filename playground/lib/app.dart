@@ -40,7 +40,7 @@ class App extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
 
             // 路由
-            initialRoute: RoutePath.root,
+            initialRoute: RouteNames.root,
             onGenerateRoute: RouteManager.onGenerateRoute,
           );
         },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LocalePage extends StatelessWidget {
-  const LocalePage({super.key});
+class LanguageSettingsPage extends StatelessWidget {
+  const LanguageSettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

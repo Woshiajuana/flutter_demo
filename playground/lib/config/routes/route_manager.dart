@@ -6,19 +6,28 @@ import 'package:playground/pages/demos/signature_page.dart';
 import 'package:playground/pages/home/home_page.dart';
 import 'package:playground/pages/main_page.dart';
 import 'package:playground/pages/mine/mine_page.dart';
-import 'package:playground/config/routes/route_path.dart';
+import 'package:playground/config/routes/route_names.dart';
+import 'package:playground/pages/settings/language_settings_page.dart';
+import 'package:playground/pages/settings/settings_page.dart';
+import 'package:playground/pages/settings/theme_settings_page.dart';
 
 class RouteManager {
   static var routes = {
-    RoutePath.main: (BuildContext context, {arguments}) => const MainPage(),
-    RoutePath.home: (BuildContext context, {arguments}) => const HomePage(),
-    RoutePath.mine: (BuildContext context, {arguments}) => const MinePage(),
-    RoutePath.notFound: (BuildContext context, {arguments}) =>
+    RouteNames.main: (BuildContext context, {arguments}) => const MainPage(),
+    RouteNames.home: (BuildContext context, {arguments}) => const HomePage(),
+    RouteNames.mine: (BuildContext context, {arguments}) => const MinePage(),
+    RouteNames.settings: (BuildContext context, {arguments}) =>
+        const SettingsPage(),
+    RouteNames.settingsLanguage: (BuildContext context, {arguments}) =>
+        const LanguageSettingsPage(),
+    RouteNames.settingsTheme: (BuildContext context, {arguments}) =>
+        const ThemeSettingsPage(),
+    RouteNames.notFound: (BuildContext context, {arguments}) =>
         const NotFoundPage(),
-    RoutePath.cell: (BuildContext context, {arguments}) => const CellPage(),
-    RoutePath.signature: (BuildContext context, {arguments}) =>
+    RouteNames.cell: (BuildContext context, {arguments}) => const CellPage(),
+    RouteNames.signature: (BuildContext context, {arguments}) =>
         const SignaturePage(),
-    RoutePath.crossFlow: (BuildContext context, {arguments}) =>
+    RouteNames.crossFlow: (BuildContext context, {arguments}) =>
         const CrossFlowPage(),
   };
 
@@ -26,7 +35,7 @@ class RouteManager {
   static RouteFactory onGenerateRoute = (settings) {
     var name = settings.name;
     var arguments = settings.arguments ?? {};
-    var builder = routes[name] ?? routes[RoutePath.notFound];
+    var builder = routes[name] ?? routes[RouteNames.notFound];
 
     return CupertinoPageRoute(
       settings: RouteSettings(name: name),

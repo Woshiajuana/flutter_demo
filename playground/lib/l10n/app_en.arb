@@ -4,6 +4,19 @@
 
     "mainTabbarHome": "Home",
     "mainTabbarMine": "Mine",
+
+    "settingsTitle": "Settings",
+    "settingsDisplay": "Display",
+    "settingsLanguage": "Language",
+    "settingsTheme": "Theme",
+
+    "localeSettingsTitle": "Language",
+    "localeSettingsAuto": "Auto",
+
+    "themeSettingsTitle": "Theme",
+    "themeSettingsAuto": "Auto",
+    "themeSettingsLight": "Light Mode",
+    "themeSettingsDark": "Dark Mode",
    
     "end": "end"
 }
