@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playground/config/index.dart';
+import 'package:playground/utils/extensions/l10n_extension.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
 
@@ -10,19 +11,20 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('设置'),
+        title: Text(context.l10n.settingsTitle),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             StxCellGroup(
-              title: '界面和显示',
+              title: context.l10n.settingsDisplay,
               children: [
                 StxCell(
                   onTap: () {
-                    Navigator.of(context).pushNamed(RouteNames.settingsLanguage);
+                    Navigator.of(context)
+                        .pushNamed(RouteNames.settingsLanguage);
                   },
-                  label: '语言设置',
+                  label: context.l10n.settingsLanguage,
                   value: '跟随系统',
                   showArrow: true,
                 ),
@@ -30,7 +32,7 @@ class SettingsPage extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).pushNamed(RouteNames.settingsTheme);
                   },
-                  label: '主题设置',
+                  label: context.l10n.settingsTheme,
                   value: '跟随系统',
                   showArrow: true,
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class LocaleState extends ChangeNotifier {
+class LanguageState with ChangeNotifier {
   //
 }

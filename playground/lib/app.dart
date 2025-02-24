@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/config/routes/index.dart';
+import 'package:playground/config/index.dart';
 import 'package:playground/state/index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,10 +14,10 @@ class App extends StatelessWidget {
         // 主题
         ChangeNotifierProvider(create: (_) => ThemeState()),
         // 国际化
-        ChangeNotifierProvider(create: (_) => LocaleState()),
+        ChangeNotifierProvider(create: (_) => LanguageState()),
       ],
-      child: Consumer2<ThemeState, LocaleState>(
-        builder: (_, themeState, localeState, __) {
+      child: Consumer2<ThemeState, LanguageState>(
+        builder: (_, themeState, languageState, __) {
           return MaterialApp(
             // 关闭 debug
             debugShowCheckedModeBanner: false,
@@ -28,15 +28,12 @@ class App extends StatelessWidget {
             },
 
             // 主题
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+            themeMode: themeState.themeMode,
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
 
             // 国际化
-            localizationsDelegates: const [
-              ...AppLocalizations.localizationsDelegates,
-            ],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
 
             // 路由
