@@ -1,4 +1,4 @@
-import 'package:playground/route/index.dart';
+import 'package:playground/config/routes/index.dart';
 
 class CaseItem {
   CaseItem({

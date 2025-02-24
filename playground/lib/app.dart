@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:playground/route/index.dart';
-import 'package:playground/states/index.dart';
+import 'package:playground/config/routes/index.dart';
+import 'package:playground/state/index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

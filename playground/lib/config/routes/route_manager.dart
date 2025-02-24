@@ -6,7 +6,7 @@ import 'package:playground/pages/demos/signature_page.dart';
 import 'package:playground/pages/home/home_page.dart';
 import 'package:playground/pages/main_page.dart';
 import 'package:playground/pages/mine/mine_page.dart';
-import 'package:playground/route/route_path.dart';
+import 'package:playground/config/routes/route_path.dart';
 
 class RouteManager {
   static var routes = {

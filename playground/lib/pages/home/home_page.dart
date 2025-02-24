@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/common/configs/case_config.dart';
+import 'package:playground/config/index.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,7 +9,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();

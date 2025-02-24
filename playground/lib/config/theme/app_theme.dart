@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AppThemes {
+class AppTheme {
   /// 亮色
   static ThemeData light = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.light,
-
-    colorScheme: ColorScheme.light()
-  );
+      useMaterial3: true,
+      brightness: Brightness.light,
+      colorScheme: const ColorScheme.light());
 
   /// 暗色
   static ThemeData dark = ThemeData(
