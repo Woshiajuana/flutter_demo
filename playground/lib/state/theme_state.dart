@@ -22,6 +22,10 @@ class ThemeState with ChangeNotifier {
     }
   }
 
+  bool get isSystem {
+    return themeMode == ThemeMode.system;
+  }
+
   void changeThemeMode(String themeModeName) {
     if (_themeModeName == themeModeName) {
       return;
