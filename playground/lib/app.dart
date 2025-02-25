@@ -33,8 +33,15 @@ class App extends StatelessWidget {
             darkTheme: AppTheme.dark,
 
             // 国际化
+            locale: languageState.locale,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
+            localeResolutionCallback: (locale, supportedLocales) {
+              if (supportedLocales.contains(locale)) {
+                return locale;
+              }
+              return const Locale('zh');
+            },
 
             // 路由
             initialRoute: RouteNames.root,
