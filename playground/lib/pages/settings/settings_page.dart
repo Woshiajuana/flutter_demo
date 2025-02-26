@@ -21,14 +21,20 @@ class SettingsPage extends StatelessWidget {
             StxCellGroup(
               title: context.l10n.settingsDisplay,
               children: [
-                StxCell(
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(RouteNames.settingsLanguage);
+                Consumer<LanguageState>(
+                  builder: (context, languageState, __) {
+                    var languageCodeName =
+                        languageState.getLanguageCodeName(context);
+                    return StxCell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(RouteNames.settingsLanguage);
+                      },
+                      label: context.l10n.settingsLanguage,
+                      value: languageCodeName,
+                      showArrow: true,
+                    );
                   },
-                  label: context.l10n.settingsLanguage,
-                  value: '跟随系统',
-                  showArrow: true,
                 ),
                 Consumer<ThemeState>(
                   builder: (context, themeState, __) {

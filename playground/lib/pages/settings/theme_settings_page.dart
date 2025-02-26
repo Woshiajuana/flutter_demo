@@ -18,8 +18,8 @@ class ThemeSettingsPage extends StatelessWidget {
       StxCellGroup(
         children: [
           StxCell(
-            label: context.l10n.themeSettingsAuto,
-            description: context.l10n.themeSettingsAutoDescription,
+            label: context.l10n.themeSettingsAutomatic,
+            description: context.l10n.themeSettingsAutomaticDescription,
             trailing: Switch(
               value: themeState.isFollowSystem,
               onChanged: (v) {

@@ -10,12 +10,13 @@
     "settingsLanguage": "语言设置",
     "settingsTheme": "主题设置",
 
-    "localeSettingsTitle": "语言设置",
-    "localeSettingsAuto": "跟随系统",
+    "languageSettingsTitle": "语言设置",
+    "languageSettingsAutomatic": "跟随系统",
+    "languageSettingsAutomaticDescription": "注意：跟随系统仅支持以下列表中的语言。",
 
     "themeSettingsTitle": "主题设置",
-    "themeSettingsAuto": "跟随系统",
-    "themeSettingsAutoDescription": "开启后，将跟随系统打开或关闭深色模式",
+    "themeSettingsAutomatic": "跟随系统",
+    "themeSettingsAutomaticDescription": "开启后，将跟随系统打开或关闭深色模式",
     "themeSettingsCustom": "手动选择",
     "themeSettingsLight": "亮色模式",
     "themeSettingsDark": "深色模式",

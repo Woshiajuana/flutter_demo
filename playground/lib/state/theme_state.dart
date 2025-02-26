@@ -27,10 +27,10 @@ class ThemeState with ChangeNotifier {
     notifyListeners();
   }
 
-  String getThemeModeName (BuildContext context) {
- var index = themeMode.index;
+  String getThemeModeName(BuildContext context) {
+    var index = themeMode.index;
     return [
-      context.l10n.themeSettingsAuto,
+      context.l10n.themeSettingsAutomatic,
       context.l10n.themeSettingsLight,
       context.l10n.themeSettingsDark,
     ][index];

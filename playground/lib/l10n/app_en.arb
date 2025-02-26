@@ -10,12 +10,13 @@
     "settingsLanguage": "Language",
     "settingsTheme": "Theme",
 
-    "localeSettingsTitle": "Language",
-    "localeSettingsAuto": "Auto",
+    "languageSettingsTitle": "Language",
+    "languageSettingsAutomatic": "Automatic",
+    "languageSettingsAutomaticDescription": "Note: System presets only support languages from the list below.",
 
     "themeSettingsTitle": "Theme",
-    "themeSettingsAuto": "Auto",
-    "themeSettingsAutoDescription": "After activation, it will follow the system to turn on or off the dark mode",
+    "themeSettingsAutomatic": "Automatic",
+    "themeSettingsAutomaticDescription": "After activation, it will follow the system to turn on or off the dark mode",
     "themeSettingsCustom": "Custom",
     "themeSettingsLight": "Light Mode",
     "themeSettingsDark": "Dark Mode",
