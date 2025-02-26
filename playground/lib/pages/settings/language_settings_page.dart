@@ -3,6 +3,7 @@ import 'package:playground/state/index.dart';
 import 'package:playground/utils/extensions/l10n_extension.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
+import 'package:playground/widgets/stx_scroll_view.dart';
 import 'package:provider/provider.dart';
 
 class LanguageSettingsPage extends StatelessWidget {
@@ -40,26 +41,24 @@ class LanguageSettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(context.l10n.languageSettingsTitle),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            StxCellGroup(
-              children: [
-                _buildCell(
-                  onTap: () {
-                    languageState.changeLanguage(null);
-                  },
-                  label: context.l10n.languageSettingsAutomatic,
-                  check: languageState.isFollowSystem,
-                ),
-              ],
-            ),
-            StxCellGroup(
-              title: context.l10n.languageSettingsAutomaticDescription,
-              children: children,
-            ),
-          ],
-        ),
+      body: StxScrollView(
+        children: [
+          StxCellGroup(
+            children: [
+              _buildCell(
+                onTap: () {
+                  languageState.changeLanguage(null);
+                },
+                label: context.l10n.languageSettingsAutomatic,
+                check: languageState.isFollowSystem,
+              ),
+            ],
+          ),
+          StxCellGroup(
+            title: context.l10n.languageSettingsAutomaticDescription,
+            children: children,
+          ),
+        ],
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:playground/utils/extensions/l10n_extension.dart';
 import 'package:playground/utils/index.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
+import 'package:playground/widgets/stx_scroll_view.dart';
 import 'package:provider/provider.dart';
 
 class ThemeSettingsPage extends StatelessWidget {
@@ -65,10 +66,8 @@ class ThemeSettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(context.l10n.themeSettingsTitle),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: children,
-        ),
+      body: StxScrollView(
+        children: children,
       ),
     );
   }
