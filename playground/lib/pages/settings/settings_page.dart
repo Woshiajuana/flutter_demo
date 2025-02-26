@@ -16,13 +16,14 @@ class SettingsPage extends StatelessWidget {
         title: Text(context.l10n.settingsTitle),
       ),
       body: SingleChildScrollView(
+        // physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             StxCellGroup(
               title: context.l10n.settingsDisplay,
               children: [
                 Consumer<LanguageState>(
-                  builder: (context, languageState, __) {
+                  builder: (context, languageState, _) {
                     var languageCodeName =
                         languageState.getLanguageCodeName(context);
                     return StxCell(
@@ -37,7 +38,7 @@ class SettingsPage extends StatelessWidget {
                   },
                 ),
                 Consumer<ThemeState>(
-                  builder: (context, themeState, __) {
+                  builder: (context, themeState, _) {
                     var themeModeName = themeState.getThemeModeName(context);
                     return StxCell(
                       onTap: () {
