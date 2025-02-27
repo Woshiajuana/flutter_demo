@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'app_colors.dart';
+import 'custom_colors.dart';
 
 class AppTheme {
   /// 亮色
   static ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
+
+    // 拓展
+    extensions: [
+      CustomColors(),
+    ],
 
     // 颜色方案
     colorScheme: const ColorScheme.light().copyWith(
@@ -39,6 +44,11 @@ class AppTheme {
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+
+    // 拓展
+    extensions: [
+      CustomColors(),
+    ],
 
     // 颜色方案
     colorScheme: const ColorScheme.dark().copyWith(

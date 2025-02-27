@@ -66,21 +66,6 @@ class ThemeSettingsPage extends StatelessWidget {
       );
     }
 
-    children.addAll([
-      ElevatedButton(
-        onPressed: () {},
-        child: const Text('xxx'),
-      ),
-      const ListTile(
-        title: Text(
-          '标题',
-        ),
-        subtitle: Text('副标题内容'),
-        trailing: Text('大多数的撒旦'),
-      ),
-      const Text('xxxxxxxxxxxxxxxxxx')
-    ]);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.themeSettingsTitle),
