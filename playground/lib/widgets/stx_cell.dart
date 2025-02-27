@@ -67,7 +67,10 @@ class StxCell extends StatelessWidget {
           const SizedBox(height: 1),
           Text(
             description!,
-            style: TextStyle(fontSize: 13, color: Colors.grey[500]),
+            style: const TextStyle(
+              fontSize: 13,
+              color: Colors.grey,
+            ),
           ),
         ],
       );
@@ -101,7 +104,9 @@ class StxCell extends StatelessWidget {
     }
 
     Widget result = Container(
-      color: onTap != null ? Colors.transparent : Colors.white,
+      color: onTap != null
+          ? Colors.transparent
+          : Theme.of(context).listTileTheme.tileColor,
       constraints: const BoxConstraints(
         minHeight: 55,
       ),
@@ -116,7 +121,7 @@ class StxCell extends StatelessWidget {
 
     if (onTap != null) {
       result = Material(
-        color: Colors.white,
+        color: Theme.of(context).listTileTheme.tileColor,
         child: InkWell(
           onTap: onTap,
           child: result,

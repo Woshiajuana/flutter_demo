@@ -1,6 +1,6 @@
 class RouteNames {
   /// 根路径
-  static const root = settings;
+  static const root = settingsTheme;
 
   /// tab页
   static const main = '/';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:playground/state/index.dart';
 import 'package:playground/utils/extensions/l10n_extension.dart';
+import 'package:playground/utils/extensions/theme_extension.dart';
 import 'package:playground/utils/index.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
@@ -41,6 +42,11 @@ class ThemeSettingsPage extends StatelessWidget {
     ];
 
     if (!themeState.isFollowSystem) {
+      var checkIcon = Icon(
+        Icons.check,
+        color: context.theme.colorScheme.primary,
+      );
+
       children.add(
         StxCellGroup(
           title: context.l10n.themeSettingsCustom,
@@ -48,19 +54,32 @@ class ThemeSettingsPage extends StatelessWidget {
             StxCell(
               onTap: () => themeState.changeThemeMode(ThemeMode.light),
               label: context.l10n.themeSettingsLight,
-              trailing:
-                  themeMode == ThemeMode.light ? const Icon(Icons.check) : null,
+              trailing: themeMode == ThemeMode.light ? checkIcon : null,
             ),
             StxCell(
               onTap: () => themeState.changeThemeMode(ThemeMode.dark),
               label: context.l10n.themeSettingsDark,
-              trailing:
-                  themeMode == ThemeMode.dark ? const Icon(Icons.check) : null,
+              trailing: themeMode == ThemeMode.dark ? checkIcon : null,
             ),
           ],
         ),
       );
     }
+
+    children.addAll([
+      ElevatedButton(
+        onPressed: () {},
+        child: const Text('xxx'),
+      ),
+      const ListTile(
+        title: Text(
+          '标题',
+        ),
+        subtitle: Text('副标题内容'),
+        trailing: Text('大多数的撒旦'),
+      ),
+      const Text('xxxxxxxxxxxxxxxxxx')
+    ]);
 
     return Scaffold(
       appBar: AppBar(

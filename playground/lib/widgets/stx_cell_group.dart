@@ -22,20 +22,25 @@ class StxCellGroup extends StatelessWidget {
         content.add(
           const Divider(
             height: 0,
-            thickness: 0.3,
+            thickness: 0.5,
             indent: 16,
-            // endIndent: 16,
           ),
         );
       }
     }
 
     Widget result = Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).listTileTheme.tileColor,
         border: Border(
-          top: BorderSide(color: Colors.grey, width: 0.3),
-          bottom: BorderSide(color: Colors.grey, width: 0.3),
+          top: BorderSide(
+            color: Theme.of(context).dividerTheme.color ?? Colors.grey,
+            width: 0.5,
+          ),
+          bottom: BorderSide(
+            color: Theme.of(context).dividerTheme.color ?? Colors.grey,
+            width: 0.5,
+          ),
         ),
       ),
       child: Column(
@@ -52,9 +57,15 @@ class StxCellGroup extends StatelessWidget {
               left: 16,
               right: 16,
               top: 16,
-              bottom: 8,
+              bottom: 6,
             ),
-            child: Text(title!),
+            child: Text(
+              title!,
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.grey[600],
+              ),
+            ),
           ),
           result,
         ],
