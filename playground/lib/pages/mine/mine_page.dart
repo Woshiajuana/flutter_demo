@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:playground/config/index.dart';
 import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
+import 'package:playground/widgets/stx_scroll_view.dart';
 
 class MinePage extends StatefulWidget {
   const MinePage({super.key});
@@ -24,43 +26,16 @@ class _MinePageState extends State<MinePage> {
       appBar: AppBar(
         title: const Text('我的'),
       ),
-      body: Column(
+      body: StxScrollView(
         children: [
-          const StxCellGroup(
-            children: [
-              StxCell(
-                icon: Icon(Icons.settings),
-                label: '账号与安全',
-                showArrow: true,
-              ),
-            ],
-          ),
           StxCellGroup(
             title: '其他',
             children: [
               StxCell(
                 onTap: () {
-                  print('点击了我');
+                  Navigator.of(context).pushNamed(RouteNames.settings);
                 },
                 icon: const Icon(Icons.settings),
-                label: '账号与安全',
-                value: '请设置密码',
-                showArrow: true,
-              ),
-              const StxCell(
-                icon: Icon(Icons.settings),
-                label: '账号安全',
-                description: '账号安全问题不可忽视',
-                showArrow: true,
-                value: '请设置密码',
-              ),
-              const StxCell(
-                icon: Icon(Icons.settings),
-                label: '设置',
-                showArrow: true,
-              ),
-              const StxCell(
-                icon: Icon(Icons.settings),
                 label: '设置',
                 showArrow: true,
               ),
