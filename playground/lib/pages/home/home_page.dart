@@ -25,10 +25,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView.separated(
         itemCount: CaseConfig.data.length,
-        separatorBuilder: (context, index) => Divider(
-          indent: 16,
-          endIndent: 16,
-          color: Colors.grey[200],
+        separatorBuilder: (context, index) => const Divider(
+          height: 0,
+          thickness: 0,
         ),
         itemBuilder: _itemBuilder,
       ),
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         item.title,
         style: const TextStyle(fontSize: 18),
       ),
-      subtitle: item.subtitle != null ? Text(item.subtitle!) : null,
+      subtitle: Text(item.subtitle),
       trailing: const Icon(
         Icons.arrow_forward_ios_rounded,
         size: 16,

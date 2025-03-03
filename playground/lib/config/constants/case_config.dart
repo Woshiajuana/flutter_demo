@@ -4,12 +4,12 @@ class CaseItem {
   CaseItem({
     required this.path,
     required this.title,
-    this.subtitle,
+    required this.subtitle,
   });
 
   String path;
   String title;
-  String? subtitle;
+  String subtitle;
 }
 
 class CaseConfig {
