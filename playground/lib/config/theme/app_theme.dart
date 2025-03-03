@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'app_colors.dart';
 import 'custom_colors.dart';
@@ -25,6 +26,13 @@ class AppTheme {
       elevation: 0,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Color(0xffF3F8F9),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
     ),
 
     // ListTile
@@ -61,6 +69,13 @@ class AppTheme {
       elevation: 0,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Color(0xff010201),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+      ),
     ),
 
     // ListTile

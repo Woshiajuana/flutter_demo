@@ -66,6 +66,17 @@ class ThemeSettingsPage extends StatelessWidget {
       );
     }
 
+    children.addAll(
+      List.generate(
+        10,
+        (index) => const SizedBox(
+          width: 100,
+          height: 100,
+          child: FlutterLogo(),
+        ),
+      ).toList(),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.themeSettingsTitle),
