@@ -44,7 +44,7 @@ class AppTheme {
 
     // 分割线
     dividerTheme: const DividerThemeData(
-      color: Color(0xffdedede),
+      color: Color(0xffe8e8e8),
     ),
   );
 
@@ -87,7 +87,7 @@ class AppTheme {
 
     // 分割线
     dividerTheme: const DividerThemeData(
-      color: Color(0xff444444),
+      color: Color(0xff2b2b2b),
     ),
   );
 }
