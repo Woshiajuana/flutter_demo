@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('演练场'),
       ),
       body: ListView.separated(
-        itemCount: CaseConfig.data.length,
+        itemCount: DemoConfig.data.length,
         separatorBuilder: (context, index) => const Divider(
           height: 0,
           thickness: 0,
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
-    var item = CaseConfig.data[index];
+    var item = DemoConfig.data[index];
     return ListTile(
       onTap: () {
         Navigator.of(context).pushNamed(item.path);

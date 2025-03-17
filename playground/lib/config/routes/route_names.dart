@@ -31,4 +31,7 @@ class RouteNames {
 
   /// 十字架布局
   static const crossFlow = '/demos/cross-flow';
+
+  /// 弹窗
+  static const dialog = '/demos/dialog';
 }

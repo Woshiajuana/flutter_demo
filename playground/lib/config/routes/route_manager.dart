@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:playground/pages/404/not_found_page.dart';
 import 'package:playground/pages/demos/cell_page.dart';
 import 'package:playground/pages/demos/cross_flow_page.dart';
+import 'package:playground/pages/demos/dialog_page.dart';
 import 'package:playground/pages/demos/signature_page.dart';
 import 'package:playground/pages/home/home_page.dart';
 import 'package:playground/pages/main_page.dart';
@@ -29,6 +30,8 @@ class RouteManager {
         const SignaturePage(),
     RouteNames.crossFlow: (BuildContext context, {arguments}) =>
         const CrossFlowPage(),
+    RouteNames.dialog: (BuildContext context, {arguments}) =>
+        const DialogPage(),
   };
 
   /// 路由生成器
