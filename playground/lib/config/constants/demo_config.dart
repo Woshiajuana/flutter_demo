@@ -21,7 +21,7 @@ class DemoConfig {
     ),
     DemoItem(
       path: RouteNames.dialog,
-      title: '各种弹窗',
+      title: '弹窗',
       subtitle: '内置弹窗、自定义弹窗',
     ),
     DemoItem(

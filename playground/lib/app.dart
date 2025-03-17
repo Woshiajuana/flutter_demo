@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:playground/config/index.dart';
 import 'package:playground/state/index.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +47,8 @@ class App extends StatelessWidget {
             // 路由
             initialRoute: RouteNames.root,
             onGenerateRoute: RouteManager.onGenerateRoute,
+
+            builder: EasyLoading.init(),
           );
         },
       ),
