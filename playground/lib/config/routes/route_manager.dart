@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:playground/pages/404/not_found_page.dart';
 import 'package:playground/pages/demos/cell_page.dart';
 import 'package:playground/pages/demos/cross_flow_page.dart';
-import 'package:playground/pages/demos/dialog_page.dart';
+import 'package:playground/pages/demos/dialog/built_in_dialog_page.dart';
+import 'package:playground/pages/demos/dialog/dialog_page.dart';
+import 'package:playground/pages/demos/dialog/dropdown_dialog_page.dart';
 import 'package:playground/pages/demos/signature_page.dart';
 import 'package:playground/pages/home/home_page.dart';
 import 'package:playground/pages/main_page.dart';
@@ -32,6 +34,10 @@ class RouteManager {
         const CrossFlowPage(),
     RouteNames.dialog: (BuildContext context, {arguments}) =>
         const DialogPage(),
+    RouteNames.dialogBuiltIn: (BuildContext context, {arguments}) =>
+        const BuiltInDialogPage(),
+    RouteNames.dialogDropdown: (BuildContext context, {arguments}) =>
+        const DropdownDialogPage(),
   };
 
   /// 路由生成器

@@ -1,6 +1,6 @@
 class RouteNames {
   /// 根路径
-  static const root = main;
+  static const root = dialogDropdown;
 
   /// tab页
   static const main = '/';
@@ -34,4 +34,10 @@ class RouteNames {
 
   /// 弹窗
   static const dialog = '/demos/dialog';
+
+  /// 内置弹窗
+  static const dialogBuiltIn = '/demos/dialog/built-in';
+
+  /// 下拉菜单
+  static const dialogDropdown = '/demos/dialog/dropdown';
 }

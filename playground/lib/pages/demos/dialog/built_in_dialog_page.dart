@@ -5,14 +5,14 @@ import 'package:playground/widgets/stx_cell.dart';
 import 'package:playground/widgets/stx_cell_group.dart';
 import 'package:playground/widgets/stx_scroll_view.dart';
 
-class DialogPage extends StatelessWidget {
-  const DialogPage({super.key});
+class BuiltInDialogPage extends StatelessWidget {
+  const BuiltInDialogPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('弹窗'),
+        title: const Text('内置弹窗'),
         actions: [
           PopupMenuButton<String>(
             onSelected: (value) {
