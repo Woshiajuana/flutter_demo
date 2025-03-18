@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground/widgets/stx_dropdown_dialog.dart';
 import 'package:playground/widgets/stx_scroll_view.dart';
 
 class DropdownDialogPage extends StatelessWidget {
@@ -23,13 +24,13 @@ class DropdownDialogPage extends StatelessWidget {
             ),
             child: Row(
               children: [
-                _buildTabItem(text: '城市'),
+                _buildTabItem(text: '城市', onTap: _showDialog),
                 _buildVerticalDivider(),
-                _buildTabItem(text: '品牌'),
+                _buildTabItem(text: '品牌', onTap: _showDialog),
                 _buildVerticalDivider(),
-                _buildTabItem(text: '车况'),
+                _buildTabItem(text: '车况', onTap: _showDialog),
                 _buildVerticalDivider(),
-                _buildTabItem(text: '更多'),
+                _buildTabItem(text: '更多', onTap: _showDialog),
               ],
             ),
           ),
@@ -43,6 +44,22 @@ class DropdownDialogPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showDialog(GlobalKey anchorKey) {
+    showStxDropdownDialog(
+      anchorKey: anchorKey,
+      builder: (context) {
+        return Container(
+          width: double.infinity,
+          height: 100,
+          color: Colors.white,
+          child: const SingleChildScrollView(
+            child: Text('弹窗弹窗菜单弹窗菜单弹窗菜单菜单'),
+          ),
+        );
+      },
     );
   }
 
@@ -64,12 +81,15 @@ class DropdownDialogPage extends StatelessWidget {
       flex: 1,
       child: GestureDetector(
         onTap: () => onTap?.call(anchorKey),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(text),
-            const Icon(Icons.arrow_drop_down),
-          ],
+        child: SizedBox(
+          height: 44,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(text),
+              const Icon(Icons.arrow_drop_down),
+            ],
+          ),
         ),
       ),
     );

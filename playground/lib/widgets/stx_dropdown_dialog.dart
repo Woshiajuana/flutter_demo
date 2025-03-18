@@ -14,7 +14,7 @@ class StxDropdownDialogRoute<T> extends ModalRoute<T> {
 
   // 遮罩颜色，通常用于模态路由，以突出显示前景内容并使背景变暗
   @override
-  Color? get barrierColor => Colors.black54;
+  Color? get barrierColor => Colors.transparent;
 
   // 遮罩是否可以通过点击来关闭
   @override
@@ -58,7 +58,44 @@ class StxDropdownDialogRoute<T> extends ModalRoute<T> {
           delegate: _StxDropdownDialogRouteLayout(
             offset: offset,
           ),
-          child: builder(context),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Column(
+                children: [
+                  SizeTransition(
+                    sizeFactor: CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeInOut, // 立方贝塞尔曲线，开始和结束时缓慢，中间加速。
+                    ),
+                    axisAlignment: -1.0, // 子组件在动画过程的对齐方式，-1.0表示与起点对齐
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: constraints.maxHeight - 100,
+                      ),
+                      child: builder(context),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      // 💡 透明度动画，通常用于在显示或隐藏组件时提供平滑的过渡效果。
+                      child: FadeTransition(
+                        opacity: CurvedAnimation(
+                          parent: animation,
+                          curve: Curves.easeInOut,
+                        ),
+                        child: Container(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
         );
       },
     );
@@ -77,7 +114,7 @@ class _StxDropdownDialogRouteLayout extends SingleChildLayoutDelegate {
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
     return BoxConstraints(
       maxWidth: constraints.maxWidth,
-      maxHeight: constraints.maxHeight - offset.dy - 100,
+      maxHeight: constraints.maxHeight - offset.dy,
     );
   }
 
