@@ -12,18 +12,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
-      body: Container(
-        child: Center(
-          child: Column(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/webview');
-                },
-                child: Text('webview'),
-              ),
-            ],
-          ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/webview');
+              },
+              child: Text('webview'),
+            ),
+          ],
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:base_study/widgets/pro/webview/pro_webview.dart';
 import 'package:flutter/material.dart';
 
 class WebviewPage extends StatefulWidget {
@@ -10,6 +11,9 @@ class WebviewPage extends StatefulWidget {
 class _WebviewPageState extends State<WebviewPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Webview Page')),
+      body: const ProWebview(url: 'https://pub.dev'),
+    );
   }
 }
