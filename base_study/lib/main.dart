@@ -1,4 +1,5 @@
 import 'package:base_study/pages/home_page.dart';
+import 'package:base_study/pages/live_page.dart';
 import 'package:base_study/pages/webview_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/webview': (context) => const WebviewPage(),
+        '/live': (context) => const LivePage(),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

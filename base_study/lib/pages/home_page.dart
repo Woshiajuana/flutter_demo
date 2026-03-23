@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/webview');
+                Navigator.of(context).pushNamed('/live');
               },
               child: Text('webview'),
             ),
