@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-import 'website.dart';
+import 'pro_website.dart';
 
 const _userAgent = <String, String>{
   "ios":
@@ -31,7 +31,9 @@ class _ProWebviewState extends State<ProWebview> {
   // 1、创建 ValueNotifier 对象并设置 “初始值”；
   // 2、使用 late 延迟初始化以提升加载效率；
   late final ValueNotifier<double> progressNotifier = ValueNotifier(0);
-  late final ValueNotifier<Website> urlNotifier = ValueNotifier(Website());
+  late final ValueNotifier<ProWebsite> urlNotifier = ValueNotifier(
+    ProWebsite(),
+  );
 
   @override
   Widget build(BuildContext context) {

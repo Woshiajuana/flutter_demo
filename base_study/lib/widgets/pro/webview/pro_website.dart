@@ -1,4 +1,4 @@
-final class Website {
+final class ProWebsite {
   /// 网站标题
   String? title;
 
@@ -9,15 +9,15 @@ final class Website {
   String? url;
 
   /// 通过构造解析传入的 URL 地址
-  Website({this.title, this.url}) {
+  ProWebsite({this.title, this.url}) {
     if (url != null && url!.isNotEmpty) {
       host = url!.contains("://") ? Uri.parse(url!).host : host;
     }
   }
 
   /// 快速拷贝函数（传入参数无变更则沿用之前的变量值）
-  Website copyWith({String? title, String? url}) {
-    return Website(title: title ?? this.title, url: url ?? this.url);
+  ProWebsite copyWith({String? title, String? url}) {
+    return ProWebsite(title: title ?? this.title, url: url ?? this.url);
   }
 
   /// 内容是否为空的辅助判断函数
