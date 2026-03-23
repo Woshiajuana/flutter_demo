@@ -20,9 +20,7 @@ main() {
 
   var s = Set<int>();
 
-  var m = {
-    'name': '1',
-  };
+  var m = {'name': '1'};
 
   m['xx'] = '1';
 
